@@ -1,0 +1,22 @@
+@font-face {
+  font-family: "Jinling";
+  src: url("fonts/FZXiJinLJW.TTF") format("truetype");
+}
+
+
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+#poem {
+  position: absolute;
+  top: 30vh;
+  left: 50vw;
+  transform: translate(-50%, -50%);
+  font-family: "Jinling";
+  font-size: 30px;
+  color: rgb(20, 35, 52);
+  writing-mode: vertical-rl;
+
+}

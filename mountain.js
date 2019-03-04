@@ -57,6 +57,5 @@ function draw() {
   mountains.forEach( m => {
     m.display()
   })
-
 }
 

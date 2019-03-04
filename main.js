@@ -6,6 +6,7 @@ class Mountain {
    this.c = color
    this.y = y
    this.xoff = random(100, 200)
+   this.s = 0
   }
 
   display() {
@@ -50,6 +51,5 @@ function setup() {
 
 
 function draw() {
-
 }
 

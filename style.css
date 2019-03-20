@@ -17,6 +17,5 @@ html, body {
   font-family: "Jinling";
   font-size: 30px;
   color: rgb(20, 35, 52);
-  writing-mode: vertical-rl;
-
+  /* writing-mode: vertical-rl; */
 }

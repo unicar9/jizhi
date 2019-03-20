@@ -2,10 +2,13 @@
   "name": "易词",
   "version": "1.0",
   "description": "Build an Extension!",
-  "permissions": ["storage"],
+  "permissions": ["storage", "tabs"],
   "background": {
     "scripts": ["background.js"],
     "persistent": false
+  },
+  "chrome_url_overrides" : {
+    "newtab": "index.html"
   },
   "manifest_version": 2
 }

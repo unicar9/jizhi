@@ -24,21 +24,28 @@ html, body {
   position: absolute;
   bottom: 10px;
   right: 10px;
-  font-size: 20px;
+  font-size: 15px;
   color: #e1e1e1;
 }
 
 span {
-	padding: 13px;
+	padding: 10px;
 	margin: 10px;
 	border: 2px solid #e1e1e1;
 	border-radius: 50%;
-	width: 20px;
-	height: 20px;
+	width: 15px;
+	height: 15px;
 	display: inline-block;
 	text-align: center;
-	line-height: 20px;
+	line-height: 15px;
 	cursor: pointer;
+	opacity: .7;
+	transition: all 200ms cubic-bezier(0.68, -0.55, 0.265, 2.55);
+}
+
+span:hover {
+	transform: scale(1.2);
+	opacity: 1
 }
 
 @font-face {

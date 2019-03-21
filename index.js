@@ -1,4 +1,3 @@
-
 async function getVerses() {
     const result = await chrome.storage.sync.get(['verses'])
     const verses = await (!result.verses || result.verses.length === 0) ? INITIAL_VERSES : result.verses

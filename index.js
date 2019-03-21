@@ -34,7 +34,6 @@ function setup() {
     canvas = createCanvas(windowWidth, windowHeight)
 
     textFont(font)
-    textSize(40)
     textAlign(CENTER, CENTER)
 
     growMountains()
@@ -42,10 +41,13 @@ function setup() {
   
 
 function draw() {
-    background(220)
+    background(230)
     
     fill(0)
-    text(verses, width / 2, height / 3)
+    textSize(40)
+    text(verses.content, width / 2, height / 3)
+    textSize(20)
+    text(`${verses.author} 《${verses.origin}》`, width / 2, (height / 3) + 50)
     
     mountains.forEach(m => m.display())
 }
@@ -57,6 +59,10 @@ window.onload = function () {
     })
 
     getVerses().then((res) => {
-        verses = res.content
+        verses = res
     })
+}
+
+function windowResized() {
+    resizeCanvas(windowWidth, windowHeight);
 }

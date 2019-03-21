@@ -19,3 +19,10 @@ html, body {
   color: rgb(20, 35, 52);
   /* writing-mode: vertical-rl; */
 }
+
+#save {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+
+}

@@ -9,17 +9,6 @@ html, body {
   overflow: hidden;
 }
 
-#poem {
-  position: absolute;
-  top: 30vh;
-  left: 50vw;
-  transform: translate(-50%, -50%);
-  font-family: "Jinling";
-  font-size: 30px;
-  color: rgb(20, 35, 52);
-  /* writing-mode: vertical-rl; */
-}
-
 .container {
   position: absolute;
   bottom: 10px;
@@ -68,34 +57,37 @@ span:hover {
 }
 
 @font-face {
-  font-family: 'icomoon';
-  src:  url('fonts/icomoon.eot?yia514');
-  src:  url('fonts/icomoon.eot?yia514#iefix') format('embedded-opentype'),
-    url('fonts/icomoon.ttf?yia514') format('truetype'),
-    url('fonts/icomoon.woff?yia514') format('woff'),
-    url('fonts/icomoon.svg?yia514#icomoon') format('svg');
-  font-weight: normal;
-  font-style: normal;
+	font-family: 'icomoon';
+	src:  url('fonts/icomoon.eot?mo2cpr');
+	src:  url('fonts/icomoon.eot?mo2cpr#iefix') format('embedded-opentype'),
+	  url('fonts/icomoon.ttf?mo2cpr') format('truetype'),
+	  url('fonts/icomoon.woff?mo2cpr') format('woff'),
+	  url('fonts/icomoon.svg?mo2cpr#icomoon') format('svg');
+	font-weight: normal;
+	font-style: normal;
 }
-
+  
 [class^="icon-"], [class*=" icon-"] {
-  /* use !important to prevent issues with browser extensions that change fonts */
-  font-family: 'icomoon' !important;
-  speak: none;
-  font-style: normal;
-  font-weight: normal;
-  font-variant: normal;
-  text-transform: none;
-  line-height: 1;
+	/* use !important to prevent issues with browser extensions that change fonts */
+	font-family: 'icomoon' !important;
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
 
-  /* Better Font Rendering =========== */
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+	/* Better Font Rendering =========== */
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
 }
 
 .icon-play:before {
-  content: "\e900";
+	content: "\e900";
 }
 .icon-download3:before {
-  content: "\e9c7";
+	content: "\e9c7";
+}
+.icon-pause2:before {
+	content: "\ea1d";
 }

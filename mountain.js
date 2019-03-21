@@ -1,31 +1,35 @@
 
 class Mountain {
     constructor(color, y) {
-     this.c = color
-     this.y = y
-     this.offset = random(100, 200)
+        this.c = color
+        this.y = y
+        this.offset = random(100, 200)
+        this.t = 0
     }
   
     display() {
-      let xoff = 0
-  
-      noStroke()
-      fill(this.c)
-  
-      noiseDetail(1.5, .7)
-  
-      beginShape()
-        for (let x = 0; x <= width + 25; x+=25) {
-          let yoff = map(noise(xoff + this.offset), 0, 1, 0, yScale) 
-          let y = this.y - yoff
-          vertex(x, y)
-  
-          xoff += .08  
+        let xoff = 0
+    
+        noStroke()
+        fill(this.c)
+    
+        noiseDetail(1.7, .8)
+    
+        beginShape()
+            for (let x = 0; x <= width + 25; x += 25) {
+                let yoff = map(noise(xoff + this.offset, this.t + this.offset), 0, 1, 0, yScale) 
+                let y = this.y - yoff
+                vertex(x, y)
+        
+                xoff += .08  
+            }
+            vertex(width + 100, height)
+            vertex(0, height)
+        endShape(CLOSE)
+
+        if (isMoving) {
+            this.t += 0.003
         }
-        vertex(width + 100, height)
-        vertex(0, height)
-      endShape(CLOSE)
-  
     }
   
   }

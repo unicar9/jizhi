@@ -14,15 +14,16 @@ async function fetchVerses() {
 }
 
 const INITIAL_VERSES = {
-        "author": "王维",
-        "content": "红豆生南国，春来发几枝。",
-        "origin": "相思"
-    }
+    "author": "王维",
+    "content": "红豆生南国，春来发几枝。",
+    "origin": "相思"
+}
 
 let yScale = 200,
     font,
     canvas,
-    verses
+    verses,
+    isMoving = false
 
 const mountains = []
 
@@ -55,7 +56,16 @@ function draw() {
 
 window.onload = function () {
     document.querySelector('#save').addEventListener('click', () => {
-        saveCanvas(canvas, 'myCanvas', 'jpg')
+        saveCanvas(canvas, 'jizhi-bg', 'jpg')
+    })
+
+    document.querySelector('#move').addEventListener('click', () => {
+        isMoving = !isMoving
+
+        const moveBtn = document.querySelector('#move')
+
+        moveBtn.classList.toggle('icon-pause2')
+        moveBtn.classList.toggle('icon-play')
     })
 
     getVerses().then((res) => {
@@ -64,5 +74,5 @@ window.onload = function () {
 }
 
 function windowResized() {
-    resizeCanvas(windowWidth, windowHeight);
+    resizeCanvas(windowWidth, windowHeight)
 }

@@ -69,7 +69,7 @@ window.onload = function () {
     })
 
     getVerses().then((res) => {
-        verses = res
+        verses = res    
     })
 }
 

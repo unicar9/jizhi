@@ -13,7 +13,7 @@ class Mountain {
         noStroke()
         fill(this.c)
     
-        noiseDetail(1.7, .8)
+        noiseDetail(1.7, 1.3)
     
         beginShape()
             for (let x = 0; x <= width + 25; x += 25) {

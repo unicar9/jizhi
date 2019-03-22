@@ -6,3 +6,4 @@ A Chrome extension with custom new tab page featuring Chinese poems and P5.js en
 
 ## Examples
 
+![jizhi gif](https://github.com/unicar9/jizhi/blob/master/examples/jizhi.gif)

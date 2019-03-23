@@ -4,6 +4,14 @@
 
 A Chrome extension with custom new tab page featuring Chinese poems and P5.js enabled noise waves in Chinese traditional colors
 
+## 本地装载
+
+* 进入 releases 页面下载 Source code 压缩包并解压
+* 在浏览器里输入 chrome://extensions/ 进入插件管理页面
+* 打开右上角开发者模式（Developer mode）
+* 点击左上角 "Load unpacked" 按钮并选取刚刚解压的文件夹
+* 几枝装载成功，打开新标签页试试吧
+
 ## 功能
 
 * 左侧淡出中国色名称。

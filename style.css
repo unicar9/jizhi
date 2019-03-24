@@ -40,9 +40,9 @@ span:hover {
 .colorName {
 	font-family: "Jinling";
 	position: absolute;
-	font-size: 18em;
-	left:0;
-	top: 0;
+	font-size: 10em;
+	left: 50px;
+	top: 50px;
 	opacity: 0;
 	writing-mode: vertical-rl;
 	white-space: nowrap;

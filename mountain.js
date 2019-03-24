@@ -27,9 +27,7 @@ class Mountain {
             vertex(0, height)
         endShape(CLOSE)
 
-        if (isMoving) {
-            this.t += 0.003
-        }
+        this.t += 0.003
     }
   
   }

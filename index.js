@@ -33,11 +33,22 @@ function preload() {
 
 function setup() {
     canvas = createCanvas(windowWidth, windowHeight)
-
+    
+    background(230)
+    
     textFont(font)
     textAlign(CENTER, CENTER)
+    
+    fill(0)
+    textSize(40)
+    text(verses.content, width / 2, height / 3)
+    textSize(20)
+    text(`${verses.author} 《${verses.origin}》`, width / 2, (height / 3) + 50)
 
     growMountains()
+    mountains.forEach(m => m.display())
+
+    noLoop()
 }
   
 
@@ -61,6 +72,12 @@ window.onload = function () {
 
     document.querySelector('#move').addEventListener('click', () => {
         isMoving = !isMoving
+
+        if (isMoving) {
+            loop()
+        } else {
+            noLoop()
+        }
 
         const moveBtn = document.querySelector('#move')
 

@@ -17,7 +17,7 @@ html, body {
   color: #e1e1e1;
 }
 
-span {
+.container span {
 	padding: 10px;
 	margin: 10px;
 	border: 2px solid #e1e1e1;
@@ -32,7 +32,7 @@ span {
 	transition: all 200ms cubic-bezier(0.68, -0.55, 0.265, 2.55);
 }
 
-span:hover {
+.container span:hover {
 	transform: scale(1.2);
 	opacity: 1
 }
@@ -56,18 +56,25 @@ span:hover {
 	100% { opacity: 0; }
 }
 
+.menu {
+	width: 100px;
+	height: 100px;
+	background: white;
+	color: black;
+}
+
 @font-face {
 	font-family: 'icomoon';
-	src:  url('fonts/icomoon.eot?mo2cpr');
-	src:  url('fonts/icomoon.eot?mo2cpr#iefix') format('embedded-opentype'),
-	  url('fonts/icomoon.ttf?mo2cpr') format('truetype'),
-	  url('fonts/icomoon.woff?mo2cpr') format('woff'),
-	  url('fonts/icomoon.svg?mo2cpr#icomoon') format('svg');
+	src:  url('fonts/icomoon.eot?nat7s7');
+	src:  url('fonts/icomoon.eot?nat7s7#iefix') format('embedded-opentype'),
+	  url('fonts/icomoon.ttf?nat7s7') format('truetype'),
+	  url('fonts/icomoon.woff?nat7s7') format('woff'),
+	  url('fonts/icomoon.svg?nat7s7#icomoon') format('svg');
 	font-weight: normal;
 	font-style: normal;
-}
+  }
   
-[class^="icon-"], [class*=" icon-"] {
+  [class^="icon-"], [class*=" icon-"] {
 	/* use !important to prevent issues with browser extensions that change fonts */
 	font-family: 'icomoon' !important;
 	speak: none;
@@ -76,18 +83,22 @@ span:hover {
 	font-variant: normal;
 	text-transform: none;
 	line-height: 1;
-
+  
 	/* Better Font Rendering =========== */
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
-}
-
-.icon-play:before {
+  }
+  
+  .icon-play:before {
 	content: "\e900";
-}
-.icon-download3:before {
+  }
+  .icon-cog:before {
+	content: "\e994";
+  }
+  .icon-download3:before {
 	content: "\e9c7";
-}
-.icon-pause2:before {
+  }
+  .icon-pause2:before {
 	content: "\ea1d";
-}
+  }
+  

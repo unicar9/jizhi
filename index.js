@@ -23,7 +23,7 @@ let yScale = 200,
     font,
     canvas,
     verses,
-    isMoving = false
+    isMoving = true
 
 const mountains = []
 
@@ -48,7 +48,7 @@ function setup() {
     growMountains()
     mountains.forEach(m => m.display())
 
-    noLoop()
+    loop()
 }
   
 

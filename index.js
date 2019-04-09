@@ -48,7 +48,11 @@ function setup() {
     growMountains()
     mountains.forEach(m => m.display())
 
-    noLoop()
+    if (isMoving) {
+        loop()
+    } else {
+        noLoop()
+    }
 }
   
 
@@ -70,7 +74,9 @@ window.onload = function () {
         saveCanvas(canvas, 'jizhi-bg', 'jpg')
     })
 
-    document.querySelector('#move').addEventListener('click', () => {
+    const moveBtn = document.querySelector('#move')
+
+    moveBtn.addEventListener('click', () => {
         isMoving = !isMoving
 
         if (isMoving) {
@@ -78,9 +84,6 @@ window.onload = function () {
         } else {
             noLoop()
         }
-
-        const moveBtn = document.querySelector('#move')
-
         moveBtn.classList.toggle('icon-pause2')
         moveBtn.classList.toggle('icon-play')
     })

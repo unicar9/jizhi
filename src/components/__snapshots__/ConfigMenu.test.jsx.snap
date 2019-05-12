@@ -1,0 +1,344 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ConfigMenu should render correctly 1`] = `
+ShallowWrapper {
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <ConfigMenu
+    colorStayChecked={false}
+    defaultPlayChecked={true}
+    isPlaying={true}
+    onColorStayChange={[MockFunction]}
+    onDefaultPlayChange={[MockFunction]}
+    onPlayPauseSelect={[MockFunction]}
+    onSaveSelect={[MockFunction]}
+  />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "checkPropTypes": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateError": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "host",
+    "props": Object {
+      "children": <Popover
+        animationDuration={300}
+        bringFocusInside={false}
+        content={
+          <Menu>
+            <MenuGroup>
+              <withTheme(MenuItem)
+                icon="download"
+                intent="success"
+                onSelect={[MockFunction]}
+              >
+                保存背景
+              </withTheme(MenuItem)>
+              <withTheme(MenuItem)
+                icon="pause"
+                intent="success"
+                onSelect={[MockFunction]}
+              >
+                暂停动画
+              </withTheme(MenuItem)>
+            </MenuGroup>
+            <MenuDivider />
+            <MenuGroup>
+              <withTheme(MenuItem)
+                secondaryText="默认播放动画"
+              >
+                <withTheme(Switch)
+                  checked={true}
+                  onChange={[MockFunction]}
+                />
+              </withTheme(MenuItem)>
+              <withTheme(MenuItem)
+                secondaryText="保留颜色名称"
+              >
+                <withTheme(Switch)
+                  checked={false}
+                  onChange={[MockFunction]}
+                />
+              </withTheme(MenuItem)>
+            </MenuGroup>
+          </Menu>
+        }
+        minHeight={40}
+        minWidth={200}
+        onClose={[Function]}
+        onCloseComplete={[Function]}
+        onOpen={[Function]}
+        onOpenComplete={[Function]}
+        position="bottom-right"
+      >
+        <withTheme(Icon)
+          className={false}
+          color="white"
+          icon="cog"
+          id="menu-btn"
+          size={25}
+        />
+      </Popover>,
+      "data-html2canvas-ignore": true,
+      "id": "menu",
+    },
+    "ref": null,
+    "rendered": Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "class",
+      "props": Object {
+        "animationDuration": 300,
+        "bringFocusInside": false,
+        "children": <withTheme(Icon)
+          className={false}
+          color="white"
+          icon="cog"
+          id="menu-btn"
+          size={25}
+        />,
+        "content": <Menu>
+          <MenuGroup>
+            <withTheme(MenuItem)
+              icon="download"
+              intent="success"
+              onSelect={[MockFunction]}
+            >
+              保存背景
+            </withTheme(MenuItem)>
+            <withTheme(MenuItem)
+              icon="pause"
+              intent="success"
+              onSelect={[MockFunction]}
+            >
+              暂停动画
+            </withTheme(MenuItem)>
+          </MenuGroup>
+          <MenuDivider />
+          <MenuGroup>
+            <withTheme(MenuItem)
+              secondaryText="默认播放动画"
+            >
+              <withTheme(Switch)
+                checked={true}
+                onChange={[MockFunction]}
+              />
+            </withTheme(MenuItem)>
+            <withTheme(MenuItem)
+              secondaryText="保留颜色名称"
+            >
+              <withTheme(Switch)
+                checked={false}
+                onChange={[MockFunction]}
+              />
+            </withTheme(MenuItem)>
+          </MenuGroup>
+        </Menu>,
+        "minHeight": 40,
+        "minWidth": 200,
+        "onClose": [Function],
+        "onCloseComplete": [Function],
+        "onOpen": [Function],
+        "onOpenComplete": [Function],
+        "position": "bottom-right",
+      },
+      "ref": null,
+      "rendered": Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "className": false,
+          "color": "white",
+          "icon": "cog",
+          "id": "menu-btn",
+          "size": 25,
+        },
+        "ref": null,
+        "rendered": null,
+        "type": [Function],
+      },
+      "type": [Function],
+    },
+    "type": "div",
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "host",
+      "props": Object {
+        "children": <Popover
+          animationDuration={300}
+          bringFocusInside={false}
+          content={
+            <Menu>
+              <MenuGroup>
+                <withTheme(MenuItem)
+                  icon="download"
+                  intent="success"
+                  onSelect={[MockFunction]}
+                >
+                  保存背景
+                </withTheme(MenuItem)>
+                <withTheme(MenuItem)
+                  icon="pause"
+                  intent="success"
+                  onSelect={[MockFunction]}
+                >
+                  暂停动画
+                </withTheme(MenuItem)>
+              </MenuGroup>
+              <MenuDivider />
+              <MenuGroup>
+                <withTheme(MenuItem)
+                  secondaryText="默认播放动画"
+                >
+                  <withTheme(Switch)
+                    checked={true}
+                    onChange={[MockFunction]}
+                  />
+                </withTheme(MenuItem)>
+                <withTheme(MenuItem)
+                  secondaryText="保留颜色名称"
+                >
+                  <withTheme(Switch)
+                    checked={false}
+                    onChange={[MockFunction]}
+                  />
+                </withTheme(MenuItem)>
+              </MenuGroup>
+            </Menu>
+          }
+          minHeight={40}
+          minWidth={200}
+          onClose={[Function]}
+          onCloseComplete={[Function]}
+          onOpen={[Function]}
+          onOpenComplete={[Function]}
+          position="bottom-right"
+        >
+          <withTheme(Icon)
+            className={false}
+            color="white"
+            icon="cog"
+            id="menu-btn"
+            size={25}
+          />
+        </Popover>,
+        "data-html2canvas-ignore": true,
+        "id": "menu",
+      },
+      "ref": null,
+      "rendered": Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "animationDuration": 300,
+          "bringFocusInside": false,
+          "children": <withTheme(Icon)
+            className={false}
+            color="white"
+            icon="cog"
+            id="menu-btn"
+            size={25}
+          />,
+          "content": <Menu>
+            <MenuGroup>
+              <withTheme(MenuItem)
+                icon="download"
+                intent="success"
+                onSelect={[MockFunction]}
+              >
+                保存背景
+              </withTheme(MenuItem)>
+              <withTheme(MenuItem)
+                icon="pause"
+                intent="success"
+                onSelect={[MockFunction]}
+              >
+                暂停动画
+              </withTheme(MenuItem)>
+            </MenuGroup>
+            <MenuDivider />
+            <MenuGroup>
+              <withTheme(MenuItem)
+                secondaryText="默认播放动画"
+              >
+                <withTheme(Switch)
+                  checked={true}
+                  onChange={[MockFunction]}
+                />
+              </withTheme(MenuItem)>
+              <withTheme(MenuItem)
+                secondaryText="保留颜色名称"
+              >
+                <withTheme(Switch)
+                  checked={false}
+                  onChange={[MockFunction]}
+                />
+              </withTheme(MenuItem)>
+            </MenuGroup>
+          </Menu>,
+          "minHeight": 40,
+          "minWidth": 200,
+          "onClose": [Function],
+          "onCloseComplete": [Function],
+          "onOpen": [Function],
+          "onOpenComplete": [Function],
+          "position": "bottom-right",
+        },
+        "ref": null,
+        "rendered": Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "className": false,
+            "color": "white",
+            "icon": "cog",
+            "id": "menu-btn",
+            "size": 25,
+          },
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
+        "type": [Function],
+      },
+      "type": "div",
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+        "legacyContextMode": "parent",
+        "lifecycles": Object {
+          "componentDidUpdate": Object {
+            "onSetState": true,
+          },
+          "getChildContext": Object {
+            "calledByRenderer": false,
+          },
+          "getDerivedStateFromError": true,
+          "getDerivedStateFromProps": Object {
+            "hasShouldComponentUpdateBug": false,
+          },
+          "getSnapshotBeforeUpdate": true,
+          "setState": Object {
+            "skipsComponentDidUpdateOnNullish": true,
+          },
+        },
+      },
+    },
+  },
+  Symbol(enzyme.__childContext__): null,
+}
+`;

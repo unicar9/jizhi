@@ -1,0 +1,36 @@
+{
+  "name": "jizhi-react",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "build": "webpack --mode production",
+    "start": "webpack-dev-server --mode development --open --watch",
+    "test": "jest",
+    "lint": "eslint --cache --format codeframe --ext mjs,jsx,js src test"
+  },
+  "dependencies": {
+    "evergreen-ui": "^4.15.0",
+    "html2canvas": "^1.0.0-rc.1",
+    "jinrishici": "^1.0.6",
+    "prop-types": "^15",
+    "react": "^16",
+    "react-dom": "^16",
+    "react-hot-loader": "^4",
+    "react-p5-wrapper": "^0.0.4"
+  },
+  "devDependencies": {
+    "@neutrinojs/copy": "^9.0.0-rc.0",
+    "@neutrinojs/jest": "^9.0.0-rc.0",
+    "@neutrinojs/react": "^9.0.0-rc.0",
+    "@neutrinojs/standardjs": "^9.0.0-rc.0",
+    "enzyme": "^3.9.0",
+    "enzyme-adapter-react-16": "^1.13.0",
+    "eslint": "^5",
+    "jest": "^23",
+    "neutrino": "^9.0.0-rc.0",
+    "webpack": "^4",
+    "webpack-cli": "^3",
+    "webpack-dev-server": "^3"
+  }
+}

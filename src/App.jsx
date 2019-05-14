@@ -2,7 +2,8 @@ import { hot } from 'react-hot-loader'
 import './App.css'
 import React, { Component } from 'react'
 import P5Wrapper from 'react-p5-wrapper'
-import waves from './sketchs/waves'
+// import waves from './sketchs/waves'
+import blobs from './sketchs/blobs'
 import LoadedVerses from './components/LoadedVerses'
 import ConfigMenu from './components/ConfigMenu'
 import html2canvas from 'html2canvas'
@@ -85,7 +86,7 @@ class App extends Component {
       <div className='App'>
         <div id='color-name' className={colorStayChecked ? '' : 'fadeout'} />
         <LoadedVerses />
-        <P5Wrapper sketch={waves} isPlaying={isPlaying} />
+        <P5Wrapper sketch={blobs} isPlaying={isPlaying} />
         <ConfigMenu
           onSaveSelect={this.onSaveSelect}
           onPlayPauseSelect={this.onPlayPauseSelect}

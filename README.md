@@ -12,7 +12,7 @@ A Chrome extension with custom new tab page featuring Chinese poems and P5.js en
 
 ## 本地装载
 
-* 下载本最新的 release 打包文件，首先运行 `yarn` 再运行 `yarn build`生成**build 文件夹**
+* 下载最新的 release 打包文件，首先运行 `yarn` 再运行 `yarn build`生成**build 文件夹**
 * 在浏览器里输入 chrome://extensions/ 进入插件管理页面
 * 打开右上角开发者模式（Developer mode）
 * 点击左上角**Load unpacked**按钮并选取刚刚生成的**build 文件夹**

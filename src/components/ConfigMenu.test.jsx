@@ -11,7 +11,9 @@ describe('ConfigMenu', () => {
     defaultPlayChecked: true,
     onDefaultPlayChange: jest.fn(),
     colorStayChecked: false,
-    onColorStayChange: jest.fn()
+    onColorStayChange: jest.fn(),
+    selected: 'test',
+    onBgOptionChange: jest.fn()
   }
 
   it('should render correctly', () => {

@@ -7,10 +7,12 @@ ShallowWrapper {
     colorStayChecked={false}
     defaultPlayChecked={true}
     isPlaying={true}
+    onBgOptionChange={[MockFunction]}
     onColorStayChange={[MockFunction]}
     onDefaultPlayChange={[MockFunction]}
     onPlayPauseSelect={[MockFunction]}
     onSaveSelect={[MockFunction]}
+    selected="test"
   />,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
@@ -31,7 +33,27 @@ ShallowWrapper {
         bringFocusInside={false}
         content={
           <Menu>
-            <MenuGroup>
+            <withTheme(MenuOptionsGroup)
+              onChange={[MockFunction]}
+              options={
+                Array [
+                  Object {
+                    "label": "Waves",
+                    "value": "waves",
+                  },
+                  Object {
+                    "label": "Blobs",
+                    "value": "blobs",
+                  },
+                ]
+              }
+              selected="test"
+              title="背景"
+            />
+            <MenuDivider />
+            <MenuGroup
+              title="操作"
+            >
               <withTheme(MenuItem)
                 icon="download"
                 intent="success"
@@ -48,7 +70,9 @@ ShallowWrapper {
               </withTheme(MenuItem)>
             </MenuGroup>
             <MenuDivider />
-            <MenuGroup>
+            <MenuGroup
+              title="设置"
+            >
               <withTheme(MenuItem)
                 secondaryText="默认播放动画"
               >
@@ -103,7 +127,27 @@ ShallowWrapper {
           size={25}
         />,
         "content": <Menu>
-          <MenuGroup>
+          <withTheme(MenuOptionsGroup)
+            onChange={[MockFunction]}
+            options={
+              Array [
+                Object {
+                  "label": "Waves",
+                  "value": "waves",
+                },
+                Object {
+                  "label": "Blobs",
+                  "value": "blobs",
+                },
+              ]
+            }
+            selected="test"
+            title="背景"
+          />
+          <MenuDivider />
+          <MenuGroup
+            title="操作"
+          >
             <withTheme(MenuItem)
               icon="download"
               intent="success"
@@ -120,7 +164,9 @@ ShallowWrapper {
             </withTheme(MenuItem)>
           </MenuGroup>
           <MenuDivider />
-          <MenuGroup>
+          <MenuGroup
+            title="设置"
+          >
             <withTheme(MenuItem)
               secondaryText="默认播放动画"
             >
@@ -178,7 +224,27 @@ ShallowWrapper {
           bringFocusInside={false}
           content={
             <Menu>
-              <MenuGroup>
+              <withTheme(MenuOptionsGroup)
+                onChange={[MockFunction]}
+                options={
+                  Array [
+                    Object {
+                      "label": "Waves",
+                      "value": "waves",
+                    },
+                    Object {
+                      "label": "Blobs",
+                      "value": "blobs",
+                    },
+                  ]
+                }
+                selected="test"
+                title="背景"
+              />
+              <MenuDivider />
+              <MenuGroup
+                title="操作"
+              >
                 <withTheme(MenuItem)
                   icon="download"
                   intent="success"
@@ -195,7 +261,9 @@ ShallowWrapper {
                 </withTheme(MenuItem)>
               </MenuGroup>
               <MenuDivider />
-              <MenuGroup>
+              <MenuGroup
+                title="设置"
+              >
                 <withTheme(MenuItem)
                   secondaryText="默认播放动画"
                 >
@@ -250,7 +318,27 @@ ShallowWrapper {
             size={25}
           />,
           "content": <Menu>
-            <MenuGroup>
+            <withTheme(MenuOptionsGroup)
+              onChange={[MockFunction]}
+              options={
+                Array [
+                  Object {
+                    "label": "Waves",
+                    "value": "waves",
+                  },
+                  Object {
+                    "label": "Blobs",
+                    "value": "blobs",
+                  },
+                ]
+              }
+              selected="test"
+              title="背景"
+            />
+            <MenuDivider />
+            <MenuGroup
+              title="操作"
+            >
               <withTheme(MenuItem)
                 icon="download"
                 intent="success"
@@ -267,7 +355,9 @@ ShallowWrapper {
               </withTheme(MenuItem)>
             </MenuGroup>
             <MenuDivider />
-            <MenuGroup>
+            <MenuGroup
+              title="设置"
+            >
               <withTheme(MenuItem)
                 secondaryText="默认播放动画"
               >

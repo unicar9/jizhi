@@ -60,3 +60,7 @@ export const colors = [
     hexcode: '#de3f7c'
   }
 ]
+
+export const blobsColors = [
+  ['#84A6C9', '#FEC1D2', '#FF64B8', '#E3378D']
+]

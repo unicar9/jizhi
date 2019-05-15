@@ -22,6 +22,18 @@ class ConfigMenu extends Component {
   }
 
   render () {
+    const {
+      onSaveSelect,
+      isPlaying,
+      onPlayPauseSelect,
+      defaultPlayChecked,
+      onDefaultPlayChange,
+      colorStayChecked,
+      onColorStayChange,
+      selected,
+      onBgOptionChange
+    } = this.props
+
     return (
       <div id='menu' data-html2canvas-ignore>
         <Popover
@@ -30,35 +42,60 @@ class ConfigMenu extends Component {
           onClose={this.handleOnClose}
           content={
             <Menu>
-              <Menu.Group>
-                <Menu.Item icon='download' intent='success' onSelect={this.props.onSaveSelect}>
+              <Menu.OptionsGroup
+                title='背景'
+                options={[
+                  { label: 'Waves', value: 'waves' },
+                  { label: 'Blobs', value: 'blobs' }
+                ]}
+                selected={selected}
+                onChange={onBgOptionChange}
+              />
+              <Menu.Divider />
+
+              <Menu.Group title='操作'>
+                <Menu.Item
+                  icon='download'
+                  intent='success'
+                  onSelect={onSaveSelect}
+                >
                   保存背景
                 </Menu.Item>
-                <Menu.Item icon={this.props.isPlaying ? 'pause' : 'play'} intent='success' onSelect={this.props.onPlayPauseSelect}>
-                  {this.props.isPlaying ? '暂停动画' : '播放动画'}
+                <Menu.Item
+                  icon={isPlaying ? 'pause' : 'play'}
+                  intent='success'
+                  onSelect={onPlayPauseSelect}
+                >
+                  {isPlaying ? '暂停动画' : '播放动画'}
                 </Menu.Item>
               </Menu.Group>
 
               <Menu.Divider />
 
-              <Menu.Group>
+              <Menu.Group title='设置'>
                 <Menu.Item secondaryText='默认播放动画'>
                   <Switch
-                    checked={this.props.defaultPlayChecked}
-                    onChange={this.props.onDefaultPlayChange}
+                    checked={defaultPlayChecked}
+                    onChange={onDefaultPlayChange}
                   />
                 </Menu.Item>
                 <Menu.Item secondaryText='保留颜色名称'>
                   <Switch
-                    checked={this.props.colorStayChecked}
-                    onChange={this.props.onColorStayChange}
+                    checked={colorStayChecked}
+                    onChange={onColorStayChange}
                   />
                 </Menu.Item>
               </Menu.Group>
             </Menu>
           }
         >
-          <Icon id='menu-btn' icon='cog' size={25} color='white' className={this.state.isOpen && 'open'} />
+          <Icon
+            id='menu-btn'
+            icon='cog'
+            size={25}
+            color='white'
+            className={this.state.isOpen && 'open'}
+          />
         </Popover>
       </div>
     )
@@ -72,7 +109,9 @@ ConfigMenu.propTypes = {
   defaultPlayChecked: PropTypes.bool.isRequired,
   onDefaultPlayChange: PropTypes.func.isRequired,
   colorStayChecked: PropTypes.bool.isRequired,
-  onColorStayChange: PropTypes.func.isRequired
+  onColorStayChange: PropTypes.func.isRequired,
+  selected: PropTypes.string.isRequired,
+  onBgOptionChange: PropTypes.func.isRequired
 }
 
 export default ConfigMenu

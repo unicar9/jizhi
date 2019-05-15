@@ -43,14 +43,18 @@ html, body {
 }
 
 #menu-btn {
-  opacity: .5; 
+  opacity: .6; 
   cursor: pointer;
   transition: all 300ms ease;
   transform-origin: 50% 50%;
 }
 
+#menu-btn:hover {
+  opacity: 1;
+}
+
 #menu-btn.open {
-  opacity: .8;
+  opacity: 1;
   transform: rotate(45deg) scale(1.1);
 }
 

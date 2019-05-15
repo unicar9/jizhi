@@ -51,7 +51,7 @@ class Blob {
       let xOff = this.offset * p.cos(i) + this.offset
       let yOff = this.offset * p.sin(i) + this.offset
 
-      let r = 230 + p.map(p.noise(xOff, yOff, this.t), 0, 1, -this.scale, this.scale)
+      let r = 250 + p.map(p.noise(xOff, yOff, this.t), 0, 1, -this.scale, this.scale)
       let x = r * p.cos(i)
       let y = r * p.sin(i)
 
@@ -71,8 +71,8 @@ function generateBlobs (p) {
   new Array(4).fill(1).map((_, i) => {
     const scale = p.random(20, 60)
 
-    const x = (i % 2) ? (p.width / 4 + p.random(-300, 0)) : (p.width / 4 * 3 + p.random(0, 300))
-    const y = (i < 2) ? (p.height / 4 + p.random(-100, 0)) : (p.height / 4 * 3 + p.random(0, 100))
+    const x = (i % 2) ? (p.width / 4 + p.random(-200, 0)) : (p.width / 4 * 3 + p.random(0, 200))
+    const y = (i < 2) ? (p.height / 4 + p.random(-200, 0)) : (p.height / 4 * 3 + p.random(0, 200))
 
     const tSpeed = p.random(0.02, 0.06)
     const color = colors[i % 4]

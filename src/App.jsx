@@ -2,7 +2,7 @@ import { hot } from 'react-hot-loader'
 import './App.css'
 import React, { Component } from 'react'
 import P5Wrapper from 'react-p5-wrapper'
-// import waves from './sketchs/waves'
+import waves from './sketchs/waves'
 import blobs from './sketchs/blobs'
 import LoadedVerses from './components/LoadedVerses'
 import ConfigMenu from './components/ConfigMenu'
@@ -16,11 +16,13 @@ class App extends Component {
     this.onPlayPauseSelect = this.onPlayPauseSelect.bind(this)
     this.onDefaultPlayChange = this.onDefaultPlayChange.bind(this)
     this.onColorStayChange = this.onColorStayChange.bind(this)
+    this.onBgOptionChange = this.onBgOptionChange.bind(this)
 
     this.state = {
       isPlaying: true,
       defaultPlayChecked: true,
-      colorStayChecked: false
+      colorStayChecked: false,
+      selected: 'waves'
     }
   }
 
@@ -80,13 +82,18 @@ class App extends Component {
     })
   }
 
+  onBgOptionChange (selected) {
+    this.setState({ selected })
+  }
+
   render () {
-    const { isPlaying, defaultPlayChecked, colorStayChecked } = this.state
+    const { isPlaying, defaultPlayChecked, colorStayChecked, selected } = this.state
+    const sketches = { blobs: blobs, waves: waves }
     return (
       <div className='App'>
         <div id='color-name' className={colorStayChecked ? '' : 'fadeout'} />
         <LoadedVerses />
-        <P5Wrapper sketch={blobs} isPlaying={isPlaying} />
+        <P5Wrapper sketch={sketches[selected]} isPlaying={isPlaying} />
         <ConfigMenu
           onSaveSelect={this.onSaveSelect}
           onPlayPauseSelect={this.onPlayPauseSelect}
@@ -95,6 +102,8 @@ class App extends Component {
           onDefaultPlayChange={this.onDefaultPlayChange}
           colorStayChecked={colorStayChecked}
           onColorStayChange={this.onColorStayChange}
+          selected={selected}
+          onBgOptionChange={this.onBgOptionChange}
         />
       </div>
     )

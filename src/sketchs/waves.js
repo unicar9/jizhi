@@ -1,4 +1,4 @@
-import { colors } from '../utils/colors'
+import { wavesColors } from '../utils/colors'
 
 export default function waves (p) {
   let mountains = []
@@ -63,7 +63,7 @@ class Mountain {
 }
 
 function growMountains (p, mountains) {
-  let colorSelected = p.random(colors)
+  let colorSelected = p.random(wavesColors)
   let c = p.color(colorSelected.hexcode)
 
   document.getElementById('color-name').innerText = colorSelected.name

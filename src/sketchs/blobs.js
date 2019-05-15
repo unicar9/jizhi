@@ -1,9 +1,10 @@
+import { blobsColors } from '../utils/colors'
 
-let blobsArray = []
 export default function blobs (p) {
+  let blobsArray = []
   p.setup = function () {
     p.createCanvas(p.windowWidth, p.windowHeight)
-    generateBlobs(p)
+    generateBlobs(p, blobsArray)
   }
 
   p.draw = function () {
@@ -63,8 +64,8 @@ class Blob {
   }
 }
 
-function generateBlobs (p) {
-  const colors = ['#1383d8', '#53ace2', '#6e6cd1', '#fcd09f']
+function generateBlobs (p, blobsArray) {
+  const colors = p.random(blobsColors)
 
   const offset = p.random(0.2, 0.9)
 

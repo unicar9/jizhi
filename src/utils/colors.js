@@ -1,4 +1,4 @@
-export const colors = [
+export const wavesColors = [
   {
     name: '黛紫',
     hexcode: '#574266'

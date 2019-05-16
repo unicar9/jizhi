@@ -17,7 +17,6 @@ class App extends Component {
     this.onDefaultPlayChange = this.onDefaultPlayChange.bind(this)
     this.onColorStayChange = this.onColorStayChange.bind(this)
     this.onBgOptionChange = this.onBgOptionChange.bind(this)
-    this.renderBg = this.renderBg.bind(this)
 
     this.state = {
       isPlaying: true,
@@ -101,7 +100,7 @@ class App extends Component {
 
   onBgOptionChange (selected) {
     this.setState({ selected }, () => {
-      Storager.set({ selected: this.state.selected }, () => { this.renderBg() })
+      Storager.set({ selected: this.state.selected }, () => {})
     })
   }
 

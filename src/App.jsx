@@ -18,23 +18,25 @@ class App extends Component {
     this.onColorStayChange = this.onColorStayChange.bind(this)
     this.onBgOptionChange = this.onBgOptionChange.bind(this)
 
-    this.state = {
-      isPlaying: true,
-      defaultPlayChecked: true,
-      colorStayChecked: false
-      // selected: 'waves'
-    }
+    Storager.get(['selected'], res => {
+      this.state = {
+        isPlaying: true,
+        defaultPlayChecked: true,
+        colorStayChecked: false,
+        selected: res.selected || 'waves'
+      }
+    })
   }
 
-  debugger
-
   shouldComponentUpdate (nextProps, nextState) {
-    console.log('nextProps, nextState', nextProps, nextState)
     return nextState.selected !== this.state.selected
   }
 
   componentDidMount () {
+    console.log('ELe:', document.getElementById('defaultCanvas0'))
+
     Storager.get(['colorStayChecked'], res => {
+      console.log(res)
       if (res.colorStayChecked === undefined) {
         this.setState({
           colorStayChecked: false
@@ -45,6 +47,7 @@ class App extends Component {
     })
 
     Storager.get(['defaultPlayChecked'], res => {
+      console.log(res)
       if (res.defaultPlayChecked === undefined) {
         this.setState({
           defaultPlayChecked: true,
@@ -52,15 +55,6 @@ class App extends Component {
         })
       } else {
         this.setState({ defaultPlayChecked: res.defaultPlayChecked, isPlaying: res.defaultPlayChecked }, () => {})
-      }
-    })
-
-    Storager.get(['selected'], res => {
-      console.log('res', res)
-      if (res.selected === undefined) {
-        this.setState({ selected: 'waves' }, () => console.log(res))
-      } else {
-        this.setState({ selected: res.selected }, () => {})
       }
     })
   }
@@ -107,12 +101,12 @@ class App extends Component {
   render () {
     console.log('state', this.state)
     const { isPlaying, defaultPlayChecked, colorStayChecked, selected } = this.state
-    // const sketches = { blobs: blobs, waves: waves }
+    const sketches = { blobs: blobs, waves: waves }
     return (
       <div className='App'>
         <div id='color-name' className={colorStayChecked ? '' : 'fadeout'} />
         <LoadedVerses />
-        <P5Wrapper sketch={selected === 'waves' ? waves : blobs} isPlaying={isPlaying} />
+        <P5Wrapper sketch={sketches[selected]} isPlaying={isPlaying} />
         <ConfigMenu
           onSaveSelect={this.onSaveSelect}
           onPlayPauseSelect={this.onPlayPauseSelect}

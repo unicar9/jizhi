@@ -1,7 +1,9 @@
 import { blobsColors } from '../utils/colors'
 
 export default function blobs (p) {
+  console.log('blobbbbbbb')
   let blobsArray = []
+
   p.setup = function () {
     p.createCanvas(p.windowWidth, p.windowHeight)
     generateBlobs(p, blobsArray)

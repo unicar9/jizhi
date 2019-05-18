@@ -6,15 +6,21 @@ let storageLocal = {
     output[key] = obj[key]
     const value = JSON.stringify(output)
     localStorage.setItem(key, value)
-    callback()
+    if (callback) callback()
   },
   get: (keys, callback) => {
     // TODO: refactor
-    let res = localStorage.getItem(keys[0])
-    res = JSON.parse(res) || {}
-    callback(res)
+    let resOutput = {}
+    keys.forEach(key => {
+      let result = localStorage.getItem(key)
+      result = JSON.parse(result) || {}
+      resOutput = { ...resOutput, ...result }
+    })
+
+    if (callback) callback(resOutput)
   }
 }
+//Default using: chrome.storage.sync
 // eslint-disable-next-line no-undef
 let storager = process.env.NODE_ENV === 'development' ? storageLocal : chrome.storage.sync
 

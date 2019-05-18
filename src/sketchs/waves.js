@@ -3,6 +3,8 @@ import { wavesColors } from '../utils/colors'
 export default function waves (p) {
   let mountains = []
 
+  console.log('Waveeeeee')
+
   p.setup = function () {
     p.createCanvas(p.windowWidth, p.windowHeight)
     growMountains(p, mountains)

@@ -77,18 +77,18 @@ class App extends Component {
 
   onBgOptionChange (selected) {
     this.setState({ selected }, () => {
-      Storager.set({ selected: this.state.selected })
+      Storager.set({ selected })
     })
   }
 
   render () {
-    const { isPlaying, isDestroyed, defaultPlayChecked, colorStayChecked, selected } = this.state
+    const { isPlaying, defaultPlayChecked, colorStayChecked, selected } = this.state
     const sketches = { blobs: blobs, waves: waves }
     return (
       <div className='App'>
         <div id='color-name' className={colorStayChecked ? '' : 'fadeout'} />
         <LoadedVerses />
-        <P5Wrapper ref={this.myRef} sketch={sketches[selected]} isPlaying={isPlaying} isDestroyed={isDestroyed} />
+        <P5Wrapper ref={this.myRef} sketch={sketches[selected]} isPlaying={isPlaying} />
         <ConfigMenu
           onSaveSelect={this.onSaveSelect}
           onPlayPauseSelect={this.onPlayPauseSelect}

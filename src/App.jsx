@@ -29,22 +29,15 @@ class App extends Component {
   }
 
   componentDidMount () {
-    console.log('ELe:', document.getElementById('defaultCanvas0'))
-
-    Storager.get(['colorStayChecked'], res => {
-      const isUntouched = res.colorStayChecked === undefined
-
-      this.setState({
-        colorStayChecked: isUntouched ? false : res.colorStayChecked
-      })
-    })
-
-    Storager.get(['defaultPlayChecked'], res => {
-      const isUntouched = res.defaultPlayChecked === undefined
+    Storager.get(['colorStayChecked', 'defaultPlayChecked'], res => {
+      console.log(res)
+      const isColorStayCheckedUntouched = res.colorStayChecked === undefined
+      const isDefaultPlayCheckedUntouched = res.defaultPlayChecked === undefined
 
       this.setState({
-        defaultPlayChecked: isUntouched ? true : res.defaultPlayChecked,
-        isPlaying: isUntouched ? true : res.defaultPlayChecked
+        colorStayChecked: isColorStayCheckedUntouched ? false : res.colorStayChecked,
+        defaultPlayChecked: isDefaultPlayCheckedUntouched ? true : res.defaultPlayChecked,
+        isPlaying: isDefaultPlayCheckedUntouched ? true : res.defaultPlayChecked
       })
     })
   }
@@ -70,7 +63,7 @@ class App extends Component {
     this.setState({
       defaultPlayChecked: !this.state.defaultPlayChecked
     }, () => {
-      Storager.set({ defaultPlayChecked: this.state.defaultPlayChecked }, () => {})
+      Storager.set({ defaultPlayChecked: this.state.defaultPlayChecked })
     })
   }
 
@@ -78,13 +71,13 @@ class App extends Component {
     this.setState({
       colorStayChecked: !this.state.colorStayChecked
     }, () => {
-      Storager.set({ colorStayChecked: this.state.colorStayChecked }, () => {})
+      Storager.set({ colorStayChecked: this.state.colorStayChecked })
     })
   }
 
   onBgOptionChange (selected) {
     this.setState({ selected }, () => {
-      Storager.set({ selected: this.state.selected }, () => {})
+      Storager.set({ selected: this.state.selected })
     })
   }
 

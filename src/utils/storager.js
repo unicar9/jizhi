@@ -9,7 +9,6 @@ let storageLocal = {
     if (callback) callback()
   },
   get: (keys, callback) => {
-    // TODO: refactor
     let resOutput = {}
     keys.forEach(key => {
       let result = localStorage.getItem(key)
@@ -20,6 +19,7 @@ let storageLocal = {
     if (callback) callback(resOutput)
   }
 }
+
 //Default using: chrome.storage.sync
 // eslint-disable-next-line no-undef
 let storager = process.env.NODE_ENV === 'development' ? storageLocal : chrome.storage.sync

@@ -18,50 +18,32 @@ class App extends Component {
     this.onColorStayChange = this.onColorStayChange.bind(this)
     this.onBgOptionChange = this.onBgOptionChange.bind(this)
 
-    this.state = {
-      isPlaying: true,
-      defaultPlayChecked: true,
-      colorStayChecked: false
-      // selected: 'waves'
-    }
-  }
-
-  debugger
-
-  shouldComponentUpdate (nextProps, nextState) {
-    console.log('nextProps, nextState', nextProps, nextState)
-    return nextState.selected !== this.state.selected
+    Storager.get(['selected'], res => {
+      this.state = {
+        isPlaying: true,
+        defaultPlayChecked: true,
+        colorStayChecked: false,
+        selected: res.selected || 'waves'
+      }
+    })
   }
 
   componentDidMount () {
     Storager.get(['colorStayChecked'], res => {
-      if (res.colorStayChecked === undefined) {
-        this.setState({
-          colorStayChecked: false
-        })
-      } else {
-        this.setState({ colorStayChecked: res.colorStayChecked }, () => {})
-      }
+      const isUntouched = res.colorStayChecked === undefined
+
+      this.setState({
+        colorStayChecked: isUntouched ? false : res.colorStayChecked
+      })
     })
 
     Storager.get(['defaultPlayChecked'], res => {
-      if (res.defaultPlayChecked === undefined) {
-        this.setState({
-          defaultPlayChecked: true,
-          isPlaying: true
-        })
-      } else {
-        this.setState({ defaultPlayChecked: res.defaultPlayChecked, isPlaying: res.defaultPlayChecked }, () => {})
-      }
-    })
+      const isUntouched = res.defaultPlayChecked === undefined
 
-    Storager.get(['selected'], res => {
-      console.log('res', res)
-      if (res.selected === undefined) {
-        this.setState({ selected: 'waves' }, () => console.log(res))
-      } else {
-        this.setState({ selected: res.selected }, () => {})
-      }
+      this.setState({
+        defaultPlayChecked: isUntouched ? true : res.defaultPlayChecked,
+        isPlaying: isUntouched ? true : res.defaultPlayChecked
+      })
     })
   }
 
@@ -105,14 +87,13 @@ class App extends Component {
   }
 
   render () {
-    console.log('state', this.state)
-    const { isPlaying, defaultPlayChecked, colorStayChecked, selected } = this.state
-    // const sketches = { blobs: blobs, waves: waves }
+    const { isPlaying, isDestroyed, defaultPlayChecked, colorStayChecked, selected } = this.state
+    const sketches = { blobs: blobs, waves: waves }
     return (
       <div className='App'>
         <div id='color-name' className={colorStayChecked ? '' : 'fadeout'} />
         <LoadedVerses />
-        <P5Wrapper sketch={selected === 'waves' ? waves : blobs} isPlaying={isPlaying} />
+        <P5Wrapper ref={this.myRef} sketch={sketches[selected]} isPlaying={isPlaying} isDestroyed={isDestroyed} />
         <ConfigMenu
           onSaveSelect={this.onSaveSelect}
           onPlayPauseSelect={this.onPlayPauseSelect}

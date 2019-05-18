@@ -28,34 +28,24 @@ class App extends Component {
     })
   }
 
-  shouldComponentUpdate (nextProps, nextState) {
-    return nextState.selected !== this.state.selected
-  }
-
   componentDidMount () {
     console.log('ELe:', document.getElementById('defaultCanvas0'))
 
     Storager.get(['colorStayChecked'], res => {
-      console.log(res)
-      if (res.colorStayChecked === undefined) {
-        this.setState({
-          colorStayChecked: false
-        })
-      } else {
-        this.setState({ colorStayChecked: res.colorStayChecked }, () => {})
-      }
+      const isUntouched = res.colorStayChecked === undefined
+
+      this.setState({
+        colorStayChecked: isUntouched ? false : res.colorStayChecked
+      })
     })
 
     Storager.get(['defaultPlayChecked'], res => {
-      console.log(res)
-      if (res.defaultPlayChecked === undefined) {
-        this.setState({
-          defaultPlayChecked: true,
-          isPlaying: true
-        })
-      } else {
-        this.setState({ defaultPlayChecked: res.defaultPlayChecked, isPlaying: res.defaultPlayChecked }, () => {})
-      }
+      const isUntouched = res.defaultPlayChecked === undefined
+
+      this.setState({
+        defaultPlayChecked: isUntouched ? true : res.defaultPlayChecked,
+        isPlaying: isUntouched ? true : res.defaultPlayChecked
+      })
     })
   }
 
@@ -99,14 +89,13 @@ class App extends Component {
   }
 
   render () {
-    console.log('state', this.state)
-    const { isPlaying, defaultPlayChecked, colorStayChecked, selected } = this.state
+    const { isPlaying, isDestroyed, defaultPlayChecked, colorStayChecked, selected } = this.state
     const sketches = { blobs: blobs, waves: waves }
     return (
       <div className='App'>
         <div id='color-name' className={colorStayChecked ? '' : 'fadeout'} />
         <LoadedVerses />
-        <P5Wrapper sketch={sketches[selected]} isPlaying={isPlaying} />
+        <P5Wrapper ref={this.myRef} sketch={sketches[selected]} isPlaying={isPlaying} isDestroyed={isDestroyed} />
         <ConfigMenu
           onSaveSelect={this.onSaveSelect}
           onPlayPauseSelect={this.onPlayPauseSelect}

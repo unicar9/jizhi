@@ -3,8 +3,6 @@ import { wavesColors } from '../utils/colors'
 export default function waves (p) {
   let mountains = []
 
-  console.log('Waveeeeee')
-
   p.setup = function () {
     p.createCanvas(p.windowWidth, p.windowHeight)
     growMountains(p, mountains)
@@ -23,6 +21,7 @@ export default function waves (p) {
 
   p.myCustomRedrawAccordingToNewPropsHandler = function (newProps) {
     !newProps.isPlaying ? p.frameRate(0) : p.frameRate(30)
+    newProps.isDestroyed && p.remove()
   }
 }
 

@@ -20,9 +20,7 @@ export default function blobs (p) {
   }
 
   p.myCustomRedrawAccordingToNewPropsHandler = function (newProps) {
-    console.log('newProps', newProps)
     !newProps.isPlaying ? p.frameRate(0) : p.frameRate(30)
-    newProps.isDestroyed && p.remove()
   }
 }
 

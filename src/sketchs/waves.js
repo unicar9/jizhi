@@ -21,7 +21,6 @@ export default function waves (p) {
 
   p.myCustomRedrawAccordingToNewPropsHandler = function (newProps) {
     !newProps.isPlaying ? p.frameRate(0) : p.frameRate(30)
-    newProps.isDestroyed && p.remove()
   }
 }
 
@@ -67,7 +66,7 @@ function growMountains (p, mountains) {
   let colorSelected = p.random(wavesColors)
   let c = p.color(colorSelected.hexcode)
 
-  // document.getElementById('color-name').innerText = colorSelected.name
+  document.getElementById('color-name').innerText = colorSelected.name
 
   new Array(5).fill(1).map((_, i) => {
     let a = 255 - 50 * i

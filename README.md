@@ -8,14 +8,14 @@ A Chrome extension with custom new tab page featuring Chinese poems and P5.js en
 
 * 新版本用 React 重写了几枝，使用了 [neutrino](https://neutrinojs.org/packages/react/) 的配置
 * 使用了新版本[今日诗词 API](https://www.jinrishici.com/)
-* 使用了[Evergreen React UI library](https://evergreen.segment.com/)  
+* 使用了 [Evergreen React UI library](https://evergreen.segment.com/)  
 
 ## 本地装载
 
-* 下载最新的 release 打包文件，首先运行 `yarn` 再运行 `yarn build`生成**build 文件夹**
+* 下载最新的 release 打包文件，首先运行 `yarn` 再运行 `yarn build` 生成 **build 文件夹**
 * 在浏览器里输入 chrome://extensions/ 进入插件管理页面
 * 打开右上角开发者模式（Developer mode）
-* 点击左上角**Load unpacked**按钮并选取刚刚生成的**build 文件夹**
+* 点击左上角 **Load unpacked** 按钮并选取刚刚生成的 **build 文件夹**
 * 几枝装载成功，打开新标签页试试吧
 
 ## 功能

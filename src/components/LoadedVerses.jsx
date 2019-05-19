@@ -31,7 +31,7 @@ export default class LoadedVerses extends Component {
   render () {
     const { content, origin } = this.state.verses
     return (
-      <div className={`${this.props.className}  verses`}>
+      <div className={`${this.props.className} verses`}>
         <div id='verses-content'>
           {content}
         </div>
@@ -41,8 +41,8 @@ export default class LoadedVerses extends Component {
             rel='noopener noreferrer'
           >
             {origin.author} 《{origin.title}》
-            <span>
-              <Icon icon='search-text' color='white' style={{opacity: 0.6, display: 'none'}}></Icon>
+            <span className='search-icon'>
+              <Icon icon='search-text' color='black' />
             </span>
           </a>
         </div>

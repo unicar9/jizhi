@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { load } from 'jinrishici'
+import { Icon } from 'evergreen-ui'
 import Storager from '../utils/storager'
 
 export default class LoadedVerses extends Component {
@@ -36,13 +37,16 @@ export default class LoadedVerses extends Component {
 
   render () {
     return (
-      <div>
-        <div className='verses' id='verses-content'>
+      <div className={`${this.props.className} verses`}>
+        <div id='verses-content'>
           {this.state.verses.content}
         </div>
-        <div className='verses' id='verses-origin'>
+        <div id='verses-origin'>
           <a href={`https://www.google.com/search?q=${this.state.verses.origin.author} ${this.state.verses.origin.title}`} target='_blank'>
             {this.state.verses.origin.author} 《{this.state.verses.origin.title}》
+            <span className='origin-search'>
+              <Icon icon='search-text' color='white' style={{opacity: 0.8, display: 'none'}} />
+            </span>
           </a>
         </div>
       </div>

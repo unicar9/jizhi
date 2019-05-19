@@ -26,14 +26,16 @@ html, body {
   text-decoration: none;
 }
 
-#verses-content {
+.waves {
   top: 30%;
-  font-size: calc(25px + 1vw);
 }
 
-#verses-origin {
+.waves {
   top: 40%;
-  font-size: calc(12px + 1vw);
+}
+
+.blobs #verses-content {
+  top: 40%;
 }
 
 #menu {

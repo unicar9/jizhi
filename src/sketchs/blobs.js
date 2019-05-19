@@ -21,6 +21,7 @@ export default function blobs (p) {
   }
 
   p.doubleClicked = function () {
+    console.log('dbclicked')
     generateBlobs(p, blobsArray, p.mouseX, p.mouseY)
   }
 

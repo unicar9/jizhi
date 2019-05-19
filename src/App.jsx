@@ -101,7 +101,7 @@ class App extends Component {
 
     return selected ? (
       <div className='App' tabIndex='-1' onKeyPress={this.handleKeyPress}>
-        <div id='color-name' className={colorStayChecked ? '' : 'fadeout'} />
+        <div id='color-name' style={{ display: selected === 'blobs' ? 'none' : 'block' }} className={colorStayChecked ? '' : 'fadeout'} />
         <LoadedVerses className={selected} />
         <P5Wrapper sketch={sketches[selected]} isPlaying={isPlaying} />
         <ConfigMenu

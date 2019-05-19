@@ -81,12 +81,14 @@ class ConfigMenu extends Component {
                     onChange={onDefaultPlayChange}
                   />
                 </Menu.Item>
-                <Menu.Item secondaryText='保留颜色名称'>
-                  <Switch
-                    checked={colorStayChecked}
-                    onChange={onColorStayChange}
-                  />
-                </Menu.Item>
+                {selected === 'waves' && (
+                  <Menu.Item secondaryText='保留颜色名称'>
+                    <Switch
+                      checked={colorStayChecked}
+                      onChange={onColorStayChange}
+                    />
+                  </Menu.Item>
+                )}
               </Menu.Group>
             </Menu>
           }

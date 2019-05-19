@@ -58,6 +58,7 @@ class ConfigMenu extends Component {
                   icon='download'
                   intent='success'
                   onSelect={onSaveSelect}
+                  secondaryText='S'
                 >
                   保存背景
                 </Menu.Item>
@@ -65,6 +66,7 @@ class ConfigMenu extends Component {
                   icon={isPlaying ? 'pause' : 'play'}
                   intent='success'
                   onSelect={onPlayPauseSelect}
+                  secondaryText='Space'
                 >
                   {isPlaying ? '暂停动画' : '播放动画'}
                 </Menu.Item>

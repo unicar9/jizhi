@@ -19,6 +19,7 @@ html, body {
   transform: translate(-50%, -50%);
   left: 50%;
   text-align: center;
+  transition: all 300ms ease-in-out;
 }
 
 .verses a {
@@ -26,6 +27,7 @@ html, body {
   text-decoration: none;
 }
 
+<<<<<<< HEAD
 .waves {
   top: 30%;
 }
@@ -36,6 +38,23 @@ html, body {
 
 .blobs #verses-content {
   top: 40%;
+=======
+.blobs {
+  top: 45%;
+}
+
+.waves {
+  top: 30%;
+}
+
+#verses-content {
+  font-size: calc(25px + 1vw);
+}
+
+#verses-origin {
+  margin-top: 1em;
+  font-size: calc(12px + 1vw);
+>>>>>>> c1339effd2269fba4464e8a4d4ec09f33a2022c2
 }
 
 #menu {

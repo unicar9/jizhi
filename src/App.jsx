@@ -86,7 +86,7 @@ class App extends Component {
     return (
       <div className='App'>
         <div id='color-name' className={colorStayChecked ? '' : 'fadeout'} />
-        <LoadedVerses className={selected}/>
+        <LoadedVerses className={selected} />
         <P5Wrapper sketch={sketches[selected]} isPlaying={isPlaying} />
         <ConfigMenu
           onSaveSelect={this.onSaveSelect}

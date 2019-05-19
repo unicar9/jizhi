@@ -6,47 +6,41 @@ import Storager from '../utils/storager'
 export default class LoadedVerses extends Component {
   constructor (props) {
     super()
-    this.state = { verses: { content: '', origin: {} } }
+    this.state = {
+      verses: {
+        content: '红豆生南国，春来发几枝。',
+        origin: {
+          author: '王维',
+          title: '相思'
+        }
+      }
+    }
   }
 
   componentDidMount () {
     // fetch a verse from localstorage
-    // eslint-disable-next-line no-undef
     Storager.get(['verses'], res => {
-      if (!res.verses) {
-        this.setState({
-          verses: {
-            content: '红豆生南国，春来发几枝。',
-            origin: {
-              author: '王维',
-              title: '相思'
-            }
-          }
-        })
-      } else {
-        this.setState({ verses: res.verses }, () => {})
-      }
+      res.verses && this.setState({ verses: res.verses })
     })
-
     // fetch verse from jinrishici
     load(result => {
-      // eslint-disable-next-line no-undef
-      Storager.set({ verses: result.data }, () => {})
+      Storager.set({ verses: result.data })
     })
   }
 
   render () {
+    const { content, origin } = this.state.verses
     return (
-      <div className={`${this.props.className} verses`}>
+      <div className={`${this.props.className}  verses`}>
         <div id='verses-content'>
-          {this.state.verses.content}
+          {content}
         </div>
         <div id='verses-origin'>
-          <a href={`https://www.google.com/search?q=${this.state.verses.origin.author} ${this.state.verses.origin.title}`} target='_blank'>
-            {this.state.verses.origin.author} 《{this.state.verses.origin.title}》
-            <span className='origin-search'>
-              <Icon icon='search-text' color='white' style={{opacity: 0.8, display: 'none'}} />
-            </span>
+          <a href={`https://www.google.com/search?q=${origin.author} ${origin.title}`}
+            target='_blank'
+            rel='noopener noreferrer'
+          >
+            {origin.author} 《{origin.title}》
           </a>
         </div>
       </div>

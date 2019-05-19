@@ -2,10 +2,11 @@ import { blobsColors } from '../utils/colors'
 
 export default function blobs (p) {
   let blobsArray = []
+  const colors = p.random(blobsColors)
 
   p.setup = function () {
     p.createCanvas(p.windowWidth, p.windowHeight)
-    generateBlobs(p, blobsArray)
+    generateBlobs(p, blobsArray, colors)
   }
 
   p.draw = function () {
@@ -20,9 +21,14 @@ export default function blobs (p) {
     p.resizeCanvas(p.windowWidth, p.windowHeight)
   }
 
+<<<<<<< HEAD
   p.doubleClicked = function () {
     console.log('dbclicked')
     generateBlobs(p, blobsArray, p.mouseX, p.mouseY)
+=======
+  p.mousePressed = function () {
+    generateBlobs(p, blobsArray, colors, p.mouseX, p.mouseY)
+>>>>>>> c1339effd2269fba4464e8a4d4ec09f33a2022c2
   }
 
   p.myCustomRedrawAccordingToNewPropsHandler = function (newProps) {
@@ -71,21 +77,16 @@ class Blob {
   }
 }
 
-function generateBlobs (p, blobsArray, positionX = null, positionY = null) {
-  const colors = p.random(blobsColors)
-
-  const offset = p.random(0.2, 0.9)
+function generateBlobs (p, blobsArray, colors, positionX = null, positionY = null) {
+  const offset = p.random(0.2, 0.6)
 
   if (positionX && positionY) {
-    const scale = p.random(20, 60)
+    const scale = p.random(20, 40)
 
-    const x = positionX
-    const y = positionY
-
-    const tSpeed = p.random(0.02, 0.06)
+    const tSpeed = p.random(0.02, 0.05)
     const color = p.random(colors)
 
-    let blob = new Blob(100, offset, scale, x, y, tSpeed, color)
+    let blob = new Blob(70, offset, scale, positionX, positionY, tSpeed, color)
     blobsArray.push(blob)
   } else {
     new Array(4).fill(1).map((_, i) => {

@@ -19,25 +19,23 @@ class App extends Component {
     this.onBgOptionChange = this.onBgOptionChange.bind(this)
     this.handleKeyPress = this.handleKeyPress.bind(this)
 
-    Storager.get(['selected'], res => {
-      this.state = {
-        isPlaying: true,
-        defaultPlayChecked: true,
-        colorStayChecked: false,
-        selected: res.selected || 'waves'
-      }
-    })
+    this.state = {
+      isPlaying: true,
+      defaultPlayChecked: true,
+      colorStayChecked: false
+    }
   }
 
   componentDidMount () {
-    Storager.get(['colorStayChecked', 'defaultPlayChecked'], res => {
+    Storager.get(['selected', 'colorStayChecked', 'defaultPlayChecked'], res => {
       const isColorStayCheckedUntouched = res.colorStayChecked === undefined
       const isDefaultPlayCheckedUntouched = res.defaultPlayChecked === undefined
 
       this.setState({
         colorStayChecked: isColorStayCheckedUntouched ? false : res.colorStayChecked,
         defaultPlayChecked: isDefaultPlayCheckedUntouched ? true : res.defaultPlayChecked,
-        isPlaying: isDefaultPlayCheckedUntouched ? true : res.defaultPlayChecked
+        isPlaying: isDefaultPlayCheckedUntouched ? true : res.defaultPlayChecked,
+        selected: res.selected || 'waves'
       })
     })
   }
@@ -86,7 +84,6 @@ class App extends Component {
   }
 
   handleKeyPress (e) {
-    console.log(e.charCode)
     if (e.charCode === 32) {
       this.setState({
         isPlaying: !this.state.isPlaying
@@ -101,7 +98,8 @@ class App extends Component {
   render () {
     const { isPlaying, defaultPlayChecked, colorStayChecked, selected } = this.state
     const sketches = { blobs: blobs, waves: waves }
-    return (
+
+    return selected ? (
       <div className='App' tabIndex='-1' onKeyPress={this.handleKeyPress}>
         <div id='color-name' className={colorStayChecked ? '' : 'fadeout'} />
         <LoadedVerses className={selected} />
@@ -118,7 +116,7 @@ class App extends Component {
           onBgOptionChange={this.onBgOptionChange}
         />
       </div>
-    )
+    ) : null
   }
 }
 

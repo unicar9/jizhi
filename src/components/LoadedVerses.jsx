@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { load } from 'jinrishici'
+import { Icon } from 'evergreen-ui'
 import Storager from '../utils/storager'
 
 export default class LoadedVerses extends Component {
@@ -40,6 +41,9 @@ export default class LoadedVerses extends Component {
             rel='noopener noreferrer'
           >
             {origin.author} 《{origin.title}》
+            <span className='search-icon'>
+              <Icon icon='search-text' color='black' />
+            </span>
           </a>
         </div>
       </div>

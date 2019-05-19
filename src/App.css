@@ -44,6 +44,15 @@ html, body {
   font-size: calc(12px + 1vw);
 }
 
+.search-icon {
+  opacity: 0;
+  transition: all 200ms ease-in;
+}
+
+#verses-origin:hover .search-icon {
+  opacity: .5;
+}
+
 #menu {
   position: absolute;
   right: 3vw;

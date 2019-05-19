@@ -40,6 +40,7 @@ A Chrome extension with custom new tab page featuring Chinese poems and P5.js en
 * 右下播放键为动效开关。
 * 右下下载键储存 JPEG 格式背景图到本地。
 
+![jizhi-2.1.0 gif](https://github.com/unicar9/jizhi/blob/master/examples/jizhi-2.1.0.gif)
 ![jizhi gif](https://github.com/unicar9/jizhi/blob/master/examples/jizhi.gif)
 
 ## 示例

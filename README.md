@@ -20,6 +20,11 @@ A Chrome extension with custom new tab page featuring Chinese poems and P5.js en
 
 ## 功能
 
+### 2.1.0 更新
+
+- 新增 Blobs 背景附带鼠标交互效果
+- 
+
 ### 2.0.1 更新
 
 - 右下角新增弹出菜单

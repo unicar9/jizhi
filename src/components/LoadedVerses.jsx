@@ -30,7 +30,7 @@ export default class LoadedVerses extends Component {
   render () {
     const { content, origin } = this.state.verses
     return (
-      <div className={`${this.props.className}  verses`}>
+      <div className={`${this.props.className} verses`}>
         <div id='verses-content'>
           {content}
         </div>

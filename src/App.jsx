@@ -17,6 +17,7 @@ class App extends Component {
     this.onDefaultPlayChange = this.onDefaultPlayChange.bind(this)
     this.onColorStayChange = this.onColorStayChange.bind(this)
     this.onBgOptionChange = this.onBgOptionChange.bind(this)
+    this.handleKeyPress = this.handleKeyPress.bind(this)
 
     Storager.get(['selected'], res => {
       this.state = {
@@ -41,7 +42,7 @@ class App extends Component {
     })
   }
 
-  onSaveSelect () {
+  saveBg () {
     const node = document.getElementById('root')
     html2canvas(node).then((canvas) => {
       const dataUrl = canvas.toDataURL('image/png')
@@ -50,6 +51,10 @@ class App extends Component {
       link.href = dataUrl
       link.click()
     })
+  }
+
+  onSaveSelect () {
+    this.saveBg()
   }
 
   onPlayPauseSelect () {
@@ -80,11 +85,24 @@ class App extends Component {
     })
   }
 
+  handleKeyPress (e) {
+    console.log(e.charCode)
+    if (e.charCode === 32) {
+      this.setState({
+        isPlaying: !this.state.isPlaying
+      })
+    }
+
+    if (e.charCode === 115) {
+      this.saveBg()
+    }
+  }
+
   render () {
     const { isPlaying, defaultPlayChecked, colorStayChecked, selected } = this.state
     const sketches = { blobs: blobs, waves: waves }
     return (
-      <div className='App'>
+      <div className='App' tabIndex='-1' onKeyPress={this.handleKeyPress}>
         <div id='color-name' className={colorStayChecked ? '' : 'fadeout'} />
         <LoadedVerses className={selected} />
         <P5Wrapper sketch={sketches[selected]} isPlaying={isPlaying} />

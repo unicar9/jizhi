@@ -17,7 +17,7 @@ html, body {
   font-family: 'FZXiJinLJW';
   position: absolute;
   transform: translate(-50%, -50%);
-  left: 50%;
+  left: 50vw;
   text-align: center;
   transition: all 300ms ease-in-out;
 }
@@ -28,11 +28,11 @@ html, body {
 }
 
 .blobs {
-  top: 45%;
+  top: 45vh;
 }
 
 .waves {
-  top: 30%;
+  top: 30vh;
 }
 
 #verses-content {

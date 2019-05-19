@@ -23,7 +23,7 @@ A Chrome extension with custom new tab page featuring Chinese poems and P5.js en
 ### 2.1.0 更新
 
 - 新增 Blobs 背景附带鼠标交互效果
-- 
+- 新增快捷键控制动画播放 (Space) 和背景保存 (S)
 
 ### 2.0.1 更新
 

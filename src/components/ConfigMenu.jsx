@@ -112,8 +112,8 @@ ConfigMenu.propTypes = {
   onDefaultPlayChange: PropTypes.func.isRequired,
   colorStayChecked: PropTypes.bool.isRequired,
   onColorStayChange: PropTypes.func.isRequired,
-  selected: PropTypes.string.isRequired,
-  onBgOptionChange: PropTypes.func.isRequired
+  selected: PropTypes.string,
+  onBgOptionChange: PropTypes.func
 }
 
 export default ConfigMenu

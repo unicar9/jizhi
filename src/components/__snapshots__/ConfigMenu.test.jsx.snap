@@ -58,6 +58,7 @@ ShallowWrapper {
                 icon="download"
                 intent="success"
                 onSelect={[MockFunction]}
+                secondaryText="S"
               >
                 保存背景
               </withTheme(MenuItem)>
@@ -65,6 +66,7 @@ ShallowWrapper {
                 icon="pause"
                 intent="success"
                 onSelect={[MockFunction]}
+                secondaryText="Space"
               >
                 暂停动画
               </withTheme(MenuItem)>
@@ -152,6 +154,7 @@ ShallowWrapper {
               icon="download"
               intent="success"
               onSelect={[MockFunction]}
+              secondaryText="S"
             >
               保存背景
             </withTheme(MenuItem)>
@@ -159,6 +162,7 @@ ShallowWrapper {
               icon="pause"
               intent="success"
               onSelect={[MockFunction]}
+              secondaryText="Space"
             >
               暂停动画
             </withTheme(MenuItem)>
@@ -249,6 +253,7 @@ ShallowWrapper {
                   icon="download"
                   intent="success"
                   onSelect={[MockFunction]}
+                  secondaryText="S"
                 >
                   保存背景
                 </withTheme(MenuItem)>
@@ -256,6 +261,7 @@ ShallowWrapper {
                   icon="pause"
                   intent="success"
                   onSelect={[MockFunction]}
+                  secondaryText="Space"
                 >
                   暂停动画
                 </withTheme(MenuItem)>
@@ -343,6 +349,7 @@ ShallowWrapper {
                 icon="download"
                 intent="success"
                 onSelect={[MockFunction]}
+                secondaryText="S"
               >
                 保存背景
               </withTheme(MenuItem)>
@@ -350,6 +357,7 @@ ShallowWrapper {
                 icon="pause"
                 intent="success"
                 onSelect={[MockFunction]}
+                secondaryText="Space"
               >
                 暂停动画
               </withTheme(MenuItem)>

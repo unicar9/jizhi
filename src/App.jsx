@@ -30,7 +30,6 @@ class App extends Component {
 
   componentDidMount () {
     Storager.get(['colorStayChecked', 'defaultPlayChecked'], res => {
-      console.log(res)
       const isColorStayCheckedUntouched = res.colorStayChecked === undefined
       const isDefaultPlayCheckedUntouched = res.defaultPlayChecked === undefined
 
@@ -44,7 +43,7 @@ class App extends Component {
 
   onSaveSelect () {
     const node = document.getElementById('root')
-    html2canvas(node).then(function (canvas) {
+    html2canvas(node).then((canvas) => {
       const dataUrl = canvas.toDataURL('image/png')
       var link = document.createElement('a')
       link.download = 'jizhi.png'

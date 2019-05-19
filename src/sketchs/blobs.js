@@ -20,13 +20,18 @@ export default function blobs (p) {
     p.resizeCanvas(p.windowWidth, p.windowHeight)
   }
 
+  p.doubleClicked = function () {
+    generateBlobs(p, blobsArray, p.mouseX, p.mouseY)
+  }
+
   p.myCustomRedrawAccordingToNewPropsHandler = function (newProps) {
     !newProps.isPlaying ? p.frameRate(0) : p.frameRate(30)
   }
 }
 
 class Blob {
-  constructor (offset, scale, x, y, tSpeed, color) {
+  constructor (radius, offset, scale, x, y, tSpeed, color) {
+    this.radius = radius
     this.offset = offset
     this.scale = scale
     this.x = x
@@ -53,7 +58,7 @@ class Blob {
       let xOff = this.offset * p.cos(i) + this.offset
       let yOff = this.offset * p.sin(i) + this.offset
 
-      let r = 250 + p.map(p.noise(xOff, yOff, this.t), 0, 1, -this.scale, this.scale)
+      let r = this.radius + p.map(p.noise(xOff, yOff, this.t), 0, 1, -this.scale, this.scale)
       let x = r * p.cos(i)
       let y = r * p.sin(i)
 
@@ -65,21 +70,34 @@ class Blob {
   }
 }
 
-function generateBlobs (p, blobsArray) {
+function generateBlobs (p, blobsArray, positionX = null, positionY = null) {
   const colors = p.random(blobsColors)
 
   const offset = p.random(0.2, 0.9)
 
-  new Array(4).fill(1).map((_, i) => {
+  if (positionX && positionY) {
     const scale = p.random(20, 60)
 
-    const x = (i % 2) ? (p.width / 4 + p.random(-200, 0)) : (p.width / 4 * 3 + p.random(0, 200))
-    const y = (i < 2) ? (p.height / 4 + p.random(-200, 0)) : (p.height / 4 * 3 + p.random(0, 200))
+    const x = positionX
+    const y = positionY
 
     const tSpeed = p.random(0.02, 0.06)
-    const color = colors[i % 4]
+    const color = p.random(colors)
 
-    let blob = new Blob(offset, scale, x, y, tSpeed, color)
+    let blob = new Blob(100, offset, scale, x, y, tSpeed, color)
     blobsArray.push(blob)
-  })
+  } else {
+    new Array(4).fill(1).map((_, i) => {
+      const scale = p.random(20, 60)
+
+      const x = (i % 2) ? (p.width / 4 + p.random(-200, 0)) : (p.width / 4 * 3 + p.random(0, 200))
+      const y = (i < 2) ? (p.height / 4 + p.random(-200, 0)) : (p.height / 4 * 3 + p.random(0, 200))
+
+      const tSpeed = p.random(0.02, 0.06)
+      const color = colors[i % 4]
+
+      let blob = new Blob(250, offset, scale, x, y, tSpeed, color)
+      blobsArray.push(blob)
+    })
+  }
 }

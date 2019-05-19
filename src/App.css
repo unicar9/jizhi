@@ -27,18 +27,6 @@ html, body {
   text-decoration: none;
 }
 
-<<<<<<< HEAD
-.waves {
-  top: 30%;
-}
-
-.waves {
-  top: 40%;
-}
-
-.blobs #verses-content {
-  top: 40%;
-=======
 .blobs {
   top: 45%;
 }
@@ -54,7 +42,6 @@ html, body {
 #verses-origin {
   margin-top: 1em;
   font-size: calc(12px + 1vw);
->>>>>>> c1339effd2269fba4464e8a4d4ec09f33a2022c2
 }
 
 #menu {

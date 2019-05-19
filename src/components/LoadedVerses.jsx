@@ -30,12 +30,15 @@ export default class LoadedVerses extends Component {
   render () {
     const { content, origin } = this.state.verses
     return (
-      <div>
-        <div className='verses' id='verses-content'>
+      <div className={`${this.props.className}  verses`}>
+        <div id='verses-content'>
           {content}
         </div>
-        <div className='verses' id='verses-origin'>
-          <a href={`https://www.google.com/search?q=${origin.author} ${origin.title}`} target='_blank' rel='noopener noreferrer'>
+        <div id='verses-origin'>
+          <a href={`https://www.google.com/search?q=${origin.author} ${origin.title}`}
+            target='_blank'
+            rel='noopener noreferrer'
+          >
             {origin.author} 《{origin.title}》
           </a>
         </div>

@@ -19,6 +19,7 @@ html, body {
   transform: translate(-50%, -50%);
   left: 50vw;
   text-align: center;
+  opacity: .8;
   transition: top 300ms ease-in-out;
 }
 
@@ -37,6 +38,7 @@ html, body {
 
 #verses-content {
   font-size: calc(25px + 1vw);
+  width: 80vw;
 }
 
 #verses-origin {
@@ -44,12 +46,12 @@ html, body {
   font-size: calc(12px + 1vw);
 }
 
-.search-icon {
+.origin-search-icon {
   opacity: 0;
   transition: all 200ms ease-in;
 }
 
-#verses-origin:hover .search-icon {
+#verses-origin:hover .origin-search-icon {
   opacity: .5;
 }
 

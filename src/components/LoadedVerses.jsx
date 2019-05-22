@@ -41,7 +41,7 @@ export default class LoadedVerses extends Component {
             rel='noopener noreferrer'
           >
             {origin.author} 《{origin.title}》
-            <span className='search-icon'>
+            <span className='origin-search-icon'>
               <Icon icon='search-text' color='black' />
             </span>
           </a>

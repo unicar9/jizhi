@@ -18,7 +18,7 @@ export default class LoadedVerses extends Component {
   }
 
   componentDidMount () {
-    // fetch a verse from localstorage
+    // fetch a verse from storage
     Storager.get(['verses'], res => {
       res.verses && this.setState({ verses: res.verses })
     })

@@ -25,6 +25,7 @@ a {
   left: 50vw;
   text-align: center;
   opacity: .8;
+  word-break: keep-all;
   transition: top 300ms ease-in-out;
 }
 

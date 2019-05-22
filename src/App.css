@@ -13,6 +13,11 @@ html, body {
   height: 100vh;
 }
 
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
 .verses {
   font-family: 'FZXiJinLJW';
   position: absolute;
@@ -21,11 +26,6 @@ html, body {
   text-align: center;
   opacity: .8;
   transition: top 300ms ease-in-out;
-}
-
-.verses a {
-  color: inherit;
-  text-decoration: none;
 }
 
 .blobs {

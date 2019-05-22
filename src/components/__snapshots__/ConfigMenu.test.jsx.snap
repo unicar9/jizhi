@@ -83,15 +83,31 @@ ShallowWrapper {
                   onChange={[MockFunction]}
                 />
               </withTheme(MenuItem)>
-              <withTheme(MenuItem)
-                secondaryText="保留颜色名称"
-              >
-                <withTheme(Switch)
-                  checked={false}
-                  onChange={[MockFunction]}
-                />
-              </withTheme(MenuItem)>
             </MenuGroup>
+            <MenuDivider />
+            <div
+              style={
+                Object {
+                  "height": 50,
+                }
+              }
+            >
+              <withTheme(Text)
+                color="muted"
+                lineHeight="50px"
+                margin={20}
+              >
+                本扩展使用了
+                <a
+                  href="https://www.jinrishici.com/"
+                  rel="noopener noreferrer"
+                  target="_blank"
+                >
+                  今日诗词 API
+                </a>
+                ，感谢您的支持和喜爱!
+              </withTheme(Text)>
+            </div>
           </Menu>
         }
         minHeight={40}
@@ -179,15 +195,31 @@ ShallowWrapper {
                 onChange={[MockFunction]}
               />
             </withTheme(MenuItem)>
-            <withTheme(MenuItem)
-              secondaryText="保留颜色名称"
-            >
-              <withTheme(Switch)
-                checked={false}
-                onChange={[MockFunction]}
-              />
-            </withTheme(MenuItem)>
           </MenuGroup>
+          <MenuDivider />
+          <div
+            style={
+              Object {
+                "height": 50,
+              }
+            }
+          >
+            <withTheme(Text)
+              color="muted"
+              lineHeight="50px"
+              margin={20}
+            >
+              本扩展使用了
+              <a
+                href="https://www.jinrishici.com/"
+                rel="noopener noreferrer"
+                target="_blank"
+              >
+                今日诗词 API
+              </a>
+              ，感谢您的支持和喜爱!
+            </withTheme(Text)>
+          </div>
         </Menu>,
         "minHeight": 40,
         "minWidth": 200,
@@ -278,15 +310,31 @@ ShallowWrapper {
                     onChange={[MockFunction]}
                   />
                 </withTheme(MenuItem)>
-                <withTheme(MenuItem)
-                  secondaryText="保留颜色名称"
-                >
-                  <withTheme(Switch)
-                    checked={false}
-                    onChange={[MockFunction]}
-                  />
-                </withTheme(MenuItem)>
               </MenuGroup>
+              <MenuDivider />
+              <div
+                style={
+                  Object {
+                    "height": 50,
+                  }
+                }
+              >
+                <withTheme(Text)
+                  color="muted"
+                  lineHeight="50px"
+                  margin={20}
+                >
+                  本扩展使用了
+                  <a
+                    href="https://www.jinrishici.com/"
+                    rel="noopener noreferrer"
+                    target="_blank"
+                  >
+                    今日诗词 API
+                  </a>
+                  ，感谢您的支持和喜爱!
+                </withTheme(Text)>
+              </div>
             </Menu>
           }
           minHeight={40}
@@ -374,15 +422,31 @@ ShallowWrapper {
                   onChange={[MockFunction]}
                 />
               </withTheme(MenuItem)>
-              <withTheme(MenuItem)
-                secondaryText="保留颜色名称"
-              >
-                <withTheme(Switch)
-                  checked={false}
-                  onChange={[MockFunction]}
-                />
-              </withTheme(MenuItem)>
             </MenuGroup>
+            <MenuDivider />
+            <div
+              style={
+                Object {
+                  "height": 50,
+                }
+              }
+            >
+              <withTheme(Text)
+                color="muted"
+                lineHeight="50px"
+                margin={20}
+              >
+                本扩展使用了
+                <a
+                  href="https://www.jinrishici.com/"
+                  rel="noopener noreferrer"
+                  target="_blank"
+                >
+                  今日诗词 API
+                </a>
+                ，感谢您的支持和喜爱!
+              </withTheme(Text)>
+            </div>
           </Menu>,
           "minHeight": 40,
           "minWidth": 200,

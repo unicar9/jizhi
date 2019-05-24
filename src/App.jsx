@@ -90,7 +90,7 @@ class App extends Component {
       })
     }
 
-    if (e.charCode === 115) {
+    if (e.charCode === 223 && e.altKey) {
       this.saveBg()
     }
   }

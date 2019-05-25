@@ -8,6 +8,7 @@ import LoadedVerses from './components/LoadedVerses'
 import ConfigMenu from './components/ConfigMenu'
 import html2canvas from 'html2canvas'
 import Storager from './utils/storager'
+import { InlineAlert } from 'evergreen-ui'
 
 class App extends Component {
   constructor (props) {
@@ -114,7 +115,13 @@ class App extends Component {
           onColorStayChange={this.onColorStayChange}
           selected={selected}
           onBgOptionChange={this.onBgOptionChange}
-        />
+        >
+          <div style={{ height: 30 }}>
+            <InlineAlert intent='warning' marginLeft={20}>
+              Changes will affect all warehouses
+            </InlineAlert>
+          </div>
+        </ConfigMenu>
       </div>
     ) : null
   }

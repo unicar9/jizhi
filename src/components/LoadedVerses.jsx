@@ -1,10 +1,9 @@
 import React, { Component } from 'react'
-import { load } from 'jinrishici'
+import { load } from '../utils/jinrishici'
 import { Icon } from 'evergreen-ui'
 import Storager from '../utils/storager'
 let shici = require('../utils/shici.json')
 
-console.log(shici)
 export default class LoadedVerses extends Component {
   constructor (props) {
     super()
@@ -22,12 +21,16 @@ export default class LoadedVerses extends Component {
   componentDidMount () {
     // fetch a verse from storage
     Storager.get(['verses'], res => {
-      console.log(res)
       res.verses && this.setState({ verses: res.verses })
     })
     // fetch verse from jinrishici
+
     load(result => {
       Storager.set({ verses: result.data })
+    }, result => {
+      console.log(result)
+      const localShici = shici[Math.floor(Math.random() * shici.length)]
+      Storager.set({ verses: localShici })
     })
   }
 

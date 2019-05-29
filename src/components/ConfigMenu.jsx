@@ -101,6 +101,7 @@ class ConfigMenu extends Component {
                   ，感谢您的支持和喜爱!
                 </Text>
               </div>
+              {this.props.children}
             </Menu>
           }
         >

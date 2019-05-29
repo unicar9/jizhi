@@ -12,7 +12,6 @@
   "dependencies": {
     "evergreen-ui": "^4.15.0",
     "html2canvas": "^1.0.0-rc.1",
-    "jinrishici": "^1.0.6",
     "prop-types": "^15",
     "react": "^16",
     "react-dom": "^16",

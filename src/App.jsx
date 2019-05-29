@@ -9,6 +9,9 @@ import ConfigMenu from './components/ConfigMenu'
 import html2canvas from 'html2canvas'
 import Storager from './utils/storager'
 import { InlineAlert } from 'evergreen-ui'
+import { load } from './utils/jinrishici'
+
+let shici = require('./utils/shici.json')
 
 class App extends Component {
   constructor (props) {
@@ -23,12 +26,28 @@ class App extends Component {
     this.state = {
       isPlaying: true,
       defaultPlayChecked: true,
-      colorStayChecked: false
+      colorStayChecked: false,
+      verses: {
+        content: '红豆生南国，春来发几枝。',
+        origin: {
+          author: '王维',
+          title: '相思'
+        }
+      },
+      errMessage: ''
     }
   }
 
   componentDidMount () {
-    Storager.get(['selected', 'colorStayChecked', 'defaultPlayChecked'], res => {
+    load(result => {
+      Storager.set({ verses: result.data })
+    }, result => {
+      this.setState({ errMessage: result.errMessage })
+      const localShici = shici[Math.floor(Math.random() * shici.length)]
+      Storager.set({ verses: localShici })
+    })
+
+    Storager.get(['verses', 'selected', 'colorStayChecked', 'defaultPlayChecked'], res => {
       const isColorStayCheckedUntouched = res.colorStayChecked === undefined
       const isDefaultPlayCheckedUntouched = res.defaultPlayChecked === undefined
 
@@ -36,7 +55,8 @@ class App extends Component {
         colorStayChecked: isColorStayCheckedUntouched ? false : res.colorStayChecked,
         defaultPlayChecked: isDefaultPlayCheckedUntouched ? true : res.defaultPlayChecked,
         isPlaying: isDefaultPlayCheckedUntouched ? true : res.defaultPlayChecked,
-        selected: res.selected || 'waves'
+        selected: res.selected || 'waves',
+        verses: res.verses
       })
     })
   }
@@ -97,13 +117,13 @@ class App extends Component {
   }
 
   render () {
-    const { isPlaying, defaultPlayChecked, colorStayChecked, selected } = this.state
+    const { verses, isPlaying, defaultPlayChecked, colorStayChecked, selected, errMessage } = this.state
     const sketches = { blobs: blobs, waves: waves }
 
     return selected ? (
       <div className='App' tabIndex='-1' onKeyPress={this.handleKeyPress}>
         <div id='color-name' style={{ display: selected === 'blobs' ? 'none' : 'block' }} className={colorStayChecked ? '' : 'fadeout'} />
-        <LoadedVerses className={selected} />
+        <LoadedVerses className={selected} verses={verses} />
         <P5Wrapper sketch={sketches[selected]} isPlaying={isPlaying} />
         <ConfigMenu
           onSaveSelect={this.onSaveSelect}
@@ -116,11 +136,11 @@ class App extends Component {
           selected={selected}
           onBgOptionChange={this.onBgOptionChange}
         >
-          <div style={{ height: 30 }}>
-            <InlineAlert intent='warning' marginLeft={20}>
-              Changes will affect all warehouses
+          {errMessage && <div style={{ height: 30 }}>
+            <InlineAlert intent='warning' marginLeft={20} marginRight={20}>
+              {errMessage}
             </InlineAlert>
-          </div>
+          </div>}
         </ConfigMenu>
       </div>
     ) : null

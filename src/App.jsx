@@ -6,6 +6,7 @@ import waves from './sketchs/waves'
 import blobs from './sketchs/blobs'
 import LoadedVerses from './components/LoadedVerses'
 import ConfigMenu from './components/ConfigMenu'
+import JizhiSearch from './components/JizhiSearch'
 import html2canvas from 'html2canvas'
 import Storager from './utils/storager'
 import { InlineAlert } from 'evergreen-ui'
@@ -122,6 +123,7 @@ class App extends Component {
             </InlineAlert>
           </div>
         </ConfigMenu>
+        <JizhiSearch />
       </div>
     ) : null
   }

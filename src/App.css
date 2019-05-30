@@ -78,6 +78,36 @@ a {
   transform: rotate(45deg) scale(1.1);
 }
 
+#jizhi-search {
+  position: absolute;
+  top: 3vh;
+  right: 3vw;
+  opacity: 0.3;
+}
+
+#jizhi-search:hover input{
+  width: 15vw;
+}
+
+#jizhi-search:hover, #jizhi-search:focus{
+  opacity: 0.6
+}
+
+#jizhi-search input {
+  outline: none;
+  border: none;
+  border-bottom: 2px #33333366 solid;
+  background-color: transparent;
+  width: 0vw;
+  height: 30px;
+  font-size: 16px;
+  color: #333333;
+  margin-left: 10px;
+  transition: all 350ms ease-in-out;
+}
+
+
+
 #color-name {
   font-family: "FZXiJinLJW";
   position: absolute;

@@ -58,7 +58,7 @@ class ConfigMenu extends Component {
                   icon='download'
                   intent='success'
                   onSelect={onSaveSelect}
-                  secondaryText='S'
+                  secondaryText='Alt + S'
                 >
                   保存背景
                 </Menu.Item>

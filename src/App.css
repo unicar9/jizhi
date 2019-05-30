@@ -85,28 +85,28 @@ a {
   opacity: 0.3;
 }
 
-#jizhi-search:hover input{
-  width: 15vw;
+#jizhi-search input:focus {
+  width: 10vw;
+  opacity: 0.6;
+  border-bottom: 2px #333333 solid;
 }
 
-#jizhi-search:hover, #jizhi-search:focus{
-  opacity: 0.6
+#jizhi-search:hover input {
+  width: 10vw;
+  opacity: 0.6;
+  border-bottom: 2px #333333 solid;
 }
 
 #jizhi-search input {
   outline: none;
   border: none;
-  border-bottom: 2px #33333366 solid;
   background-color: transparent;
-  width: 0vw;
+  width: 10vw;
   height: 30px;
   font-size: 16px;
-  color: #333333;
-  margin-left: 10px;
+  color: #000000;
   transition: all 350ms ease-in-out;
 }
-
-
 
 #color-name {
   font-family: "FZXiJinLJW";

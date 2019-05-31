@@ -81,31 +81,23 @@ a {
 #jizhi-search {
   position: absolute;
   top: 3vh;
-  right: 3vw;
-  opacity: 0.3;
-}
-
-#jizhi-search input:focus {
-  width: 10vw;
-  opacity: 0.6;
-  border-bottom: 2px #333333 solid;
-}
-
-#jizhi-search:hover input {
-  width: 10vw;
-  opacity: 0.6;
-  border-bottom: 2px #333333 solid;
+  right: calc(3vw - 32px);
 }
 
 #jizhi-search input {
   outline: none;
   border: none;
   background-color: transparent;
-  width: 10vw;
-  height: 30px;
+  box-shadow: none;
+  width: 10px;
   font-size: 16px;
   color: #000000;
   transition: all 350ms ease-in-out;
+}
+
+#jizhi-search input:focus {
+  width: 230px;
+  /* border-bottom: 1px #33333366 solid; */
 }
 
 #color-name {

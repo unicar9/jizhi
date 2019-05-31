@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Icon } from 'evergreen-ui'
+import { SearchInput as EgSearchInput } from 'evergreen-ui'
 
 export default class SearchInput extends Component {
   constructor (props) {
@@ -15,8 +15,7 @@ export default class SearchInput extends Component {
   render () {
     return (
       <div id='jizhi-search' data-html2canvas-ignore>
-        <Icon icon='search' />
-        <input type='text' value={this.state.value} onChange={this.handleChange} />
+        <EgSearchInput />
       </div>
     )
   }

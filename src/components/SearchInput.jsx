@@ -15,7 +15,7 @@ export default class SearchInput extends Component {
   render () {
     return (
       <div id='jizhi-search' data-html2canvas-ignore>
-        <EgSearchInput />
+        <EgSearchInput height={40} />
       </div>
     )
   }

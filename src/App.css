@@ -86,7 +86,7 @@ a {
 
 #jizhi-search input {
   outline: none;
-  border: none;
+  border-bottom: 0px #5b5b5b transparent;
   border-radius: 0;
   background-color: transparent;
   box-shadow: none;

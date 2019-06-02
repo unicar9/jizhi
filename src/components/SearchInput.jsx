@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { SearchInput as EgSearchInput } from 'evergreen-ui'
+import { SearchInput as EgSearchInput, Icon } from 'evergreen-ui'
 
 export default class SearchInput extends Component {
   constructor (props) {
@@ -15,8 +15,11 @@ export default class SearchInput extends Component {
   render () {
     return (
       <div id='jizhi-search' data-html2canvas-ignore>
-        <EgSearchInput height={40} />
+        <Icon id='jizhi-search-icon' icon='search' size={20} />
+        <input />
       </div>
     )
   }
 }
+
+// <EgSearchInput height={40} />

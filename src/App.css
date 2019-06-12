@@ -58,8 +58,8 @@ a {
 
 #menu {
   position: absolute;
-  right: 3vw;
-  bottom: 3vh;
+  left: 30px;
+  bottom: 20px;
 }
 
 #menu-btn {
@@ -80,46 +80,46 @@ a {
 
 #jizhi-search {
   position: absolute;
-  top: 3vh;
-  right: 3vw;
+  top: 20px;
+  left: 30px;
   display: flex;
   align-items: center;
-  opacity: .6;
+  opacity: .4;
 }
-
 
 #jizhi-search input {
   outline: none;
   border: none;
-  border-radius: 0;
   background-color: transparent;
   box-shadow: none;
-  width: 0px;
+  width: 150px;
   font-size: 16px;
-  color: #262626;
-  opacity: .4;
-  margin-left: -20px;
+  color: #000000;
+  margin-left: -25px;
   padding-left: 35px;
-  height: 25px;
-  transition: all 350ms ease;
+  height: 40px;
+  border-bottom: 2px #242424 solid;
+  opacity: 0;
 }
 
-#jizhi-search input:focus {
-  width: 200px;
-  border-bottom: 1px #5b5b5b solid;
-  opacity: .6
+#jizhi-search input:hover {
+  opacity: .4;
+}
+
+#jizhi-search input.active {
+  opacity: .8;
 }
 
 #color-name {
   font-family: "FZXiJinLJW";
   position: absolute;
   font-size: 12em;
-  left: 0;
+  right: 0;
   top: 0;
   opacity: .1;
   writing-mode: vertical-rl;
   white-space: nowrap;
-  transform: translate(-10%, -5%);
+  transform: translate(10%, -5%);
 }
 
 #color-name.fadeout {

@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Popover, Menu, Position, Switch, Icon, Text } from 'evergreen-ui'
+import { Popover, Menu, Position, Switch, Icon, Text, SegmentedControl } from 'evergreen-ui'
 import PropTypes from 'prop-types'
 
 class ConfigMenu extends Component {
@@ -37,7 +37,7 @@ class ConfigMenu extends Component {
     return (
       <div id='menu' data-html2canvas-ignore>
         <Popover
-          position={Position.BOTTOM_RIGHT}
+          position={Position.BOTTOM_LEFT}
           onOpen={this.handleOnOpen}
           onClose={this.handleOnClose}
           content={
@@ -90,6 +90,22 @@ class ConfigMenu extends Component {
                   </Menu.Item>
                 )}
               </Menu.Group>
+              <Menu.Divider />
+
+              <Menu.Group title='搜索引擎'>
+                <div style={{ margin: 16 }}>
+                  <SegmentedControl
+                    width={300}
+                    options={[
+                      { label: 'Google', value: 'hourly' },
+                      { label: 'Baidu', value: 'daily' },
+                      { label: 'Bing', value: 'monthly' }
+                    ]}
+                    value={'hourly'}
+                    onChange={value => this.setState({ value })}
+                  />
+                </div>
+              </Menu.Group>
 
               <Menu.Divider />
               <div style={{ height: 50 }}>
@@ -108,7 +124,7 @@ class ConfigMenu extends Component {
           <Icon
             id='menu-btn'
             icon='cog'
-            size={25}
+            size={20}
             color='white'
             className={this.state.isOpen && 'open'}
           />

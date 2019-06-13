@@ -1,16 +1,19 @@
 import React, { Component } from 'react'
 import { Icon } from 'evergreen-ui'
+import PropTypes from 'prop-types'
 
-export default class LoadedVerses extends Component {
+class LoadedVerses extends Component {
   render () {
     const { content, origin } = this.props.verses
+    const { engineOption, className } = this.props
+
     return (
-      <div className={`${this.props.className} verses`}>
+      <div className={`${className} verses`}>
         <div id='verses-content'>
           {content}
         </div>
         <div id='verses-origin'>
-          <a href={`https://www.google.com/search?q=${origin.author} ${origin.title}`}
+          <a href={`${engineOption}${origin.author} ${origin.title}`}
             target='_blank'
             rel='noopener noreferrer'
           >
@@ -24,3 +27,11 @@ export default class LoadedVerses extends Component {
     )
   }
 }
+
+LoadedVerses.propTypes = {
+  verses: PropTypes.object,
+  className: PropTypes.string,
+  engineOption: PropTypes.string
+}
+
+export default LoadedVerses

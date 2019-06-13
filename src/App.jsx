@@ -23,6 +23,7 @@ class App extends Component {
     this.onColorStayChange = this.onColorStayChange.bind(this)
     this.onBgOptionChange = this.onBgOptionChange.bind(this)
     this.handleKeyPress = this.handleKeyPress.bind(this)
+    this.onEngineOptionChange = this.onEngineOptionChange.bind(this)
 
     this.state = {
       isPlaying: true,
@@ -35,7 +36,8 @@ class App extends Component {
           title: '相思'
         }
       },
-      errMessage: ''
+      errMessage: '',
+      engineOption: 'https://www.google.com/search?q='
     }
   }
 
@@ -117,14 +119,18 @@ class App extends Component {
     }
   }
 
+  onEngineOptionChange (engineOption) {
+    this.setState({ engineOption })
+  }
+
   render () {
-    const { verses, isPlaying, defaultPlayChecked, colorStayChecked, selected, errMessage } = this.state
+    const { verses, isPlaying, defaultPlayChecked, colorStayChecked, selected, errMessage, engineOption } = this.state
     const sketches = { blobs: blobs, waves: waves }
 
     return selected ? (
       <div className='App' tabIndex='-1' onKeyPress={this.handleKeyPress}>
         <div id='color-name' style={{ display: selected === 'blobs' ? 'none' : 'block' }} className={colorStayChecked ? '' : 'fadeout'} />
-        <LoadedVerses className={selected} verses={verses} />
+        <LoadedVerses className={selected} verses={verses} engineOption={engineOption} />
         <P5Wrapper sketch={sketches[selected]} isPlaying={isPlaying} />
         <ConfigMenu
           onSaveSelect={this.onSaveSelect}
@@ -136,6 +142,8 @@ class App extends Component {
           onColorStayChange={this.onColorStayChange}
           selected={selected}
           onBgOptionChange={this.onBgOptionChange}
+          engineOption={engineOption}
+          onEngineOptionChange={this.onEngineOptionChange}
         >
           {errMessage && <div style={{ height: 30 }}>
             <InlineAlert intent='warning' marginLeft={20} marginRight={20}>

@@ -24,7 +24,7 @@ export default class SearchInput extends Component {
 
   render () {
     const { value, focused } = this.state
-    console.log(value)
+
     return (
       <div id='jizhi-search' data-html2canvas-ignore>
         <Icon id='jizhi-search-icon' icon='search' size={16} />

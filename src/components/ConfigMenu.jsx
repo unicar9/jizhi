@@ -31,7 +31,9 @@ class ConfigMenu extends Component {
       colorStayChecked,
       onColorStayChange,
       selected,
-      onBgOptionChange
+      onBgOptionChange,
+      engineOption,
+      onEngineOptionChange
     } = this.props
 
     return (
@@ -97,12 +99,12 @@ class ConfigMenu extends Component {
                   <SegmentedControl
                     width={300}
                     options={[
-                      { label: 'Google', value: 'hourly' },
-                      { label: 'Baidu', value: 'daily' },
-                      { label: 'Bing', value: 'monthly' }
+                      { label: 'Google', value: 'https://www.google.com/search?q=' },
+                      { label: 'Baidu', value: 'https://www.baidu.com/s?wd=' },
+                      { label: 'Bing', value: 'https://www.bing.com/search?q=' }
                     ]}
-                    value={'hourly'}
-                    onChange={value => this.setState({ value })}
+                    value={engineOption}
+                    onChange={onEngineOptionChange}
                   />
                 </div>
               </Menu.Group>
@@ -143,7 +145,9 @@ ConfigMenu.propTypes = {
   colorStayChecked: PropTypes.bool.isRequired,
   onColorStayChange: PropTypes.func.isRequired,
   selected: PropTypes.string,
-  onBgOptionChange: PropTypes.func
+  onBgOptionChange: PropTypes.func,
+  engineOption: PropTypes.string,
+  onEngineOptionChange: PropTypes.func
 }
 
 export default ConfigMenu

@@ -50,7 +50,7 @@ class App extends Component {
       Storager.set({ verses: localShici })
     })
 
-    Storager.get(['verses', 'selected', 'colorStayChecked', 'defaultPlayChecked'], res => {
+    Storager.get(['verses', 'selected', 'colorStayChecked', 'defaultPlayChecked', 'engineOption'], res => {
       const isColorStayCheckedUntouched = res.colorStayChecked === undefined
       const isDefaultPlayCheckedUntouched = res.defaultPlayChecked === undefined
 
@@ -59,7 +59,8 @@ class App extends Component {
         defaultPlayChecked: isDefaultPlayCheckedUntouched ? true : res.defaultPlayChecked,
         isPlaying: isDefaultPlayCheckedUntouched ? true : res.defaultPlayChecked,
         selected: res.selected || 'waves',
-        verses: res.verses
+        verses: res.verses,
+        engineOption: res.engineOption || 'https://www.google.com/search?q='
       })
     })
   }
@@ -120,7 +121,9 @@ class App extends Component {
   }
 
   onEngineOptionChange (engineOption) {
-    this.setState({ engineOption })
+    this.setState({ engineOption }, () => {
+      Storager.set({ engineOption })
+    })
   }
 
   render () {
@@ -151,7 +154,7 @@ class App extends Component {
             </InlineAlert>
           </div>}
         </ConfigMenu>
-        <SearchInput />
+        <SearchInput engineOption={engineOption} />
       </div>
     ) : null
   }

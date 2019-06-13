@@ -24,17 +24,18 @@ export default class SearchInput extends Component {
 
   render () {
     const { value, focused } = this.state
-
+    const { engineOption } = this.props
     return (
-      <div id='jizhi-search' data-html2canvas-ignore>
+      <form id='jizhi-search' action={engineOption.split('?')[0]} data-html2canvas-ignore>
         <Icon id='jizhi-search-icon' icon='search' size={16} />
         <input
           className={(focused || value) ? 'active' : null}
           onFocus={this.handleFocus}
           onBlur={this.handleBlur}
           onChange={this.handleChange}
+          name={engineOption.split('.')[1] === 'baidu' ? 'wd' : 'q'}
         />
-      </div>
+      </form>
     )
   }
 }

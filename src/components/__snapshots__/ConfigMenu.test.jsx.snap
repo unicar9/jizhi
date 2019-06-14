@@ -58,7 +58,7 @@ ShallowWrapper {
                 icon="download"
                 intent="success"
                 onSelect={[MockFunction]}
-                secondaryText="S"
+                secondaryText="Alt + S"
               >
                 保存背景
               </withTheme(MenuItem)>
@@ -83,6 +83,39 @@ ShallowWrapper {
                   onChange={[MockFunction]}
                 />
               </withTheme(MenuItem)>
+            </MenuGroup>
+            <MenuDivider />
+            <MenuGroup
+              title="搜索引擎"
+            >
+              <div
+                style={
+                  Object {
+                    "margin": 16,
+                  }
+                }
+              >
+                <SegmentedControl
+                  height={32}
+                  options={
+                    Array [
+                      Object {
+                        "label": "Google",
+                        "value": "https://www.google.com/search?q=",
+                      },
+                      Object {
+                        "label": "Baidu",
+                        "value": "https://www.baidu.com/s?wd=",
+                      },
+                      Object {
+                        "label": "Bing",
+                        "value": "https://www.bing.com/search?q=",
+                      },
+                    ]
+                  }
+                  width={300}
+                />
+              </div>
             </MenuGroup>
             <MenuDivider />
             <div
@@ -116,14 +149,14 @@ ShallowWrapper {
         onCloseComplete={[Function]}
         onOpen={[Function]}
         onOpenComplete={[Function]}
-        position="bottom-right"
+        position="bottom-left"
       >
         <withTheme(Icon)
           className={false}
           color="white"
           icon="cog"
           id="menu-btn"
-          size={25}
+          size={20}
         />
       </Popover>,
       "data-html2canvas-ignore": true,
@@ -142,7 +175,7 @@ ShallowWrapper {
           color="white"
           icon="cog"
           id="menu-btn"
-          size={25}
+          size={20}
         />,
         "content": <Menu>
           <withTheme(MenuOptionsGroup)
@@ -170,7 +203,7 @@ ShallowWrapper {
               icon="download"
               intent="success"
               onSelect={[MockFunction]}
-              secondaryText="S"
+              secondaryText="Alt + S"
             >
               保存背景
             </withTheme(MenuItem)>
@@ -195,6 +228,39 @@ ShallowWrapper {
                 onChange={[MockFunction]}
               />
             </withTheme(MenuItem)>
+          </MenuGroup>
+          <MenuDivider />
+          <MenuGroup
+            title="搜索引擎"
+          >
+            <div
+              style={
+                Object {
+                  "margin": 16,
+                }
+              }
+            >
+              <SegmentedControl
+                height={32}
+                options={
+                  Array [
+                    Object {
+                      "label": "Google",
+                      "value": "https://www.google.com/search?q=",
+                    },
+                    Object {
+                      "label": "Baidu",
+                      "value": "https://www.baidu.com/s?wd=",
+                    },
+                    Object {
+                      "label": "Bing",
+                      "value": "https://www.bing.com/search?q=",
+                    },
+                  ]
+                }
+                width={300}
+              />
+            </div>
           </MenuGroup>
           <MenuDivider />
           <div
@@ -227,7 +293,7 @@ ShallowWrapper {
         "onCloseComplete": [Function],
         "onOpen": [Function],
         "onOpenComplete": [Function],
-        "position": "bottom-right",
+        "position": "bottom-left",
       },
       "ref": null,
       "rendered": Object {
@@ -239,7 +305,7 @@ ShallowWrapper {
           "color": "white",
           "icon": "cog",
           "id": "menu-btn",
-          "size": 25,
+          "size": 20,
         },
         "ref": null,
         "rendered": null,
@@ -285,7 +351,7 @@ ShallowWrapper {
                   icon="download"
                   intent="success"
                   onSelect={[MockFunction]}
-                  secondaryText="S"
+                  secondaryText="Alt + S"
                 >
                   保存背景
                 </withTheme(MenuItem)>
@@ -310,6 +376,39 @@ ShallowWrapper {
                     onChange={[MockFunction]}
                   />
                 </withTheme(MenuItem)>
+              </MenuGroup>
+              <MenuDivider />
+              <MenuGroup
+                title="搜索引擎"
+              >
+                <div
+                  style={
+                    Object {
+                      "margin": 16,
+                    }
+                  }
+                >
+                  <SegmentedControl
+                    height={32}
+                    options={
+                      Array [
+                        Object {
+                          "label": "Google",
+                          "value": "https://www.google.com/search?q=",
+                        },
+                        Object {
+                          "label": "Baidu",
+                          "value": "https://www.baidu.com/s?wd=",
+                        },
+                        Object {
+                          "label": "Bing",
+                          "value": "https://www.bing.com/search?q=",
+                        },
+                      ]
+                    }
+                    width={300}
+                  />
+                </div>
               </MenuGroup>
               <MenuDivider />
               <div
@@ -343,14 +442,14 @@ ShallowWrapper {
           onCloseComplete={[Function]}
           onOpen={[Function]}
           onOpenComplete={[Function]}
-          position="bottom-right"
+          position="bottom-left"
         >
           <withTheme(Icon)
             className={false}
             color="white"
             icon="cog"
             id="menu-btn"
-            size={25}
+            size={20}
           />
         </Popover>,
         "data-html2canvas-ignore": true,
@@ -369,7 +468,7 @@ ShallowWrapper {
             color="white"
             icon="cog"
             id="menu-btn"
-            size={25}
+            size={20}
           />,
           "content": <Menu>
             <withTheme(MenuOptionsGroup)
@@ -397,7 +496,7 @@ ShallowWrapper {
                 icon="download"
                 intent="success"
                 onSelect={[MockFunction]}
-                secondaryText="S"
+                secondaryText="Alt + S"
               >
                 保存背景
               </withTheme(MenuItem)>
@@ -422,6 +521,39 @@ ShallowWrapper {
                   onChange={[MockFunction]}
                 />
               </withTheme(MenuItem)>
+            </MenuGroup>
+            <MenuDivider />
+            <MenuGroup
+              title="搜索引擎"
+            >
+              <div
+                style={
+                  Object {
+                    "margin": 16,
+                  }
+                }
+              >
+                <SegmentedControl
+                  height={32}
+                  options={
+                    Array [
+                      Object {
+                        "label": "Google",
+                        "value": "https://www.google.com/search?q=",
+                      },
+                      Object {
+                        "label": "Baidu",
+                        "value": "https://www.baidu.com/s?wd=",
+                      },
+                      Object {
+                        "label": "Bing",
+                        "value": "https://www.bing.com/search?q=",
+                      },
+                    ]
+                  }
+                  width={300}
+                />
+              </div>
             </MenuGroup>
             <MenuDivider />
             <div
@@ -454,7 +586,7 @@ ShallowWrapper {
           "onCloseComplete": [Function],
           "onOpen": [Function],
           "onOpenComplete": [Function],
-          "position": "bottom-right",
+          "position": "bottom-left",
         },
         "ref": null,
         "rendered": Object {
@@ -466,7 +598,7 @@ ShallowWrapper {
             "color": "white",
             "icon": "cog",
             "id": "menu-btn",
-            "size": 25,
+            "size": 20,
           },
           "ref": null,
           "rendered": null,

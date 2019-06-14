@@ -24,6 +24,9 @@ class App extends Component {
     this.onBgOptionChange = this.onBgOptionChange.bind(this)
     this.handleKeyPress = this.handleKeyPress.bind(this)
     this.onEngineOptionChange = this.onEngineOptionChange.bind(this)
+    this.handleChange = this.handleChange.bind(this)
+    this.handleFocus = this.handleFocus.bind(this)
+    this.handleBlur = this.handleBlur.bind(this)
 
     this.state = {
       isPlaying: true,
@@ -37,7 +40,9 @@ class App extends Component {
         }
       },
       errMessage: '',
-      engineOption: 'https://www.google.com/search?q='
+      engineOption: 'https://www.google.com/search?q=',
+      value: '',
+      focused: false
     }
   }
 
@@ -126,8 +131,20 @@ class App extends Component {
     })
   }
 
+  handleChange (e) {
+    this.setState({ value: e.target.value })
+  }
+
+  handleFocus () {
+    this.setState({ focused: true })
+  }
+
+  handleBlur () {
+    this.setState({ focused: false })
+  }
+
   render () {
-    const { verses, isPlaying, defaultPlayChecked, colorStayChecked, selected, errMessage, engineOption } = this.state
+    const { verses, isPlaying, defaultPlayChecked, colorStayChecked, selected, errMessage, engineOption, value, focused } = this.state
     const sketches = { blobs: blobs, waves: waves }
 
     return selected ? (
@@ -154,7 +171,14 @@ class App extends Component {
             </InlineAlert>
           </div>}
         </ConfigMenu>
-        <SearchInput engineOption={engineOption} />
+        <SearchInput
+          value={value}
+          focused={focused}
+          handleFocus={this.handleFocus}
+          handleBlur={this.handleBlur}
+          handleChange={this.handleChange}
+          engineOption={engineOption}
+        />
       </div>
     ) : null
   }

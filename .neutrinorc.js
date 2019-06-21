@@ -1,4 +1,7 @@
 const copy = require('@neutrinojs/copy')
+const standardjs = require('@neutrinojs/standardjs')
+const react = require('@neutrinojs/react')
+const jest = require('@neutrinojs/jest');
 
 module.exports = {
   options: {
@@ -22,12 +25,14 @@ module.exports = {
         }
       ]
     }),
-    '@neutrinojs/standardjs',
-    ['@neutrinojs/react', {
-      html: { title: 'New Tab' }
-    }],
-    ['@neutrinojs/jest', {
+    standardjs(),
+    react({
+      html: {
+        title: 'New Tab',
+      },
+    }),
+    jest({
       setupTestFrameworkScriptFile: '<rootDir>/src/setupTests.js'
-    }]
+    })
   ]
 };

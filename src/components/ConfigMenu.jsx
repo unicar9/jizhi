@@ -26,6 +26,8 @@ class ConfigMenu extends Component {
       onSaveSelect,
       isPlaying,
       onPlayPauseSelect,
+      showSearchBarChecked,
+      onShowSearchBarChange,
       defaultPlayChecked,
       onDefaultPlayChange,
       colorStayChecked,
@@ -77,20 +79,35 @@ class ConfigMenu extends Component {
               <Menu.Divider />
 
               <Menu.Group title='设置'>
-                <Menu.Item secondaryText='默认播放动画'>
-                  <Switch
-                    checked={defaultPlayChecked}
-                    onChange={onDefaultPlayChange}
-                  />
+                <Menu.Item intent='success'>
+                  <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                    默认播放动画
+                    <Switch
+                      checked={defaultPlayChecked}
+                      onChange={onDefaultPlayChange}
+                    />
+                  </div>
                 </Menu.Item>
                 {selected === 'waves' && (
-                  <Menu.Item secondaryText='保留颜色名称'>
-                    <Switch
-                      checked={colorStayChecked}
-                      onChange={onColorStayChange}
-                    />
+                  <Menu.Item intent='success'>
+                    <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                      保留颜色名称
+                      <Switch
+                        checked={colorStayChecked}
+                        onChange={onColorStayChange}
+                      />
+                    </div>
                   </Menu.Item>
                 )}
+                <Menu.Item intent='success'>
+                  <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                    显示搜索框
+                    <Switch
+                      checked={showSearchBarChecked}
+                      onChange={onShowSearchBarChange}
+                    />
+                  </div>
+                </Menu.Item>
               </Menu.Group>
               <Menu.Divider />
 

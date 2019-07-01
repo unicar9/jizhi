@@ -19,6 +19,7 @@ class App extends Component {
     super()
     this.onSaveSelect = this.onSaveSelect.bind(this)
     this.onPlayPauseSelect = this.onPlayPauseSelect.bind(this)
+    this.onShowSearchBarChange = this.onShowSearchBarChange.bind(this)
     this.onDefaultPlayChange = this.onDefaultPlayChange.bind(this)
     this.onColorStayChange = this.onColorStayChange.bind(this)
     this.onBgOptionChange = this.onBgOptionChange.bind(this)
@@ -30,6 +31,7 @@ class App extends Component {
 
     this.state = {
       isPlaying: true,
+      showSearchBarChecked: true,
       defaultPlayChecked: true,
       colorStayChecked: false,
       verses: {
@@ -55,11 +57,13 @@ class App extends Component {
       Storager.set({ verses: localShici })
     })
 
-    Storager.get(['verses', 'selected', 'colorStayChecked', 'defaultPlayChecked', 'engineOption'], res => {
+    Storager.get(['verses', 'selected', 'colorStayChecked', 'defaultPlayChecked', 'engineOption', 'showSearchBarChecked'], res => {
       const isColorStayCheckedUntouched = res.colorStayChecked === undefined
       const isDefaultPlayCheckedUntouched = res.defaultPlayChecked === undefined
+      const isShowSearchBarCheckedUntouched = res.showSearchBarChecked === undefined
 
       this.setState({
+        showSearchBarChecked: isShowSearchBarCheckedUntouched ? true : res.showSearchBarChecked,
         colorStayChecked: isColorStayCheckedUntouched ? false : res.colorStayChecked,
         defaultPlayChecked: isDefaultPlayCheckedUntouched ? true : res.defaultPlayChecked,
         isPlaying: isDefaultPlayCheckedUntouched ? true : res.defaultPlayChecked,
@@ -88,6 +92,14 @@ class App extends Component {
   onPlayPauseSelect () {
     this.setState({
       isPlaying: !this.state.isPlaying
+    })
+  }
+
+  onShowSearchBarChange () {
+    this.setState({
+      showSearchBarChecked: !this.state.showSearchBarChecked
+    }, () => {
+      Storager.set({ showSearchBarChecked: this.state.showSearchBarChecked })
     })
   }
 
@@ -144,7 +156,7 @@ class App extends Component {
   }
 
   render () {
-    const { verses, isPlaying, defaultPlayChecked, colorStayChecked, selected, errMessage, engineOption, value, focused } = this.state
+    const { verses, isPlaying, showSearchBarChecked, defaultPlayChecked, colorStayChecked, selected, errMessage, engineOption, value, focused } = this.state
     const sketches = { blobs: blobs, waves: waves }
 
     return selected ? (
@@ -156,6 +168,8 @@ class App extends Component {
           onSaveSelect={this.onSaveSelect}
           onPlayPauseSelect={this.onPlayPauseSelect}
           isPlaying={isPlaying}
+          showSearchBarChecked={showSearchBarChecked}
+          onShowSearchBarChange={this.onShowSearchBarChange}
           defaultPlayChecked={defaultPlayChecked}
           onDefaultPlayChange={this.onDefaultPlayChange}
           colorStayChecked={colorStayChecked}
@@ -171,14 +185,16 @@ class App extends Component {
             </InlineAlert>
           </div>}
         </ConfigMenu>
-        <SearchInput
-          value={value}
-          focused={focused}
-          handleFocus={this.handleFocus}
-          handleBlur={this.handleBlur}
-          handleChange={this.handleChange}
-          engineOption={engineOption}
-        />
+        { showSearchBarChecked &&
+          <SearchInput
+            value={value}
+            focused={focused}
+            handleFocus={this.handleFocus}
+            handleBlur={this.handleBlur}
+            handleChange={this.handleChange}
+            engineOption={engineOption}
+          />
+        }
       </div>
     ) : null
   }

@@ -13,6 +13,13 @@ import { InlineAlert } from 'evergreen-ui'
 import { load } from './utils/jinrishici'
 
 let shici = require('./utils/shici.json')
+const initialShici = {
+  content: '红豆生南国，春来发几枝。',
+  origin: {
+    author: '王维',
+    title: '相思'
+  }
+}
 
 class App extends Component {
   constructor (props) {
@@ -34,13 +41,7 @@ class App extends Component {
       showSearchBarChecked: true,
       defaultPlayChecked: true,
       colorStayChecked: false,
-      verses: {
-        content: '红豆生南国，春来发几枝。',
-        origin: {
-          author: '王维',
-          title: '相思'
-        }
-      },
+      verses: initialShici,
       errMessage: '',
       engineOption: 'https://www.google.com/search?q=',
       value: '',
@@ -68,7 +69,7 @@ class App extends Component {
         defaultPlayChecked: isDefaultPlayCheckedUntouched ? true : res.defaultPlayChecked,
         isPlaying: isDefaultPlayCheckedUntouched ? true : res.defaultPlayChecked,
         selected: res.selected || 'waves',
-        verses: res.verses,
+        verses: res.verses || initialShici,
         engineOption: res.engineOption || 'https://www.google.com/search?q='
       })
     })

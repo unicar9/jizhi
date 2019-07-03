@@ -113,7 +113,7 @@ a {
 #color-name {
   font-family: "FZXiJinLJW";
   position: absolute;
-  font-size: 12em;
+  font-size: calc(100px + 5vw);
   right: 0;
   top: 0;
   opacity: .1;

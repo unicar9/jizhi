@@ -1,4 +1,4 @@
 /* eslint-disable no-undef */
-browser.browserAction.onClicked.addListener(() => {
-  browser.tabs.create()
+chrome.browserAction.onClicked.addListener(() => {
+  chrome.tabs.create({ url: 'chrome://newtab' })
 })

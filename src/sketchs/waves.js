@@ -25,7 +25,7 @@ export default function waves (p) {
 
   p.keyPressed = function () {
     if (p.keyCode === 39 || p.keyCode === 37) {
-      // left or right keys
+      // left or right arrow keys
       mountains = []
       growMountains(p, mountains)
       p.background(230)

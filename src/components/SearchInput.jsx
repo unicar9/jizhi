@@ -14,6 +14,7 @@ class SearchInput extends Component {
           onBlur={handleBlur}
           onChange={handleChange}
           name={engineOption.split('.')[1] === 'baidu' ? 'wd' : 'q'}
+          autocomplete='off'
         />
       </form>
     )

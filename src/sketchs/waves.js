@@ -1,4 +1,6 @@
-import { wavesColors } from '../utils/colors'
+// import { wavesColors } from '../utils/colors'
+
+const wavesColors = require('../utils/Chinese-colors.json')
 
 export default function waves (p) {
   let mountains = []
@@ -64,7 +66,7 @@ class Mountain {
 
 function growMountains (p, mountains) {
   let colorSelected = p.random(wavesColors)
-  let c = p.color(colorSelected.hexcode)
+  let c = p.color(colorSelected.hex)
 
   document.getElementById('color-name').innerText = colorSelected.name
 

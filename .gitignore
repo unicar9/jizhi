@@ -5,3 +5,5 @@ build_chrome
 build_firefox
 build
 build.zip
+build_chrome.zip
+build_firefox.zip

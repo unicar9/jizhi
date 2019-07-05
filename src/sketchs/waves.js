@@ -1,6 +1,4 @@
-// import { wavesColors } from '../utils/colors'
-
-const wavesColors = require('../utils/Chinese-colors.json')
+const wavesColors = require('../utils/wavesColors.json')
 
 export default function waves (p) {
   let mountains = []
@@ -23,6 +21,16 @@ export default function waves (p) {
 
   p.myCustomRedrawAccordingToNewPropsHandler = function (newProps) {
     !newProps.isPlaying ? p.frameRate(0) : p.frameRate(30)
+  }
+
+  p.keyPressed = function () {
+    if (p.keyCode === 39 || p.keyCode === 37) {
+      // left or right keys
+      mountains = []
+      growMountains(p, mountains)
+      p.background(230)
+      mountains.forEach(m => m.display(p))
+    }
   }
 }
 

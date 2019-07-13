@@ -4,11 +4,7 @@
 
 A Chrome extension with custom new tab page featuring Chinese poems and P5.js enabled noise waves in Chinese traditional colors
 
-## 更新信息
-
-* 新版本用 React 重写了几枝，使用了 [neutrino](https://neutrinojs.org/packages/react/) 的配置
-* 使用了新版本[今日诗词 API](https://www.jinrishici.com/)
-* 使用了 [Evergreen React UI library](https://evergreen.segment.com/)  
+## 功能请查看[更新日志](./CHANGELOG.md)
 
 ## 本地装载
 
@@ -17,28 +13,6 @@ A Chrome extension with custom new tab page featuring Chinese poems and P5.js en
 * 打开右上角开发者模式（Developer mode）
 * 点击左上角 **Load unpacked** 按钮并选取刚刚生成的 **build 文件夹**
 * 几枝装载成功，打开新标签页试试吧
-
-## 功能
-
-### 2.1.0 更新
-
-- 新增 Blobs 背景附带鼠标交互效果
-- 新增快捷键控制动画播放 (Space) 和背景保存 (S)
-
-### 2.0.1 更新
-
-- 右下角新增弹出菜单
-- 可设置默认播放动画
-- 可设置保留颜色名不淡出消失
-- 可点击诗词名自动连接到 Google 搜索
-- 修改诗词显示方式，解决了文字显示不全的问题
-- 字体大小响应屏幕宽度
-
----------
-
-* 左侧淡出中国色名称。
-* 右下播放键为动效开关。
-* 右下下载键储存 JPEG 格式背景图到本地。
 
 ![jizhi-2.1.0 gif](https://github.com/unicar9/jizhi/blob/master/examples/jizhi-2.1.0.gif)
 ![jizhi gif](https://github.com/unicar9/jizhi/blob/master/examples/jizhi.gif)

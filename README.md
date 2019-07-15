@@ -8,11 +8,13 @@ A Chrome extension with custom new tab page featuring Chinese poems and P5.js en
 
 ## 本地装载
 
-* 下载最新的 release 打包文件，首先运行 `yarn` 再运行 `yarn build` 生成 **build 文件夹**
-* 在浏览器里输入 chrome://extensions/ 进入插件管理页面
+* 下载最新的 release 打包文件
+* 运行 `yarn`（下载依赖包）
+* 单次编译，运行 `yarn build`（开发目的的话，请运行`yarn dev`） 生成 **build 文件夹** 
+* 在Chrome浏览器里输入 chrome://extensions/ 进入插件管理页面
 * 打开右上角开发者模式（Developer mode）
 * 点击左上角 **Load unpacked** 按钮并选取刚刚生成的 **build 文件夹**
-* 几枝装载成功，打开新标签页试试吧
+* 「几枝」装载成功，打开新标签页试试吧
 
 ![jizhi-2.1.0 gif](https://github.com/unicar9/jizhi/blob/master/examples/jizhi-2.1.0.gif)
 ![jizhi gif](https://github.com/unicar9/jizhi/blob/master/examples/jizhi.gif)

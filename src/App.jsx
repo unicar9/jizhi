@@ -39,7 +39,7 @@ class App extends Component {
 
     this.state = {
       isPlaying: true,
-      showSearchBarChecked: true,
+      showSearchBarChecked: false,
       defaultPlayChecked: true,
       colorStayChecked: false,
       verses: initialShici,
@@ -65,7 +65,7 @@ class App extends Component {
       const isShowSearchBarCheckedUntouched = res.showSearchBarChecked === undefined
 
       this.setState({
-        showSearchBarChecked: isShowSearchBarCheckedUntouched ? true : res.showSearchBarChecked,
+        showSearchBarChecked: isShowSearchBarCheckedUntouched ? false : res.showSearchBarChecked,
         colorStayChecked: isColorStayCheckedUntouched ? false : res.colorStayChecked,
         defaultPlayChecked: isDefaultPlayCheckedUntouched ? true : res.defaultPlayChecked,
         isPlaying: isDefaultPlayCheckedUntouched ? true : res.defaultPlayChecked,
@@ -187,7 +187,7 @@ class App extends Component {
             </InlineAlert>
           </div>}
         </ConfigMenu>
-        { showSearchBarChecked &&
+        {showSearchBarChecked &&
           <SearchInput
             value={value}
             focused={focused}

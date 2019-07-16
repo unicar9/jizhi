@@ -1,0 +1,31 @@
+#jizhi-search {
+    position: absolute;
+    top: 20px;
+    left: 30px;
+    display: flex;
+    align-items: center;
+    opacity: .4;
+  }
+  
+  #jizhi-search input {
+    outline: none;
+    border: none;
+    background-color: transparent;
+    box-shadow: none;
+    width: 150px;
+    font-size: 16px;
+    color: #000000;
+    margin-left: -25px;
+    padding-left: 35px;
+    height: 40px;
+    border-bottom: 2px #242424 solid;
+    opacity: 0;
+  }
+  
+  #jizhi-search input:hover {
+    opacity: .4;
+  }
+  
+  #jizhi-search input.active {
+    opacity: .8;
+  }

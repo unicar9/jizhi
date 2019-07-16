@@ -1,13 +1,6 @@
-@font-face {
-  font-family: "FZXiJinLJW";
-  src: url("./fonts/FZXiJinLJW.ttf") format("truetype");
-}
-
-html, body {
-  padding: 0px;
-  margin: 0px;
-  overflow: hidden;
-}
+@import './main.scss';
+@import './search-input.scss';
+@import './menu.scss';
 
 #root {
   height: 100vh;
@@ -54,60 +47,6 @@ a {
 
 #verses-origin:hover .origin-search-icon {
   opacity: .5;
-}
-
-#menu {
-  position: absolute;
-  left: 30px;
-  bottom: 20px;
-}
-
-#menu-btn {
-  opacity: .6; 
-  cursor: pointer;
-  transition: all 300ms ease;
-  transform-origin: 50% 50%;
-}
-
-#menu-btn:hover {
-  opacity: 1;
-}
-
-#menu-btn.open {
-  opacity: 1;
-  transform: rotate(45deg) scale(1.1);
-}
-
-#jizhi-search {
-  position: absolute;
-  top: 20px;
-  left: 30px;
-  display: flex;
-  align-items: center;
-  opacity: .4;
-}
-
-#jizhi-search input {
-  outline: none;
-  border: none;
-  background-color: transparent;
-  box-shadow: none;
-  width: 150px;
-  font-size: 16px;
-  color: #000000;
-  margin-left: -25px;
-  padding-left: 35px;
-  height: 40px;
-  border-bottom: 2px #242424 solid;
-  opacity: 0;
-}
-
-#jizhi-search input:hover {
-  opacity: .4;
-}
-
-#jizhi-search input.active {
-  opacity: .8;
 }
 
 #color-name {

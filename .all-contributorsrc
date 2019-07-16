@@ -1,0 +1,23 @@
+{
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": false,
+  "contributors": [
+    {
+      "login": "arthur-zheng",
+      "name": "Arthur Zheng",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/4089684?v=4",
+      "profile": "https://github.com/arthur-zheng",
+      "contributions": [
+        "code"
+      ]
+    }
+  ],
+  "contributorsPerLine": 7,
+  "projectName": "jizhi",
+  "projectOwner": "unicar9",
+  "repoType": "github",
+  "repoHost": "https://github.com"
+}

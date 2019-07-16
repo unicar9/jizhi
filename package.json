@@ -13,6 +13,7 @@
     "evergreen-ui": "^4.15.0",
     "handlebars": "^4.1.2",
     "html2canvas": "^1.0.0-rc.1",
+    "node-sass": "^4.12.0",
     "prop-types": "^15",
     "react": "^16",
     "react-dom": "^16",
@@ -29,6 +30,7 @@
     "eslint": "^5",
     "jest": "^23",
     "neutrino": "^9.0.0-rc.0",
+    "sass-loader": "^7.1.0",
     "webpack": "^4",
     "webpack-cli": "^3",
     "webpack-dev-server": "^3"

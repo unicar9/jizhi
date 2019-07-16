@@ -1,6 +1,5 @@
-import { hot } from 'react-hot-loader'
-import './App.css'
 import React, { Component } from 'react'
+import { hot } from 'react-hot-loader'
 import P5Wrapper from 'react-p5-wrapper'
 import waves from './sketchs/waves'
 import blobs from './sketchs/blobs'
@@ -11,6 +10,8 @@ import html2canvas from 'html2canvas'
 import Storager from './utils/storager'
 import { InlineAlert } from 'evergreen-ui'
 import { load } from './utils/jinrishici'
+
+import './styles/app.scss'
 
 let shici = require('./utils/shici.json')
 const initialShici = {

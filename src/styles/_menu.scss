@@ -1,0 +1,21 @@
+#menu {
+  position: absolute;
+  left: 30px;
+  bottom: 20px;
+}
+
+#menu-btn {
+  opacity: .6; 
+  cursor: pointer;
+  transition: all 300ms ease;
+  transform-origin: 50% 50%;
+
+  &:hover {
+    opacity: 1;
+  }
+
+  &.open {
+    opacity: 1;
+    transform: rotate(45deg) scale(1.1);
+  }
+}

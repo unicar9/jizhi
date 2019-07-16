@@ -4,7 +4,6 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "dev": "watch 'yarn build' src",
     "build": "webpack --mode production",
     "start": "webpack-dev-server --mode development --open --watch",
     "test": "jest",
@@ -32,7 +31,6 @@
     "jest": "^23",
     "neutrino": "^9.0.0-rc.0",
     "sass-loader": "^7.1.0",
-    "watch": "^1.0.2",
     "webpack": "^4",
     "webpack-cli": "^3",
     "webpack-dev-server": "^3"

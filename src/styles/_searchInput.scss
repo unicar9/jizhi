@@ -1,13 +1,12 @@
 #jizhi-search {
-    position: absolute;
-    top: 20px;
-    left: 30px;
-    display: flex;
-    align-items: center;
-    opacity: .4;
-  }
-  
-  #jizhi-search input {
+  position: absolute;
+  top: 20px;
+  left: 30px;
+  display: flex;
+  align-items: center;
+  opacity: .4;
+
+  input {
     outline: none;
     border: none;
     background-color: transparent;
@@ -20,12 +19,12 @@
     height: 40px;
     border-bottom: 2px #242424 solid;
     opacity: 0;
+
+    &:hover {
+      opacity: .4;
+    }
+    &.active {
+      opacity: .8;
+    }
   }
-  
-  #jizhi-search input:hover {
-    opacity: .4;
-  }
-  
-  #jizhi-search input.active {
-    opacity: .8;
-  }
+}

@@ -1,0 +1,29 @@
+.verses {
+  font-family: 'FZXiJinLJW';
+  position: absolute;
+  transform: translate(-50%, -50%);
+  left: 50vw;
+  text-align: center;
+  opacity: .8;
+  word-break: keep-all;
+  transition: top 300ms ease-in-out;
+}
+
+#verses-content {
+  font-size: calc(25px + 1vw);
+  width: 80vw;
+}
+
+#verses-origin {
+  margin-top: 1em;
+  font-size: calc(12px + 1vw);
+}
+
+#verses-origin:hover .origin-search-icon {
+  opacity: .5;
+}
+
+.origin-search-icon {
+  opacity: 0;
+  transition: all 200ms ease-in;
+}

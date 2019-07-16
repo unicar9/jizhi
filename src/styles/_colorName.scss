@@ -1,0 +1,22 @@
+#color-name {
+  font-family: "FZXiJinLJW";
+  position: absolute;
+  font-size: calc(100px + 5vw);
+  right: 0;
+  top: 0;
+  opacity: .1;
+  writing-mode: vertical-rl;
+  white-space: nowrap;
+  transform: translate(10%, -5%);
+
+  &.fadeout {
+    opacity: 0;
+    animation: fadeOut 5s ease;
+  }
+}
+
+@keyframes fadeOut {
+  0% { opacity: .1; }
+  50% { opacity: .1; }
+  100% { opacity: 0; }
+}

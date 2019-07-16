@@ -9,13 +9,13 @@
   cursor: pointer;
   transition: all 300ms ease;
   transform-origin: 50% 50%;
-}
 
-#menu-btn:hover {
-  opacity: 1;
-}
+  &:hover {
+    opacity: 1;
+  }
 
-#menu-btn.open {
-  opacity: 1;
-  transform: rotate(45deg) scale(1.1);
+  &.open {
+    opacity: 1;
+    transform: rotate(45deg) scale(1.1);
+  }
 }

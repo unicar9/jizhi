@@ -3,7 +3,7 @@ import { hot } from 'react-hot-loader'
 import P5Wrapper from 'react-p5-wrapper'
 import waves from './sketchs/waves'
 import blobs from './sketchs/blobs'
-import LoadedVerses from './components/LoadedVerses'
+import Verses from './components/Verses'
 import ConfigMenu from './components/ConfigMenu'
 import SearchInput from './components/SearchInput'
 import html2canvas from 'html2canvas'
@@ -129,7 +129,7 @@ class App extends Component {
     return selected ? (
       <div className='App' tabIndex='-1' onKeyPress={this.handleKeyPress}>
         {selected === 'waves' && <div id='color-name' className={colorStayChecked ? '' : 'fadeout'} />}
-        <LoadedVerses className={selected} verses={verses} engineOption={engineOption} />
+        <Verses className={selected} verses={verses} engineOption={engineOption} />
         <P5Wrapper sketch={sketches[selected]} isPlaying={isPlaying} />
         <ConfigMenu
           onSaveSelect={this.onSaveSelect}

@@ -1,4 +1,4 @@
-const wavesColors = require('../utils/wavesColors.json')
+const wavesColors = require('../constants/wavesColors.json')
 
 export default function waves (p) {
   let mountains = []

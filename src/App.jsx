@@ -13,8 +13,9 @@ import { load } from './utils/jinrishici'
 
 import './styles/app.scss'
 
-let shici = require('./utils/shici.json')
-const initialShici = {
+const DEFAULT_SHICI_LIST = require('./constants/shici.json')
+const GOOGLE_SEARCH = 'https://www.google.com/search?q='
+const DEFAULT_SHICI = {
   content: '红豆生南国，春来发几枝。',
   origin: {
     author: '王维',
@@ -25,26 +26,15 @@ const initialShici = {
 class App extends Component {
   constructor (props) {
     super()
-    this.onSaveSelect = this.onSaveSelect.bind(this)
-    this.onPlayPauseSelect = this.onPlayPauseSelect.bind(this)
-    this.onShowSearchBarChange = this.onShowSearchBarChange.bind(this)
-    this.onDefaultPlayChange = this.onDefaultPlayChange.bind(this)
-    this.onColorStayChange = this.onColorStayChange.bind(this)
-    this.onBgOptionChange = this.onBgOptionChange.bind(this)
-    this.handleKeyPress = this.handleKeyPress.bind(this)
-    this.onEngineOptionChange = this.onEngineOptionChange.bind(this)
-    this.handleChange = this.handleChange.bind(this)
-    this.handleFocus = this.handleFocus.bind(this)
-    this.handleBlur = this.handleBlur.bind(this)
 
     this.state = {
       isPlaying: true,
       showSearchBarChecked: false,
       defaultPlayChecked: true,
       colorStayChecked: false,
-      verses: initialShici,
+      verses: DEFAULT_SHICI,
       errMessage: '',
-      engineOption: 'https://www.google.com/search?q=',
+      engineOption: GOOGLE_SEARCH,
       value: '',
       focused: false
     }
@@ -53,25 +43,21 @@ class App extends Component {
   componentDidMount () {
     load(result => {
       Storager.set({ verses: result.data })
-    }, result => {
-      this.setState({ errMessage: result.errMessage })
-      const localShici = shici[Math.floor(Math.random() * shici.length)]
+    }, err => {
+      this.setState({ errMessage: err.errMessage })
+      const localShici = DEFAULT_SHICI_LIST[Math.floor(Math.random() * DEFAULT_SHICI_LIST.length)]
       Storager.set({ verses: localShici })
     })
 
     Storager.get(['verses', 'selected', 'colorStayChecked', 'defaultPlayChecked', 'engineOption', 'showSearchBarChecked'], res => {
-      const isColorStayCheckedUntouched = res.colorStayChecked === undefined
-      const isDefaultPlayCheckedUntouched = res.defaultPlayChecked === undefined
-      const isShowSearchBarCheckedUntouched = res.showSearchBarChecked === undefined
-
       this.setState({
-        showSearchBarChecked: isShowSearchBarCheckedUntouched ? false : res.showSearchBarChecked,
-        colorStayChecked: isColorStayCheckedUntouched ? false : res.colorStayChecked,
-        defaultPlayChecked: isDefaultPlayCheckedUntouched ? true : res.defaultPlayChecked,
-        isPlaying: isDefaultPlayCheckedUntouched ? true : res.defaultPlayChecked,
+        showSearchBarChecked: !!res.showSearchBarChecked,
+        colorStayChecked: !!res.colorStayChecked,
+        defaultPlayChecked: res.defaultPlayChecked !== false,
+        isPlaying: res.defaultPlayChecked !== false,
         selected: res.selected || 'waves',
-        verses: res.verses || initialShici,
-        engineOption: res.engineOption || 'https://www.google.com/search?q='
+        verses: res.verses || DEFAULT_SHICI,
+        engineOption: res.engineOption || GOOGLE_SEARCH
       })
     })
   }
@@ -87,17 +73,11 @@ class App extends Component {
     })
   }
 
-  onSaveSelect () {
-    this.saveBg()
-  }
+  onSaveSelect = () => this.saveBg()
 
-  onPlayPauseSelect () {
-    this.setState({
-      isPlaying: !this.state.isPlaying
-    })
-  }
+  onPlayPauseSelect = () => this.setState({ isPlaying: !this.state.isPlaying })
 
-  onShowSearchBarChange () {
+  onShowSearchBarChange = () => {
     this.setState({
       showSearchBarChecked: !this.state.showSearchBarChecked
     }, () => {
@@ -105,7 +85,7 @@ class App extends Component {
     })
   }
 
-  onDefaultPlayChange () {
+  onDefaultPlayChange = () => {
     this.setState({
       defaultPlayChecked: !this.state.defaultPlayChecked
     }, () => {
@@ -113,7 +93,7 @@ class App extends Component {
     })
   }
 
-  onColorStayChange () {
+  onColorStayChange = () => {
     this.setState({
       colorStayChecked: !this.state.colorStayChecked
     }, () => {
@@ -121,49 +101,34 @@ class App extends Component {
     })
   }
 
-  onBgOptionChange (selected) {
+  onBgOptionChange = (selected) => {
     this.setState({ selected }, () => {
       Storager.set({ selected })
     })
   }
 
-  handleKeyPress (e) {
-    if (e.charCode === 32) {
-      this.setState({
-        isPlaying: !this.state.isPlaying
-      })
-    }
-
-    if (e.charCode === 223 && e.altKey) {
-      this.saveBg()
-    }
+  handleKeyPress = ({ charCode, altKey }) => {
+    // space
+    if (charCode === 32) this.setState({ isPlaying: !this.state.isPlaying })
+    // S + alt
+    if (charCode === 223 && altKey) this.saveBg()
   }
 
-  onEngineOptionChange (engineOption) {
-    this.setState({ engineOption }, () => {
-      Storager.set({ engineOption })
-    })
-  }
+  onEngineOptionChange = engineOption => this.setState({ engineOption }, () => Storager.set({ engineOption }))
 
-  handleChange (e) {
-    this.setState({ value: e.target.value })
-  }
+  handleChange = ({ target: { value } }) => this.setState({ value })
 
-  handleFocus () {
-    this.setState({ focused: true })
-  }
+  handleFocus = () => this.setState({ focused: true })
 
-  handleBlur () {
-    this.setState({ focused: false })
-  }
+  handleBlur = () => this.setState({ focused: false })
 
   render () {
     const { verses, isPlaying, showSearchBarChecked, defaultPlayChecked, colorStayChecked, selected, errMessage, engineOption, value, focused } = this.state
-    const sketches = { blobs: blobs, waves: waves }
+    const sketches = { blobs, waves }
 
     return selected ? (
       <div className='App' tabIndex='-1' onKeyPress={this.handleKeyPress}>
-        <div id='color-name' style={{ display: selected === 'blobs' ? 'none' : 'block' }} className={colorStayChecked ? '' : 'fadeout'} />
+        {selected === 'waves' && <div id='color-name' className={colorStayChecked ? '' : 'fadeout'} />}
         <LoadedVerses className={selected} verses={verses} engineOption={engineOption} />
         <P5Wrapper sketch={sketches[selected]} isPlaying={isPlaying} />
         <ConfigMenu

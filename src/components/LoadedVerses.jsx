@@ -4,8 +4,14 @@ import PropTypes from 'prop-types'
 
 class LoadedVerses extends Component {
   render () {
-    const { content, origin } = this.props.verses
-    const { engineOption, className } = this.props
+    const {
+      verses: {
+        content,
+        origin
+      },
+      engineOption,
+      className
+    } = this.props
 
     return (
       <div className={`${className} verses`}>
@@ -17,7 +23,7 @@ class LoadedVerses extends Component {
             target='_blank'
             rel='noopener noreferrer'
           >
-            {origin.author} 《{origin.title}》
+            {origin.author} 「{origin.title}」
             <span className='origin-search-icon'>
               <Icon icon='search-text' color='black' />
             </span>

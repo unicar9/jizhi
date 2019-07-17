@@ -109,24 +109,14 @@ class App extends Component {
     })
   }
 
-  handleKeyPress = e => {
+  handleKeyPress = ({ charCode, altKey }) => {
     // space
-    if (e.charCode === 32) {
-      this.setState({
-        isPlaying: !this.state.isPlaying
-      })
-    }
+    if (charCode === 32) this.setState({ isPlaying: !this.state.isPlaying })
     // S + alt
-    if (e.charCode === 223 && e.altKey) {
-      this.saveBg()
-    }
+    if (charCode === 223 && altKey) this.saveBg()
   }
 
-  onEngineOptionChange = engineOption => {
-    this.setState({ engineOption }, () => {
-      Storager.set({ engineOption })
-    })
-  }
+  onEngineOptionChange = engineOption => this.setState({ engineOption }, () => Storager.set({ engineOption }))
 
   handleChange = ({ target: { value } }) => this.setState({ value })
 
@@ -136,11 +126,11 @@ class App extends Component {
 
   render () {
     const { verses, isPlaying, showSearchBarChecked, defaultPlayChecked, colorStayChecked, selected, errMessage, engineOption, value, focused } = this.state
-    const sketches = { blobs: blobs, waves: waves }
+    const sketches = { blobs, waves }
 
     return selected ? (
       <div className='App' tabIndex='-1' onKeyPress={this.handleKeyPress}>
-        <div id='color-name' style={{ display: selected === 'blobs' ? 'none' : 'block' }} className={colorStayChecked ? '' : 'fadeout'} />
+        {selected === 'waves' && <div id='color-name' className={colorStayChecked ? '' : 'fadeout'} />}
         <HorizontalVerses className={selected} verses={verses} engineOption={engineOption} />
         <P5Wrapper sketch={sketches[selected]} isPlaying={isPlaying} />
         <ConfigMenu

@@ -13,7 +13,7 @@ import { load } from './utils/jinrishici'
 
 import './styles/app.scss'
 
-let shici = require('./utils/shici.json')
+let shici = require('./constants/shici.json')
 const initialShici = {
   content: '红豆生南国，春来发几枝。',
   origin: {
@@ -60,15 +60,11 @@ class App extends Component {
     })
 
     Storager.get(['verses', 'selected', 'colorStayChecked', 'defaultPlayChecked', 'engineOption', 'showSearchBarChecked'], res => {
-      const isColorStayCheckedUntouched = res.colorStayChecked === undefined
-      const isDefaultPlayCheckedUntouched = res.defaultPlayChecked === undefined
-      const isShowSearchBarCheckedUntouched = res.showSearchBarChecked === undefined
-
       this.setState({
-        showSearchBarChecked: isShowSearchBarCheckedUntouched ? false : res.showSearchBarChecked,
-        colorStayChecked: isColorStayCheckedUntouched ? false : res.colorStayChecked,
-        defaultPlayChecked: isDefaultPlayCheckedUntouched ? true : res.defaultPlayChecked,
-        isPlaying: isDefaultPlayCheckedUntouched ? true : res.defaultPlayChecked,
+        showSearchBarChecked: !!res.showSearchBarChecked,
+        colorStayChecked: !!res.colorStayChecked,
+        defaultPlayChecked: res.defaultPlayChecked !== false,
+        isPlaying: res.defaultPlayChecked !== false,
         selected: res.selected || 'waves',
         verses: res.verses || initialShici,
         engineOption: res.engineOption || 'https://www.google.com/search?q='

@@ -1,4 +1,4 @@
-import { blobsColors } from '../utils/colors'
+import { blobsColors } from '../constants/colors'
 
 export default function blobs (p) {
   let blobsArray = []

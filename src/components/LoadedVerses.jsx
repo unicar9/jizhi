@@ -2,10 +2,16 @@ import React, { Component } from 'react'
 import { Icon } from 'evergreen-ui'
 import PropTypes from 'prop-types'
 
-class VerticalVerses extends Component {
+class LoadedVerses extends Component {
   render () {
-    const { content, origin } = this.props.verses
-    const { engineOption, className } = this.props
+    const {
+      verses: {
+        content,
+        origin
+      },
+      engineOption,
+      className
+    } = this.props
 
     return (
       <div className={`${className} verses`}>
@@ -28,10 +34,10 @@ class VerticalVerses extends Component {
   }
 }
 
-VerticalVerses.propTypes = {
+LoadedVerses.propTypes = {
   verses: PropTypes.object,
   className: PropTypes.string,
   engineOption: PropTypes.string
 }
 
-export default VerticalVerses
+export default LoadedVerses

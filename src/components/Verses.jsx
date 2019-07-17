@@ -4,8 +4,6 @@ import PropTypes from 'prop-types'
 import HorizontalVerses from './HorizontalVerses'
 import VerticalVerses from './VerticalVerses'
 
-
-
 class Verses extends Component {
   render () {
     const {

@@ -15,7 +15,7 @@ import './styles/app.scss'
 
 const DEFAULT_SHICI_LIST = require('./constants/shici.json')
 const GOOGLE_SEARCH = 'https://www.google.com/search?q='
-const initialShici = {
+const DEFAULT_SHICI = {
   content: '红豆生南国，春来发几枝。',
   origin: {
     author: '王维',
@@ -32,7 +32,7 @@ class App extends Component {
       showSearchBarChecked: false,
       defaultPlayChecked: true,
       colorStayChecked: false,
-      verses: initialShici,
+      verses: DEFAULT_SHICI,
       errMessage: '',
       engineOption: GOOGLE_SEARCH,
       value: '',
@@ -56,7 +56,7 @@ class App extends Component {
         defaultPlayChecked: res.defaultPlayChecked !== false,
         isPlaying: res.defaultPlayChecked !== false,
         selected: res.selected || 'waves',
-        verses: res.verses || initialShici,
+        verses: res.verses || DEFAULT_SHICI,
         engineOption: res.engineOption || GOOGLE_SEARCH
       })
     })

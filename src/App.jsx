@@ -3,7 +3,7 @@ import { hot } from 'react-hot-loader'
 import P5Wrapper from 'react-p5-wrapper'
 import waves from './sketchs/waves'
 import blobs from './sketchs/blobs'
-import LoadedVerses from './components/LoadedVerses'
+import HorizontalVerses from './components/HorizontalVerses'
 import ConfigMenu from './components/ConfigMenu'
 import SearchInput from './components/SearchInput'
 import html2canvas from 'html2canvas'
@@ -14,6 +14,9 @@ import { load } from './utils/jinrishici'
 import './styles/app.scss'
 
 let shici = require('./constants/shici.json')
+
+const GOOGLE_SEARCH = 'https://www.google.com/search?q='
+
 const initialShici = {
   content: '红豆生南国，春来发几枝。',
   origin: {
@@ -25,17 +28,6 @@ const initialShici = {
 class App extends Component {
   constructor (props) {
     super()
-    this.onSaveSelect = this.onSaveSelect.bind(this)
-    this.onPlayPauseSelect = this.onPlayPauseSelect.bind(this)
-    this.onShowSearchBarChange = this.onShowSearchBarChange.bind(this)
-    this.onDefaultPlayChange = this.onDefaultPlayChange.bind(this)
-    this.onColorStayChange = this.onColorStayChange.bind(this)
-    this.onBgOptionChange = this.onBgOptionChange.bind(this)
-    this.handleKeyPress = this.handleKeyPress.bind(this)
-    this.onEngineOptionChange = this.onEngineOptionChange.bind(this)
-    this.handleChange = this.handleChange.bind(this)
-    this.handleFocus = this.handleFocus.bind(this)
-    this.handleBlur = this.handleBlur.bind(this)
 
     this.state = {
       isPlaying: true,
@@ -44,7 +36,7 @@ class App extends Component {
       colorStayChecked: false,
       verses: initialShici,
       errMessage: '',
-      engineOption: 'https://www.google.com/search?q=',
+      engineOption: GOOGLE_SEARCH,
       value: '',
       focused: false
     }
@@ -67,7 +59,7 @@ class App extends Component {
         isPlaying: res.defaultPlayChecked !== false,
         selected: res.selected || 'waves',
         verses: res.verses || initialShici,
-        engineOption: res.engineOption || 'https://www.google.com/search?q='
+        engineOption: res.engineOption || GOOGLE_SEARCH
       })
     })
   }
@@ -83,17 +75,11 @@ class App extends Component {
     })
   }
 
-  onSaveSelect () {
-    this.saveBg()
-  }
+  onSaveSelect = () => this.saveBg()
 
-  onPlayPauseSelect () {
-    this.setState({
-      isPlaying: !this.state.isPlaying
-    })
-  }
+  onPlayPauseSelect = () => this.setState({ isPlaying: !this.state.isPlaying })
 
-  onShowSearchBarChange () {
+  onShowSearchBarChange = () => {
     this.setState({
       showSearchBarChecked: !this.state.showSearchBarChecked
     }, () => {
@@ -101,7 +87,7 @@ class App extends Component {
     })
   }
 
-  onDefaultPlayChange () {
+  onDefaultPlayChange = () => {
     this.setState({
       defaultPlayChecked: !this.state.defaultPlayChecked
     }, () => {
@@ -109,7 +95,7 @@ class App extends Component {
     })
   }
 
-  onColorStayChange () {
+  onColorStayChange = () => {
     this.setState({
       colorStayChecked: !this.state.colorStayChecked
     }, () => {
@@ -117,41 +103,36 @@ class App extends Component {
     })
   }
 
-  onBgOptionChange (selected) {
+  onBgOptionChange = (selected) => {
     this.setState({ selected }, () => {
       Storager.set({ selected })
     })
   }
 
-  handleKeyPress (e) {
+  handleKeyPress = e => {
+    // space
     if (e.charCode === 32) {
       this.setState({
         isPlaying: !this.state.isPlaying
       })
     }
-
+    // S + alt
     if (e.charCode === 223 && e.altKey) {
       this.saveBg()
     }
   }
 
-  onEngineOptionChange (engineOption) {
+  onEngineOptionChange = engineOption => {
     this.setState({ engineOption }, () => {
       Storager.set({ engineOption })
     })
   }
 
-  handleChange (e) {
-    this.setState({ value: e.target.value })
-  }
+  handleChange = ({ target: { value } }) => this.setState({ value })
 
-  handleFocus () {
-    this.setState({ focused: true })
-  }
+  handleFocus = () => this.setState({ focused: true })
 
-  handleBlur () {
-    this.setState({ focused: false })
-  }
+  handleBlur = () => this.setState({ focused: false })
 
   render () {
     const { verses, isPlaying, showSearchBarChecked, defaultPlayChecked, colorStayChecked, selected, errMessage, engineOption, value, focused } = this.state
@@ -160,7 +141,7 @@ class App extends Component {
     return selected ? (
       <div className='App' tabIndex='-1' onKeyPress={this.handleKeyPress}>
         <div id='color-name' style={{ display: selected === 'blobs' ? 'none' : 'block' }} className={colorStayChecked ? '' : 'fadeout'} />
-        <LoadedVerses className={selected} verses={verses} engineOption={engineOption} />
+        <HorizontalVerses className={selected} verses={verses} engineOption={engineOption} />
         <P5Wrapper sketch={sketches[selected]} isPlaying={isPlaying} />
         <ConfigMenu
           onSaveSelect={this.onSaveSelect}

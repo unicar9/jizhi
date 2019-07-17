@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Icon } from 'evergreen-ui'
 import PropTypes from 'prop-types'
 
-class LoadedVerses extends Component {
+class VerticalVerses extends Component {
   render () {
     const { content, origin } = this.props.verses
     const { engineOption, className } = this.props
@@ -17,7 +17,7 @@ class LoadedVerses extends Component {
             target='_blank'
             rel='noopener noreferrer'
           >
-            {origin.author} 《{origin.title}》
+            {origin.author} 「{origin.title}」
             <span className='origin-search-icon'>
               <Icon icon='search-text' color='black' />
             </span>
@@ -28,10 +28,10 @@ class LoadedVerses extends Component {
   }
 }
 
-LoadedVerses.propTypes = {
+VerticalVerses.propTypes = {
   verses: PropTypes.object,
   className: PropTypes.string,
   engineOption: PropTypes.string
 }
 
-export default LoadedVerses
+export default VerticalVerses

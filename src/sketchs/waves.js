@@ -76,7 +76,8 @@ function growMountains (p, mountains) {
   let colorSelected = p.random(wavesColors)
   let c = p.color(colorSelected.hex)
 
-  document.getElementById('color-name').innerText = colorSelected.name
+  const colorNameDiv = document.getElementById('color-name')
+  if (colorNameDiv) colorNameDiv.innerText = colorSelected.name
 
   new Array(5).fill(1).map((_, i) => {
     let a = 255 - 50 * i

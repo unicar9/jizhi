@@ -1,3 +1,5 @@
+@import './colors';
+
 .verses {
   font-family: 'FZXiJinLJW';
   position: absolute;
@@ -15,8 +17,18 @@
 }
 
 #verses-origin {
+  display: flex;
   margin-top: 1em;
   font-size: calc(12px + 1vw);
+  justify-content: center;
+  align-items: center;
+  .stamp {
+    color: $white;
+    background-color: $dark-red;
+    border-radius: 3px;
+    padding: 3px 4px;
+    font-size: 67%;
+  }
 }
 
 #verses-origin:hover .origin-search-icon {

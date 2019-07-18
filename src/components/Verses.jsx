@@ -1,10 +1,8 @@
 import React, { Component } from 'react'
 import { Icon } from 'evergreen-ui'
 import PropTypes from 'prop-types'
-import HorizontalVerses from './HorizontalVerses'
-import VerticalVerses from './VerticalVerses'
 
-class Verses extends Component {
+class HorizontalVerses extends Component {
   render () {
     const {
       verses: {
@@ -21,30 +19,29 @@ class Verses extends Component {
 
     const searchLink = `${engineOption}${origin.author} ${origin.title}`
 
-    return layout === 'vertical' ?
-      
-    //   (
-    //   <div className={`${className} verses`}>
-    //     <div id='verses-content'>
-    //       {content}
-    //     </div>
-    //     <div id='verses-origin'>
-    //       <a href={searchLink} target='_blank' rel='noopener noreferrer'>
-    //         {author} 「{title}」
-    //         <span className='origin-search-icon'>
-    //           <Icon icon='search-text' color='black' />
-    //         </span>
-    //       </a>
-    //     </div>
-    //   </div>
-    // )
+    return (
+      <div className={`${className} verses`}>
+        <div id='verses-content'>
+          {content}
+        </div>
+        <a href={searchLink} target='_blank' rel='noopener noreferrer'>
+          <div id='verses-origin'>
+            <span className='title'>{`「${title}」`}</span>
+            <span className='stamp'>{author}</span>
+            <span className='origin-search-icon'>
+              <Icon icon='search-text' color='black' />
+            </span>
+          </div>
+        </a>
+      </div>
+    )
   }
 }
 
-Verses.propTypes = {
+HorizontalVerses.propTypes = {
   verses: PropTypes.object,
   className: PropTypes.string,
   engineOption: PropTypes.string
 }
 
-export default Verses
+export default HorizontalVerses

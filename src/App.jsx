@@ -3,7 +3,7 @@ import { hot } from 'react-hot-loader'
 import P5Wrapper from 'react-p5-wrapper'
 import waves from './sketchs/waves'
 import blobs from './sketchs/blobs'
-import HorizontalVerses from './components/HorizontalVerses'
+import Verses from './components/Verses'
 import ConfigMenu from './components/ConfigMenu'
 import SearchInput from './components/SearchInput'
 import html2canvas from 'html2canvas'
@@ -13,11 +13,9 @@ import { load } from './utils/jinrishici'
 
 import './styles/app.scss'
 
-let shici = require('./constants/shici.json')
-
+const DEFAULT_SHICI_LIST = require('./constants/shici.json')
 const GOOGLE_SEARCH = 'https://www.google.com/search?q='
-
-const initialShici = {
+const DEFAULT_SHICI = {
   content: '红豆生南国，春来发几枝。',
   origin: {
     author: '王维',
@@ -34,7 +32,7 @@ class App extends Component {
       showSearchBarChecked: false,
       defaultPlayChecked: true,
       colorStayChecked: false,
-      verses: initialShici,
+      verses: DEFAULT_SHICI,
       errMessage: '',
       engineOption: GOOGLE_SEARCH,
       value: '',
@@ -45,9 +43,9 @@ class App extends Component {
   componentDidMount () {
     load(result => {
       Storager.set({ verses: result.data })
-    }, result => {
-      this.setState({ errMessage: result.errMessage })
-      const localShici = shici[Math.floor(Math.random() * shici.length)]
+    }, err => {
+      this.setState({ errMessage: err.errMessage })
+      const localShici = DEFAULT_SHICI_LIST[Math.floor(Math.random() * DEFAULT_SHICI_LIST.length)]
       Storager.set({ verses: localShici })
     })
 
@@ -58,7 +56,7 @@ class App extends Component {
         defaultPlayChecked: res.defaultPlayChecked !== false,
         isPlaying: res.defaultPlayChecked !== false,
         selected: res.selected || 'waves',
-        verses: res.verses || initialShici,
+        verses: res.verses || DEFAULT_SHICI,
         engineOption: res.engineOption || GOOGLE_SEARCH
       })
     })
@@ -131,7 +129,7 @@ class App extends Component {
     return selected ? (
       <div className='App' tabIndex='-1' onKeyPress={this.handleKeyPress}>
         {selected === 'waves' && <div id='color-name' className={colorStayChecked ? '' : 'fadeout'} />}
-        <HorizontalVerses className={selected} verses={verses} engineOption={engineOption} />
+        <Verses className={selected} verses={verses} engineOption={engineOption} />
         <P5Wrapper sketch={sketches[selected]} isPlaying={isPlaying} />
         <ConfigMenu
           onSaveSelect={this.onSaveSelect}

@@ -1,9 +1,11 @@
 # 几枝 | Jizhi
 [![All Contributors](https://img.shields.io/badge/all_contributors-2-orange.svg?style=flat-square)](#contributors)
 
-支持自定义新标签页的 Chrome 扩展，几枝将在新标签页上展示中国传统色的层叠波浪动画效果搭配经典诗词。
+支持自定义新标签页的 Chrome/Firefox 扩展，几枝将在新标签页上展示中国传统色的层叠波浪动画效果搭配经典诗词。
 
-A Chrome extension with custom new tab page featuring Chinese poems and P5.js enabled noise waves in traditional Chinese colors
+A Chrome/Firefox extension with custom new tab page featuring Chinese poems and P5.js enabled noise waves in traditional Chinese colors
+
+[Chrome Web Store 地址](https://chrome.google.com/webstore/detail/%E5%87%A0%E6%9E%9D/hfohpokminpknagcgncibpacohagppjn) | [Firefox Add-ons 地址](https://addons.mozilla.org/en-US/firefox/addon/jizhi/)
 
 ## 功能请查看[更新日志](./CHANGELOG.md)
 

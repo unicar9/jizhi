@@ -4,7 +4,8 @@
   font-size: calc(100px + 5vw);
   right: 0;
   top: 0;
-  opacity: .1;
+  color: rgba(0, 0, 0, .1);
+  opacity: 1;
   writing-mode: vertical-rl;
   white-space: nowrap;
   transform: translate(10%, -5%);
@@ -16,7 +17,7 @@
 }
 
 @keyframes fadeOut {
-  0% { opacity: .1; }
-  50% { opacity: .1; }
+  0% { opacity: 1; }
+  50% { opacity: 1; }
   100% { opacity: 0; }
 }

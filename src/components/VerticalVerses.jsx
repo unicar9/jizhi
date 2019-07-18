@@ -4,8 +4,14 @@ import PropTypes from 'prop-types'
 
 class VerticalVerses extends Component {
   render () {
-    const { content, origin } = this.props.verses
-    const { engineOption, className } = this.props
+    const {
+      verses: {
+        content,
+        origin
+      },
+      engineOption,
+      className
+    } = this.props
 
     return (
       <div className={`${className} verses`}>

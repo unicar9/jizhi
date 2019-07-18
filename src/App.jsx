@@ -10,10 +10,9 @@ import html2canvas from 'html2canvas'
 import Storager from './utils/storager'
 import { InlineAlert } from 'evergreen-ui'
 import { load } from './utils/jinrishici'
-
+import { DEFAULT_SHICI_LIST } from './constants/shici'
 import './styles/app.scss'
 
-const DEFAULT_SHICI_LIST = require('./constants/shici.json')
 const GOOGLE_SEARCH = 'https://www.google.com/search?q='
 const DEFAULT_SHICI = {
   content: '红豆生南国，春来发几枝。',

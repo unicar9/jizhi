@@ -13,17 +13,16 @@ class HorizontalVerses extends Component {
         }
       },
       engineOption,
-      className,
-      layout
+      bgOption,
+      versesLayout
     } = this.props
 
     const searchLink = `${engineOption}${origin.author} ${origin.title}`
+    const classes = `verses ${bgOption} ${versesLayout}`
 
     return (
-      <div className={`${className} verses`}>
-        <div id='verses-content'>
-          {content}
-        </div>
+      <div className={classes}>
+        <div id='verses-content'>{content}</div>
         <a href={searchLink} target='_blank' rel='noopener noreferrer'>
           <div id='verses-origin'>
             <span className='title'>{`「${title}」`}</span>

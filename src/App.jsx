@@ -6,22 +6,15 @@ import blobs from './sketchs/blobs'
 import Verses from './components/Verses'
 import ConfigMenu from './components/ConfigMenu'
 import SearchInput from './components/SearchInput'
-import html2canvas from 'html2canvas'
+import { saveBackground } from './utils/saveBackground'
 import Storager from './utils/storager'
 import { InlineAlert } from 'evergreen-ui'
 import { load } from './utils/jinrishici'
+import { HORIZONTAL, VERTICAL, WAVES, GOOGLE_SEARCH, DEFAULT_SHICI } from './constants/app-constants'
 
 import './styles/app.scss'
 
 const DEFAULT_SHICI_LIST = require('./constants/shici.json')
-const GOOGLE_SEARCH = 'https://www.google.com/search?q='
-const DEFAULT_SHICI = {
-  content: '红豆生南国，春来发几枝。',
-  origin: {
-    author: '王维',
-    title: '相思'
-  }
-}
 
 class App extends Component {
   constructor (props) {
@@ -33,6 +26,7 @@ class App extends Component {
       defaultPlayChecked: true,
       colorStayChecked: false,
       verses: DEFAULT_SHICI,
+      versesLayout: HORIZONTAL,
       errMessage: '',
       engineOption: GOOGLE_SEARCH,
       value: '',
@@ -49,31 +43,19 @@ class App extends Component {
       Storager.set({ verses: localShici })
     })
 
-    Storager.get(['verses', 'selected', 'colorStayChecked', 'defaultPlayChecked', 'engineOption', 'showSearchBarChecked'], res => {
+    Storager.get(['verses', 'versesLayout', 'selected', 'colorStayChecked', 'defaultPlayChecked', 'engineOption', 'showSearchBarChecked'], res => {
       this.setState({
         showSearchBarChecked: !!res.showSearchBarChecked,
         colorStayChecked: !!res.colorStayChecked,
         defaultPlayChecked: res.defaultPlayChecked !== false,
+        isVerticalVerses: res.versesLayout === VERTICAL,
         isPlaying: res.defaultPlayChecked !== false,
-        selected: res.selected || 'waves',
         verses: res.verses || DEFAULT_SHICI,
+        selected: res.selected || WAVES,
         engineOption: res.engineOption || GOOGLE_SEARCH
       })
     })
   }
-
-  saveBg () {
-    const node = document.getElementById('root')
-    html2canvas(node).then((canvas) => {
-      const dataUrl = canvas.toDataURL('image/png')
-      var link = document.createElement('a')
-      link.download = 'jizhi.png'
-      link.href = dataUrl
-      link.click()
-    })
-  }
-
-  onSaveSelect = () => this.saveBg()
 
   onPlayPauseSelect = () => this.setState({ isPlaying: !this.state.isPlaying })
 
@@ -82,6 +64,14 @@ class App extends Component {
       showSearchBarChecked: !this.state.showSearchBarChecked
     }, () => {
       Storager.set({ showSearchBarChecked: this.state.showSearchBarChecked })
+    })
+  }
+
+  onVersesLayoutChange = () => {
+    this.setState({
+      isVerticalVerses: !this.state.isVerticalVerses
+    }, () => {
+      Storager.set({ isVerticalVerses: this.state.isVerticalVerses ? VERTICAL : HORIZONTAL })
     })
   }
 
@@ -111,7 +101,7 @@ class App extends Component {
     // space
     if (charCode === 32) this.setState({ isPlaying: !this.state.isPlaying })
     // S + alt
-    if (charCode === 223 && altKey) this.saveBg()
+    if (charCode === 223 && altKey) saveBackground()
   }
 
   onEngineOptionChange = engineOption => this.setState({ engineOption }, () => Storager.set({ engineOption }))
@@ -123,22 +113,29 @@ class App extends Component {
   handleBlur = () => this.setState({ focused: false })
 
   render () {
-    const { verses, isPlaying, showSearchBarChecked, defaultPlayChecked, colorStayChecked, selected, errMessage, engineOption, value, focused } = this.state
+    const { verses, isVerticalVerses, isPlaying, showSearchBarChecked, defaultPlayChecked, colorStayChecked, selected, errMessage, engineOption, value, focused } = this.state
     const sketches = { blobs, waves }
 
     return selected ? (
       <div className='App' tabIndex='-1' onKeyPress={this.handleKeyPress}>
-        {selected === 'waves' && <div id='color-name' className={colorStayChecked ? '' : 'fadeout'} />}
-        <Verses className={selected} verses={verses} engineOption={engineOption} />
+        {selected === WAVES && <div id='color-name' className={colorStayChecked ? '' : 'fadeout'} />}
+        <Verses
+          bgOption={selected}
+          verses={verses}
+          versesLayout={isVerticalVerses ? VERTICAL : HORIZONTAL}
+          engineOption={engineOption}
+        />
         <P5Wrapper sketch={sketches[selected]} isPlaying={isPlaying} />
         <ConfigMenu
-          onSaveSelect={this.onSaveSelect}
+          onSaveSelect={() => saveBackground()}
           onPlayPauseSelect={this.onPlayPauseSelect}
           isPlaying={isPlaying}
+          isVerticalVerses={isVerticalVerses}
           showSearchBarChecked={showSearchBarChecked}
           onShowSearchBarChange={this.onShowSearchBarChange}
           defaultPlayChecked={defaultPlayChecked}
           onDefaultPlayChange={this.onDefaultPlayChange}
+          onVersesLayoutChange={this.onVersesLayoutChange}
           colorStayChecked={colorStayChecked}
           onColorStayChange={this.onColorStayChange}
           selected={selected}

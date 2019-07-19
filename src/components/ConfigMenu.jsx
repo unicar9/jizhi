@@ -23,6 +23,8 @@ class ConfigMenu extends Component {
       showSearchBarChecked,
       onShowSearchBarChange,
       defaultPlayChecked,
+      isVerticalVerses,
+      onVersesLayoutChange,
       onDefaultPlayChange,
       colorStayChecked,
       onColorStayChange,
@@ -102,6 +104,15 @@ class ConfigMenu extends Component {
                     />
                   </div>
                 </Menu.Item>
+                <Menu.Item intent='success'>
+                  <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                    竖版诗词
+                    <Switch
+                      checked={isVerticalVerses}
+                      onChange={onVersesLayoutChange}
+                    />
+                  </div>
+                </Menu.Item>
               </Menu.Group>
               <Menu.Divider />
 
@@ -142,6 +153,8 @@ class ConfigMenu extends Component {
 ConfigMenu.propTypes = {
   onSaveSelect: PropTypes.func.isRequired,
   onPlayPauseSelect: PropTypes.func.isRequired,
+  onVersesLayoutChange: PropTypes.func.isRequired,
+  isVerticalVerses: PropTypes.bool.isRequired,
   isPlaying: PropTypes.bool.isRequired,
   defaultPlayChecked: PropTypes.bool.isRequired,
   onDefaultPlayChange: PropTypes.func.isRequired,

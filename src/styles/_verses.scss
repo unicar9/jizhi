@@ -9,11 +9,17 @@
   opacity: .8;
   word-break: keep-all;
   transition: top 300ms ease-in-out;
+  #verses-content {
+    font-size: calc(30px + 1vw);
+    width: 80vw;
+  }
 }
 
-#verses-content {
-  font-size: calc(30px + 1vw);
-  width: 80vw;
+.verses.vertical {
+  writing-mode: vertical-rl;
+  #verses-content {
+    width: auto;
+  }
 }
 
 #verses-origin {

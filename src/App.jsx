@@ -6,7 +6,7 @@ import blobs from './sketchs/blobs'
 import Verses from './components/Verses'
 import ConfigMenu from './components/ConfigMenu'
 import SearchInput from './components/SearchInput'
-import { saveBackground } from './utils/saveBackground'
+import { saveBackground } from './utils'
 import Storager from './utils/storager'
 import { InlineAlert } from 'evergreen-ui'
 import { load } from './utils/jinrishici'
@@ -71,7 +71,7 @@ class App extends Component {
     this.setState({
       isVerticalVerses: !this.state.isVerticalVerses
     }, () => {
-      Storager.set({ isVerticalVerses: this.state.isVerticalVerses ? VERTICAL : HORIZONTAL })
+      Storager.set({ versesLayout: this.state.isVerticalVerses ? VERTICAL : HORIZONTAL })
     })
   }
 

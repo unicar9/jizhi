@@ -13,28 +13,42 @@
     font-size: calc(30px + 1vw);
     width: 80vw;
   }
-}
-
-.verses.vertical {
-  writing-mode: vertical-rl;
-  #verses-content {
-    width: auto;
+  #verses-origin {
+    display: flex;
+    margin-top: 1em;
+    font-size: calc(10px + 1vw);
+    justify-content: center;
+    align-items: center;
+    .stamp {
+      color: $white;
+      background-color: $dark-red;
+      border-radius: 3px;
+      padding: 3px 4px 3px 3px;
+      margin: .5em;
+      font-size: 67%;
+      letter-spacing: -1px;
+    }
   }
 }
 
-#verses-origin {
-  display: flex;
-  margin-top: 1em;
-  font-size: calc(10px + 1vw);
-  justify-content: center;
-  align-items: center;
-  .stamp {
-    color: $white;
-    background-color: $dark-red;
-    border-radius: 3px;
-    padding: 3px 4px;
-    font-size: 67%;
-    letter-spacing: -1px;
+.verses.vertical {
+  text-align: left;
+  top: 50vh;
+  transform: translate(-50%, -80%);
+  writing-mode: vertical-rl;
+  #verses-content {
+    width: auto;
+    line-height: 1.35;
+  }
+  #verses-origin {
+    margin: 0;
+    margin-right: 10px;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    word-break: normal;
+    .stamp{
+      padding: 3px 2px 4px;
+    }
   }
 }
 

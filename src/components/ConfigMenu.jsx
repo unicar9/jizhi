@@ -6,21 +6,14 @@ import Legal from './Legal'
 class ConfigMenu extends Component {
   constructor (props) {
     super()
-    this.handleOnOpen = this.handleOnOpen.bind(this)
-    this.handleOnClose = this.handleOnClose.bind(this)
-
     this.state = {
       isOpen: false
     }
   }
 
-  handleOnOpen () {
-    this.setState({ isOpen: true })
-  }
+  handleOnOpen = () => this.setState({ isOpen: true })
 
-  handleOnClose () {
-    this.setState({ isOpen: false })
-  }
+  handleOnClose = () => this.setState({ isOpen: false })
 
   render () {
     const {

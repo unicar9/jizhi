@@ -1,25 +1,19 @@
 import React, { Component } from 'react'
-import { Popover, Menu, Position, Switch, Icon, Text, SegmentedControl } from 'evergreen-ui'
+import { Popover, Menu, Position, Switch, Icon, SegmentedControl } from 'evergreen-ui'
 import PropTypes from 'prop-types'
+import Legal from './legal'
 
 class ConfigMenu extends Component {
   constructor (props) {
     super()
-    this.handleOnOpen = this.handleOnOpen.bind(this)
-    this.handleOnClose = this.handleOnClose.bind(this)
-
     this.state = {
       isOpen: false
     }
   }
 
-  handleOnOpen () {
-    this.setState({ isOpen: true })
-  }
+  handleOnOpen = () => this.setState({ isOpen: true })
 
-  handleOnClose () {
-    this.setState({ isOpen: false })
-  }
+  handleOnClose = () => this.setState({ isOpen: false })
 
   render () {
     const {
@@ -138,15 +132,7 @@ class ConfigMenu extends Component {
               </Menu.Group>
 
               <Menu.Divider />
-              <div style={{ height: 50 }}>
-                <Text margin={20} lineHeight='50px' color='muted'>
-                  本扩展使用了
-                  <a href='https://www.jinrishici.com/' target='_blank' rel='noopener noreferrer'>
-                    今日诗词 API
-                  </a>
-                  ，感谢您的支持和喜爱!
-                </Text>
-              </div>
+              <Legal />
               {this.props.children}
             </Menu>
           }

@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Popover, Menu, Position, Switch, Icon, SegmentedControl } from 'evergreen-ui'
 import PropTypes from 'prop-types'
 import Legal from './Legal'
+import SaveBgMenuItem from './SaveBgMenuItem'
 
 class ConfigMenu extends Component {
   constructor (props) {
@@ -17,7 +18,6 @@ class ConfigMenu extends Component {
 
   render () {
     const {
-      onSaveSelect,
       isPlaying,
       onPlayPauseSelect,
       showSearchBarChecked,
@@ -54,14 +54,7 @@ class ConfigMenu extends Component {
               <Menu.Divider />
 
               <Menu.Group title='操作'>
-                <Menu.Item
-                  icon='download'
-                  intent='success'
-                  onSelect={onSaveSelect}
-                  secondaryText='Alt + S'
-                >
-                  保存背景
-                </Menu.Item>
+                <SaveBgMenuItem />
                 <Menu.Item
                   icon={isPlaying ? 'pause' : 'play'}
                   intent='success'

@@ -127,7 +127,6 @@ class App extends Component {
         />
         <P5Wrapper sketch={sketches[selected]} isPlaying={isPlaying} />
         <ConfigMenu
-          onSaveSelect={() => saveBackground()}
           onPlayPauseSelect={this.onPlayPauseSelect}
           isPlaying={isPlaying}
           isVerticalVerses={isVerticalVerses}

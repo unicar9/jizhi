@@ -12,13 +12,13 @@
   "dependencies": {
     "evergreen-ui": "^4.15.0",
     "handlebars": "^4.1.2",
-    "html2canvas": "^1.0.0-rc.1",
     "node-sass": "^4.12.0",
     "prop-types": "^15",
     "react": "^16",
     "react-dom": "^16",
     "react-hot-loader": "^4",
-    "react-p5-wrapper": "^0.0.4"
+    "react-p5-wrapper": "^0.0.4",
+    "retina-dom-to-image": "^2.5.6"
   },
   "devDependencies": {
     "@neutrinojs/copy": "^9.0.0-rc.0",

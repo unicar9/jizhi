@@ -1,14 +1,18 @@
-import html2canvas from 'html2canvas'
+import domtoimage from 'retina-dom-to-image'
 
 export const saveBackground = () => {
   const node = document.getElementById('root')
-  html2canvas(node).then((canvas) => {
-    const dataUrl = canvas.toDataURL('image/png')
-    var link = document.createElement('a')
-    link.download = 'jizhi.png'
-    link.href = dataUrl
-    link.click()
-  })
+  const githubLink = `https://github.com/unicar9/jizhi/issues`
+  domtoimage.toPng(node)
+    .then(function (dataUrl) {
+      var link = document.createElement('a')
+      link.download = 'jizhi.png'
+      link.href = dataUrl
+      link.click()
+    })
+    .catch(function (error) {
+      console.error(`截图失败，联系我们: ${githubLink}`, error)
+    })
 }
 
 /*

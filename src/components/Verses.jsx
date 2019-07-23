@@ -19,7 +19,7 @@ class HorizontalVerses extends Component {
       versesLayout
     } = this.props
 
-    const searchLink = `${engineOption}${origin.author} ${origin.title}`
+    const searchLink = `${engineOption}${author} ${title}`
     const classes = `verses ${bgOption} ${versesLayout}`
     const filteredContent = versesLayout === VERTICAL ? pureWords(content) : content
 

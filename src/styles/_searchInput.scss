@@ -1,3 +1,5 @@
+@import './colors';
+
 #jizhi-search {
   position: absolute;
   top: 20px;
@@ -13,11 +15,11 @@
     box-shadow: none;
     width: 150px;
     font-size: 16px;
-    color: #000000;
+    color: $black;
     margin-left: -25px;
     padding-left: 35px;
     height: 40px;
-    border-bottom: 2px #242424 solid;
+    border-bottom: 2px $dark-grey solid;
     opacity: 0;
 
     &:hover {

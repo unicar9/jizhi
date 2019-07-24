@@ -27,7 +27,7 @@
     "@neutrinojs/standardjs": "^9.0.0-rc.0",
     "enzyme": "^3.9.0",
     "enzyme-adapter-react-16": "^1.13.0",
-    "eslint": "^6",
+    "eslint": "^5.16.0",
     "jest": "^24",
     "neutrino": "^9.0.0-rc.0",
     "sass-loader": "^7.1.0",

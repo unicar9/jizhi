@@ -91,7 +91,7 @@ class App extends Component {
     })
   }
 
-  onBgOptionChange = (selected) => {
+  onBgOptionChange = selected => {
     this.setState({ selected }, () => {
       Storager.set({ selected })
     })

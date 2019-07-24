@@ -1,0 +1,7 @@
+@mixin fadein($animationName) {
+  @keyframes #{$animationName} {
+    0% { opacity: 0; }
+    100% { opacity: .8; }
+  }
+  animation: $animationName 500ms ease-in;
+}

@@ -1,4 +1,5 @@
 @import './colors';
+@import './mixins';
 
 .verses {
   font-family: 'FZXiJinLJW';
@@ -8,7 +9,6 @@
   text-align: center;
   opacity: .8;
   word-break: keep-all;
-  transition: top 300ms ease-in-out;
   #verses-content {
     font-size: calc(30px + 1vw);
     width: 80vw;
@@ -31,11 +31,18 @@
   }
 }
 
+.verses.horizontal {
+  transition: top 500ms ease-in-out;
+  @include fadein(horizontalFadein);
+}
+
 .verses.vertical {
   text-align: left;
   top: 50vh;
   transform: translate(-50%, -80%);
   writing-mode: vertical-rl;
+  @include fadein(verticalFadein);
+
   #verses-content {
     width: auto;
     line-height: 1.35;
@@ -45,7 +52,7 @@
     margin-right: 10px;
     justify-content: flex-start;
     flex-wrap: wrap;
-    word-break: normal;
+    word-break: keep-all;
     .stamp{
       padding: 3px 2px 4px;
     }

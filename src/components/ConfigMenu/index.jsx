@@ -144,7 +144,7 @@ class ConfigMenu extends Component {
 }
 
 ConfigMenu.propTypes = {
-  onSaveSelect: PropTypes.func.isRequired,
+  onSaveSelect: PropTypes.func,
   onPlayPauseSelect: PropTypes.func.isRequired,
   onVersesLayoutChange: PropTypes.func.isRequired,
   isVerticalVerses: PropTypes.bool.isRequired,

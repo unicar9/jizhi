@@ -1,7 +1,7 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 
-import ConfigMenu from './ConfigMenu'
+import ConfigMenu from '.'
 
 describe('ConfigMenu', () => {
   const setupProps = {

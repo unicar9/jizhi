@@ -30,7 +30,7 @@
     "eslint": "^5.16.0",
     "jest": "^24",
     "neutrino": "^9.0.0-rc.0",
-    "sass-loader": "^7.1.0",
+    "sass-loader": "^7.2.0",
     "webpack": "^4",
     "webpack-cli": "^3",
     "webpack-dev-server": "^3"

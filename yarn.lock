@@ -3476,10 +3476,10 @@ eventsource@^1.0.7:
   dependencies:
     original "^1.0.0"
 
-evergreen-ui@^4.15.0:
-  version "4.18.1"
-  resolved "https://registry.yarnpkg.com/evergreen-ui/-/evergreen-ui-4.18.1.tgz#b277e05ae0beefbf361499a7148ff45b7db7cc31"
-  integrity sha512-JnUlyQe9J62DrIbalU8AUVCs7SQ58qjdlXTVutkeXj2mxi7XtJXZg+Er9ud9SaR6ZDLZVnuS35NOs3GPYe/68Q==
+evergreen-ui@^4.18.3:
+  version "4.18.3"
+  resolved "https://registry.yarnpkg.com/evergreen-ui/-/evergreen-ui-4.18.3.tgz#29c637b84631dff6c980be99d7a5935380b4f812"
+  integrity sha512-tCKUPB4yawfmUhxx+4fPJlSpAl7r2YOSJI9ITtbmeVG5txB1+eTzQW8cmMXWSUmqHEAqY9tLKCG7RXWM5yjvEQ==
   dependencies:
     "@babel/runtime" "^7.1.2"
     "@blueprintjs/icons" "^3.2.0"

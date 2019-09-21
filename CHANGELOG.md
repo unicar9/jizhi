@@ -2,7 +2,7 @@
 
 此文件包含几枝的所有版本更新内容。部分格式和想法参考了 [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)。
 
-## [Unreleased]
+## [未发布]
 
 ### 新增
 - 竖版诗词选项

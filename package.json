@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "evergreen-ui": "^4.18.3",
-    "handlebars": "^4.2.1",
+    "handlebars": "^4.3.0",
     "node-sass": "^4.12.0",
     "prop-types": "^15",
     "react": "^16",

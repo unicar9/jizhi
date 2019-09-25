@@ -10,7 +10,7 @@
     "lint": "eslint --cache --format codeframe --ext mjs,jsx,js src test"
   },
   "dependencies": {
-    "evergreen-ui": "^4.18.3",
+    "evergreen-ui": "^4.19.1",
     "handlebars": "^4.2.1",
     "node-sass": "^4.12.0",
     "prop-types": "^15",

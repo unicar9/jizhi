@@ -1,0 +1,33 @@
+{
+	"name": "几枝",
+	"version": "2.3.0",
+	"description": "支持自定义新标签页的扩展，几枝将在新标签页上展示中国传统色的层叠波浪动画效果搭配经典诗词。",
+	"permissions": ["storage", "tabs"],
+	"background": {
+		"scripts": ["background.js"]
+	},
+	"browser_specific_settings": {
+		"gecko": {
+			"id": "jizhi@example.com"
+		}
+	},
+	"browser_action": {
+		"default_icon": {
+			"16": "./static/icons/jizhi-16.png",
+			"32": "./static/icons/jizhi-32.png",
+			"48": "./static/icons/jizhi-64.png",
+			"128": "./static/icons/jizhi-128.png"
+		}
+	},
+	"chrome_url_overrides": {
+		"newtab": "index.html"
+	},
+	"icons": {
+		"16": "./static/icons/jizhi-16.png",
+		"32": "./static/icons/jizhi-32.png",
+		"48": "./static/icons/jizhi-64.png",
+		"128": "./static/icons/jizhi-128.png"
+	},
+	"manifest_version": 2,
+	"content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'"
+}

@@ -1,9 +1,7 @@
 node_modules
 coverage
 .DS_Store
-build_chrome
-build_firefox
+build_*
+builds
 build
-build.zip
-build_chrome.zip
-build_firefox.zip
+*.zip

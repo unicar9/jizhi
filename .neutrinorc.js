@@ -14,14 +14,6 @@ module.exports = {
         {
           from: 'src/static',
           to: 'static'
-        },
-        {
-          from: 'manifest.json',
-          to: './manifest.json'
-        },
-        {
-          from: 'background.js',
-          to: './background.js'
         }
       ]
     }),

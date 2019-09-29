@@ -7,7 +7,8 @@
     "build": "webpack --mode production && node build.js",
     "start": "webpack-dev-server --mode development --open --watch",
     "test": "jest",
-    "lint": "eslint --cache --format codeframe --ext mjs,jsx,js src test"
+    "lint": "eslint --cache --format codeframe --ext .mjs,.jsx,.js src",
+    "lint:fix": "yarn lint --fix"
   },
   "dependencies": {
     "evergreen-ui": "^4.19.1",

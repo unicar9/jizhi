@@ -5,3 +5,4 @@ build_*
 builds
 build
 *.zip
+.eslintcache

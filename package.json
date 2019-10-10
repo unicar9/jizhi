@@ -30,7 +30,7 @@
     "@neutrinojs/standardjs": "^9.0.0-rc.0",
     "copy-webpack-plugin": "^5.0.4",
     "enzyme": "^3.9.0",
-    "enzyme-adapter-react-16": "^1.13.0",
+    "enzyme-adapter-react-16": "^1.15.0",
     "eslint": "^5.16.0",
     "jest": "^24",
     "neutrino": "^9.0.0-rc.0",

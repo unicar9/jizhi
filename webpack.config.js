@@ -8,21 +8,21 @@ const CopyPlugin = require('copy-webpack-plugin')
 const basicConfig = neutrino().webpack()
 
 const generateConfig = (config, browser) => {
-    const { output, plugins } = config
-    return {
-        ...config,
-        output: {
-            ...output,
-            path: path.resolve(__dirname, `./builds/build_${browser}`)
-        },
-        plugins: [
-            ...plugins,
-            new CopyPlugin([
-                {from: `./${browser}.manifest.json`, to: './manifest.json'},
-                {from: `./${browser}.background.js`, to: './background.js'}
-            ])
-        ]
-    }
+  const { output, plugins } = config
+  return {
+    ...config,
+    output: {
+      ...output,
+      path: path.resolve(__dirname, `./builds/build_${browser}`)
+    },
+    plugins: [
+      ...plugins,
+      new CopyPlugin([
+        { from: `./${browser}.manifest.json`, to: './manifest.json' },
+        { from: `./${browser}.background.js`, to: './background.js' }
+      ])
+    ]
+  }
 }
 
 const chromeConfig = generateConfig(basicConfig, 'chrome')

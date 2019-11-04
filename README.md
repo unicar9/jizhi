@@ -9,12 +9,12 @@ A Chrome/Firefox extension with custom new tab page featuring Chinese poems and 
 
 ## 功能请查看[更新日志](./CHANGELOG.md)
 
-## 本地装载
+## Chrome 本地装载
 
-* 下载最新的 release 打包文件，首先运行 `yarn` 再运行 `yarn build` 生成 **build 文件夹**
+* 下载最新的 release 打包文件，首先运行 `yarn` 再运行 `yarn build` 生成 **builds 文件夹(包含 Chrome 和 Firefox 的 build 文件以及压缩包)**
 * 在Chrome浏览器里输入 chrome://extensions/ 进入插件管理页面
 * 打开右上角开发者模式（Developer mode）
-* 点击左上角 **Load unpacked** 按钮并选取刚刚生成的 **build 文件夹**
+* 点击左上角 **Load unpacked** 按钮并选取刚刚生成的 **build_chrome 文件夹**
 * 「几枝」装载成功，打开新标签页试试吧
 
 ![jizhi-2.1.0 gif](https://github.com/unicar9/jizhi/blob/master/examples/jizhi-2.1.0.gif)

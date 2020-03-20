@@ -57,9 +57,9 @@ class App extends Component {
     })
   }
 
-  onPlayPauseSelect = () => this.setState({ isPlaying: !this.state.isPlaying })
+  handlePlayPauseSelect = () => this.setState({ isPlaying: !this.state.isPlaying })
 
-  onShowSearchBarChange = () => {
+  handleShowSearchBarChange = () => {
     this.setState({
       showSearchBarChecked: !this.state.showSearchBarChecked
     }, () => {
@@ -67,7 +67,7 @@ class App extends Component {
     })
   }
 
-  onVersesLayoutChange = () => {
+  handleVersesLayoutChange = () => {
     this.setState({
       isVerticalVerses: !this.state.isVerticalVerses
     }, () => {
@@ -75,7 +75,7 @@ class App extends Component {
     })
   }
 
-  onDefaultPlayChange = () => {
+  handleDefaultPlayChange = () => {
     this.setState({
       defaultPlayChecked: !this.state.defaultPlayChecked
     }, () => {
@@ -83,7 +83,7 @@ class App extends Component {
     })
   }
 
-  onColorStayChange = () => {
+  handleColorStayChange = () => {
     this.setState({
       colorStayChecked: !this.state.colorStayChecked
     }, () => {
@@ -91,7 +91,7 @@ class App extends Component {
     })
   }
 
-  onBgOptionChange = selected => {
+  handleBgOptionChange = selected => {
     this.setState({ selected }, () => {
       Storager.set({ selected })
     })
@@ -104,7 +104,7 @@ class App extends Component {
     if (charCode === 223 && altKey) saveBackground()
   }
 
-  onEngineOptionChange = engineOption => this.setState({ engineOption }, () => Storager.set({ engineOption }))
+  handleEngineOptionChange = engineOption => this.setState({ engineOption }, () => Storager.set({ engineOption }))
 
   handleChange = ({ target: { value } }) => this.setState({ value })
 
@@ -127,37 +127,37 @@ class App extends Component {
         />
         <P5Wrapper sketch={sketches[selected]} isPlaying={isPlaying} />
         <ConfigMenu
-          onPlayPauseSelect={this.onPlayPauseSelect}
+          onPlayPauseSelect={this.handlePlayPauseSelect}
           isPlaying={isPlaying}
           isVerticalVerses={isVerticalVerses}
           showSearchBarChecked={showSearchBarChecked}
-          onShowSearchBarChange={this.onShowSearchBarChange}
+          onShowSearchBarChange={this.handleShowSearchBarChange}
           defaultPlayChecked={defaultPlayChecked}
-          onDefaultPlayChange={this.onDefaultPlayChange}
-          onVersesLayoutChange={this.onVersesLayoutChange}
+          onDefaultPlayChange={this.handleDefaultPlayChange}
+          onVersesLayoutChange={this.handleVersesLayoutChange}
           colorStayChecked={colorStayChecked}
-          onColorStayChange={this.onColorStayChange}
+          onColorStayChange={this.handleColorStayChange}
           selected={selected}
-          onBgOptionChange={this.onBgOptionChange}
+          onBgOptionChange={this.handleBgOptionChange}
           engineOption={engineOption}
-          onEngineOptionChange={this.onEngineOptionChange}
+          onEngineOptionChange={this.handleEngineOptionChange}
         >
-          {errMessage && <div style={{ height: 30 }}>
-            <InlineAlert intent='warning' marginLeft={20} marginRight={20}>
-              {errMessage}
-            </InlineAlert>
-          </div>}
+          {errMessage &&
+            <div style={{ height: 30 }}>
+              <InlineAlert intent='warning' marginLeft={20} marginRight={20}>
+                {errMessage}
+              </InlineAlert>
+            </div>}
         </ConfigMenu>
         {showSearchBarChecked &&
           <SearchInput
             value={value}
             focused={focused}
-            handleFocus={this.handleFocus}
-            handleBlur={this.handleBlur}
-            handleChange={this.handleChange}
+            onFocus={this.handleFocus}
+            onBlur={this.handleBlur}
+            onChange={this.handleChange}
             engineOption={engineOption}
-          />
-        }
+          />}
       </div>
     ) : null
   }

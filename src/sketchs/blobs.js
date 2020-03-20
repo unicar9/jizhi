@@ -1,7 +1,7 @@
 import { blobsColors } from '../constants/colors'
 
 export default function blobs (p) {
-  let blobsArray = []
+  const blobsArray = []
   const colors = p.random(blobsColors)
 
   p.setup = function () {
@@ -45,7 +45,7 @@ class Blob {
 
   display (p) {
     p.push()
-    let color = p.color(this.c)
+    const color = p.color(this.c)
     color.setAlpha(230)
     p.fill(color)
     p.translate(this.x, this.y)
@@ -56,12 +56,12 @@ class Blob {
     p.noiseDetail(2, 0.9)
     p.beginShape()
     for (let i = 0; i < p.TWO_PI; i += p.radians(1)) {
-      let xOff = this.offset * p.cos(i) + this.offset
-      let yOff = this.offset * p.sin(i) + this.offset
+      const xOff = this.offset * p.cos(i) + this.offset
+      const yOff = this.offset * p.sin(i) + this.offset
 
-      let r = this.radius + p.map(p.noise(xOff, yOff, this.t), 0, 1, -this.scale, this.scale)
-      let x = r * p.cos(i)
-      let y = r * p.sin(i)
+      const r = this.radius + p.map(p.noise(xOff, yOff, this.t), 0, 1, -this.scale, this.scale)
+      const x = r * p.cos(i)
+      const y = r * p.sin(i)
 
       p.vertex(x, y)
     }
@@ -80,7 +80,7 @@ function generateBlobs (p, blobsArray, colors, positionX = null, positionY = nul
     const tSpeed = p.random(0.02, 0.05)
     const color = p.random(colors)
 
-    let blob = new Blob(70, offset, scale, positionX, positionY, tSpeed, color)
+    const blob = new Blob(70, offset, scale, positionX, positionY, tSpeed, color)
     blobsArray.push(blob)
   } else {
     new Array(4).fill(1).map((_, i) => {
@@ -92,7 +92,7 @@ function generateBlobs (p, blobsArray, colors, positionX = null, positionY = nul
       const tSpeed = p.random(0.02, 0.06)
       const color = colors[i % 4]
 
-      let blob = new Blob(250, offset, scale, x, y, tSpeed, color)
+      const blob = new Blob(250, offset, scale, x, y, tSpeed, color)
       blobsArray.push(blob)
     })
   }

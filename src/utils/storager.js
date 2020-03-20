@@ -1,4 +1,4 @@
-let storageLocal = {
+const storageLocal = {
   name: 'localStorage',
   set: (obj, callback) => {
     const key = Object.keys(obj)[0]
@@ -22,6 +22,6 @@ let storageLocal = {
 
 // Default using: chrome.storage.sync
 // eslint-disable-next-line no-undef
-let storager = process.env.NODE_ENV === 'development' ? storageLocal : chrome.storage.sync
+const storager = process.env.NODE_ENV === 'development' ? storageLocal : chrome.storage.sync
 
 export default storager

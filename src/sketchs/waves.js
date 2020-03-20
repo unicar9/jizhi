@@ -52,14 +52,14 @@ class Mountain {
 
     p.beginShape()
     for (let x = 0; x <= p.width + 25; x += 25) {
-      let yoff = p.map(
+      const yoff = p.map(
         p.noise(xoff + this.offset, this.t + this.offset),
         0,
         1,
         0,
         200
       )
-      let y = this.y - yoff
+      const y = this.y - yoff
       p.vertex(x, y)
 
       xoff += 0.08
@@ -73,17 +73,17 @@ class Mountain {
 }
 
 function growMountains (p, mountains) {
-  let colorSelected = p.random(wavesColors)
-  let c = p.color(colorSelected.hex)
+  const colorSelected = p.random(wavesColors)
+  const c = p.color(colorSelected.hex)
 
   const colorNameDiv = document.getElementById('color-name')
   if (colorNameDiv) colorNameDiv.innerText = colorSelected.name
 
   new Array(5).fill(1).map((_, i) => {
-    let a = 255 - 50 * i
+    const a = 255 - 50 * i
     c.setAlpha(a)
-    let h = p.height - 50 * i
-    let m = new Mountain(c, h, p)
+    const h = p.height - 50 * i
+    const m = new Mountain(c, h, p)
     mountains.push(m)
   })
 }

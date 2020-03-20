@@ -42,7 +42,8 @@ class HorizontalVerses extends Component {
 
 HorizontalVerses.propTypes = {
   verses: PropTypes.object,
-  className: PropTypes.string,
+  bgOption: PropTypes.string,
+  versesLayout: PropTypes.string,
   engineOption: PropTypes.string
 }
 

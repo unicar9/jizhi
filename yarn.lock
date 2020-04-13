@@ -3980,10 +3980,10 @@ eventsource@^1.0.7:
   dependencies:
     original "^1.0.0"
 
-evergreen-ui@^4.19.1:
-  version "4.23.3"
-  resolved "https://registry.yarnpkg.com/evergreen-ui/-/evergreen-ui-4.23.3.tgz#a22282ed5e5a88ebad916dc34302d72e6a66e74c"
-  integrity sha512-ZsH4cuWvlg7GDy84IDbAiWKH6mA1Bvs/pZ2eVfOwZFyKK9nm7izX6Ib3fnfT74CH1uGp9+owpA+41XeH7g3KQw==
+evergreen-ui@^4.25.0:
+  version "4.25.0"
+  resolved "https://registry.yarnpkg.com/evergreen-ui/-/evergreen-ui-4.25.0.tgz#dd62e69d7017b2dbfac961a308775acd203c2edd"
+  integrity sha512-5DuaxlvstmfIsNGw0FtcUjxQTNq0qHrgaXYZVueVmcr2BqVpotB9W3e0gLASIZD5HfJC6r7o2spIGpsb9+C0Dg==
   dependencies:
     "@babel/runtime" "^7.1.2"
     "@blueprintjs/icons" "^3.2.0"
@@ -4001,7 +4001,7 @@ evergreen-ui@^4.19.1:
     react-tiny-virtual-list "^2.1.4"
     react-transition-group "^2.5.0"
     tinycolor2 "^1.4.1"
-    ui-box "^2.1.2"
+    ui-box "^3.2.0"
 
 evp_bytestokey@^1.0.0, evp_bytestokey@^1.0.3:
   version "1.0.3"
@@ -9539,10 +9539,10 @@ uglify-js@^3.1.4:
     commander "~2.20.3"
     source-map "~0.6.1"
 
-ui-box@^2.1.2:
-  version "2.1.3"
-  resolved "https://registry.yarnpkg.com/ui-box/-/ui-box-2.1.3.tgz#f2ef9c549d8c60dfdd7fbdea36d7956b96a814fa"
-  integrity sha512-taaEYH+tKdTXkrv0hVPl6NCGf5XAo+a940+/czsnWR0JYtnS4THMXo7nmzQzD/4MzD9PKG721hlPgTwHQbrBMQ==
+ui-box@^3.2.0:
+  version "3.2.0"
+  resolved "https://registry.yarnpkg.com/ui-box/-/ui-box-3.2.0.tgz#113a6b49ee60db2ba16747d7ef40835cc917eff5"
+  integrity sha512-C4wmRn0TKLLEStgMl5HYt+8ngV8ekQgZDS3qS5zQRqu/mGPGLzx1aDakb/GwSwYuREkKeNIhiovwLiZpsmNBjQ==
   dependencies:
     "@emotion/hash" "^0.7.1"
     inline-style-prefixer "^5.0.4"

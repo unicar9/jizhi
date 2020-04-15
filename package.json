@@ -11,7 +11,7 @@
     "lint:fix": "yarn lint --fix"
   },
   "dependencies": {
-    "archiver": "^3.1.1",
+    "archiver": "^4.0.1",
     "chalk": "^4.0.0",
     "evergreen-ui": "^4.19.1",
     "handlebars": "^4.7.6",

@@ -45,8 +45,8 @@ class App extends Component {
       const localShici = DEFAULT_SHICI_LIST[Math.floor(Math.random() * DEFAULT_SHICI_LIST.length)]
       Storager.set({ verses: localShici })
     })
-    idiomLoad(result => {
-      Storager.set({ verses: result.data })
+    idiomLoad(data => {
+      Storager.set({ verses: data })
     }, err => {
       this.setState({ errMessage: err.errMessage })
       const localShici = DEFAULT_SHICI_LIST[Math.floor(Math.random() * DEFAULT_SHICI_LIST.length)]

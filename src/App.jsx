@@ -4,6 +4,7 @@ import P5Wrapper from 'react-p5-wrapper'
 import waves from './sketchs/waves'
 import blobs from './sketchs/blobs'
 import Verses from './components/Verses'
+import Idioms from './components/Idioms'
 import ConfigMenu from './components/ConfigMenu'
 import SearchInput from './components/SearchInput'
 import { saveBackground } from './utils'
@@ -37,25 +38,21 @@ class App extends Component {
   }
 
   componentDidMount () {
-    if (this.state.isShici) {
-      shiciLoad(result => {
-        Storager.set({ verses: result.data })
-      }, err => {
-        this.setState({ errMessage: err.errMessage })
-        const localShici = DEFAULT_SHICI_LIST[Math.floor(Math.random() * DEFAULT_SHICI_LIST.length)]
-        Storager.set({ verses: localShici })
-      })
-    } else {
-      idiomLoad(result => {
-        Storager.set({ verses: result.data })
-      }, err => {
-        this.setState({ errMessage: err.errMessage })
-        const localShici = DEFAULT_SHICI_LIST[Math.floor(Math.random() * DEFAULT_SHICI_LIST.length)]
-        Storager.set({ verses: localShici })
-      })
-    }
-
-    Storager.get(['verses', 'versesLayout', 'selected', 'colorStayChecked', 'defaultPlayChecked', 'engineOption', 'showSearchBarChecked'], res => {
+    shiciLoad(result => {
+      Storager.set({ verses: result.data })
+    }, err => {
+      this.setState({ errMessage: err.errMessage })
+      const localShici = DEFAULT_SHICI_LIST[Math.floor(Math.random() * DEFAULT_SHICI_LIST.length)]
+      Storager.set({ verses: localShici })
+    })
+    idiomLoad(result => {
+      Storager.set({ verses: result.data })
+    }, err => {
+      this.setState({ errMessage: err.errMessage })
+      const localShici = DEFAULT_SHICI_LIST[Math.floor(Math.random() * DEFAULT_SHICI_LIST.length)]
+      Storager.set({ verses: localShici })
+    })
+    Storager.get(['verses', 'versesLayout', 'selected', 'colorStayChecked', 'defaultPlayChecked', 'engineOption', 'showSearchBarChecked', 'isShici'], res => {
       this.setState({
         showSearchBarChecked: !!res.showSearchBarChecked,
         colorStayChecked: !!res.colorStayChecked,
@@ -64,7 +61,8 @@ class App extends Component {
         isPlaying: res.defaultPlayChecked !== false,
         verses: res.verses || DEFAULT_SHICI,
         selected: res.selected || WAVES,
-        engineOption: res.engineOption || GOOGLE_SEARCH
+        engineOption: res.engineOption || GOOGLE_SEARCH,
+        isShici: !!res.isShici
       })
     })
   }
@@ -141,6 +139,13 @@ class App extends Component {
         {selected === WAVES && <div id='color-name' className={colorStayChecked ? '' : 'fadeout'} />}
         {isShici &&
           <Verses
+            bgOption={selected}
+            verses={verses}
+            versesLayout={isVerticalVerses ? VERTICAL : HORIZONTAL}
+            engineOption={engineOption}
+          />}
+        {!isShici &&
+          <Idioms
             bgOption={selected}
             verses={verses}
             versesLayout={isVerticalVerses ? VERTICAL : HORIZONTAL}

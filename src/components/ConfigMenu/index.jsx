@@ -18,6 +18,7 @@ class ConfigMenu extends Component {
 
   render () {
     const {
+      isShici,
       isPlaying,
       onPlayPauseSelect,
       showSearchBarChecked,
@@ -31,7 +32,8 @@ class ConfigMenu extends Component {
       selected,
       onBgOptionChange,
       engineOption,
-      onEngineOptionChange
+      onEngineOptionChange,
+      onDisplayShiciChange
     } = this.props
 
     return (
@@ -68,6 +70,15 @@ class ConfigMenu extends Component {
               <Menu.Divider />
 
               <Menu.Group title='设置'>
+                <Menu.Item intent='success'>
+                  <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                    {isShici ? '显示成语' : '显示诗词'}
+                    <Switch
+                      checked={isShici}
+                      onChange={onDisplayShiciChange}
+                    />
+                  </div>
+                </Menu.Item>
                 <Menu.Item intent='success'>
                   <div style={{ display: 'flex', justifyContent: 'space-between' }}>
                     默认播放动画
@@ -145,6 +156,7 @@ class ConfigMenu extends Component {
 
 ConfigMenu.propTypes = {
   children: PropTypes.any,
+  isShici: PropTypes.bool,
   showSearchBarChecked: PropTypes.func,
   onShowSearchBarChange: PropTypes.func,
   onPlayPauseSelect: PropTypes.func.isRequired,
@@ -158,7 +170,8 @@ ConfigMenu.propTypes = {
   selected: PropTypes.string,
   onBgOptionChange: PropTypes.func,
   engineOption: PropTypes.string,
-  onEngineOptionChange: PropTypes.func
+  onEngineOptionChange: PropTypes.func,
+  onDisplayShiciChange: PropTypes.func
 }
 
 export default ConfigMenu

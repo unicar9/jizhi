@@ -9,7 +9,8 @@ import SearchInput from './components/SearchInput'
 import { saveBackground } from './utils'
 import Storager from './utils/storager'
 import { InlineAlert } from 'evergreen-ui'
-import { load } from './utils/jinrishici'
+import { load as shiciLoad } from './utils/jinrishici'
+import { load as idiomLoad } from './utils/idiom'
 import { HORIZONTAL, VERTICAL, WAVES, GOOGLE_SEARCH, DEFAULT_SHICI } from './constants/app-constants'
 
 import './styles/app.scss'
@@ -21,6 +22,7 @@ class App extends Component {
     super()
 
     this.state = {
+      isShici: true,
       isPlaying: true,
       showSearchBarChecked: false,
       defaultPlayChecked: true,
@@ -35,13 +37,23 @@ class App extends Component {
   }
 
   componentDidMount () {
-    load(result => {
-      Storager.set({ verses: result.data })
-    }, err => {
-      this.setState({ errMessage: err.errMessage })
-      const localShici = DEFAULT_SHICI_LIST[Math.floor(Math.random() * DEFAULT_SHICI_LIST.length)]
-      Storager.set({ verses: localShici })
-    })
+    if (this.state.isShici) {
+      shiciLoad(result => {
+        Storager.set({ verses: result.data })
+      }, err => {
+        this.setState({ errMessage: err.errMessage })
+        const localShici = DEFAULT_SHICI_LIST[Math.floor(Math.random() * DEFAULT_SHICI_LIST.length)]
+        Storager.set({ verses: localShici })
+      })
+    } else {
+      idiomLoad(result => {
+        Storager.set({ verses: result.data })
+      }, err => {
+        this.setState({ errMessage: err.errMessage })
+        const localShici = DEFAULT_SHICI_LIST[Math.floor(Math.random() * DEFAULT_SHICI_LIST.length)]
+        Storager.set({ verses: localShici })
+      })
+    }
 
     Storager.get(['verses', 'versesLayout', 'selected', 'colorStayChecked', 'defaultPlayChecked', 'engineOption', 'showSearchBarChecked'], res => {
       this.setState({
@@ -91,6 +103,14 @@ class App extends Component {
     })
   }
 
+  handleDisplayShiciChange = () => {
+    this.setState({
+      isShici: !this.state.isShici
+    }, () => {
+      Storager.set({ isShici: this.state.isShici })
+    })
+  }
+
   handleBgOptionChange = selected => {
     this.setState({ selected }, () => {
       Storager.set({ selected })
@@ -113,21 +133,23 @@ class App extends Component {
   handleBlur = () => this.setState({ focused: false })
 
   render () {
-    const { verses, isVerticalVerses, isPlaying, showSearchBarChecked, defaultPlayChecked, colorStayChecked, selected, errMessage, engineOption, value, focused } = this.state
+    const { verses, isVerticalVerses, isShici, isPlaying, showSearchBarChecked, defaultPlayChecked, colorStayChecked, selected, errMessage, engineOption, value, focused } = this.state
     const sketches = { blobs, waves }
 
     return selected ? (
       <div className='App' tabIndex='-1' onKeyPress={this.handleKeyPress}>
         {selected === WAVES && <div id='color-name' className={colorStayChecked ? '' : 'fadeout'} />}
-        <Verses
-          bgOption={selected}
-          verses={verses}
-          versesLayout={isVerticalVerses ? VERTICAL : HORIZONTAL}
-          engineOption={engineOption}
-        />
+        {isShici &&
+          <Verses
+            bgOption={selected}
+            verses={verses}
+            versesLayout={isVerticalVerses ? VERTICAL : HORIZONTAL}
+            engineOption={engineOption}
+          />}
         <P5Wrapper sketch={sketches[selected]} isPlaying={isPlaying} />
         <ConfigMenu
           onPlayPauseSelect={this.handlePlayPauseSelect}
+          isShici={isShici}
           isPlaying={isPlaying}
           isVerticalVerses={isVerticalVerses}
           showSearchBarChecked={showSearchBarChecked}
@@ -141,6 +163,7 @@ class App extends Component {
           onBgOptionChange={this.handleBgOptionChange}
           engineOption={engineOption}
           onEngineOptionChange={this.handleEngineOptionChange}
+          onDisplayShiciChange={this.handleDisplayShiciChange}
         >
           {errMessage &&
             <div style={{ height: 30 }}>

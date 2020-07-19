@@ -46,13 +46,13 @@ class App extends Component {
       Storager.set({ verses: localShici })
     })
     idiomLoad(data => {
-      Storager.set({ verses: data })
+      Storager.set({ idioms: data })
     }, err => {
       this.setState({ errMessage: err.errMessage })
       const localShici = DEFAULT_SHICI_LIST[Math.floor(Math.random() * DEFAULT_SHICI_LIST.length)]
       Storager.set({ verses: localShici })
     })
-    Storager.get(['verses', 'versesLayout', 'selected', 'colorStayChecked', 'defaultPlayChecked', 'engineOption', 'showSearchBarChecked', 'isShici'], res => {
+    Storager.get(['verses', 'idioms', 'versesLayout', 'selected', 'colorStayChecked', 'defaultPlayChecked', 'engineOption', 'showSearchBarChecked', 'isShici'], res => {
       this.setState({
         showSearchBarChecked: !!res.showSearchBarChecked,
         colorStayChecked: !!res.colorStayChecked,
@@ -60,6 +60,7 @@ class App extends Component {
         isVerticalVerses: res.versesLayout === VERTICAL,
         isPlaying: res.defaultPlayChecked !== false,
         verses: res.verses || DEFAULT_SHICI,
+        idioms: res.idioms || DEFAULT_SHICI,
         selected: res.selected || WAVES,
         engineOption: res.engineOption || GOOGLE_SEARCH,
         isShici: !!res.isShici
@@ -131,7 +132,7 @@ class App extends Component {
   handleBlur = () => this.setState({ focused: false })
 
   render () {
-    const { verses, isVerticalVerses, isShici, isPlaying, showSearchBarChecked, defaultPlayChecked, colorStayChecked, selected, errMessage, engineOption, value, focused } = this.state
+    const { verses, idioms, isVerticalVerses, isShici, isPlaying, showSearchBarChecked, defaultPlayChecked, colorStayChecked, selected, errMessage, engineOption, value, focused } = this.state
     const sketches = { blobs, waves }
 
     return selected ? (
@@ -147,7 +148,7 @@ class App extends Component {
         {!isShici &&
           <Idioms
             bgOption={selected}
-            verses={verses}
+            idioms={idioms}
             versesLayout={isVerticalVerses ? VERTICAL : HORIZONTAL}
             engineOption={engineOption}
           />}

@@ -109,7 +109,7 @@ class ConfigMenu extends Component {
                 </Menu.Item>
                 <Menu.Item intent='success'>
                   <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                    竖版诗词
+                    竖版显示
                     <Switch
                       checked={isVerticalVerses}
                       onChange={onVersesLayoutChange}

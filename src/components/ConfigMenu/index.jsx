@@ -65,20 +65,19 @@ class ConfigMenu extends Component {
                 >
                   {isPlaying ? '暂停动画' : '播放动画'}
                 </Menu.Item>
+                <Menu.Item
+                  icon={isShici ? 'minus' : 'list-columns'}
+                  intent='success'
+                  onSelect={onDisplayShiciChange}
+                  // secondaryText='Space'
+                >
+                  {isShici ? '显示成语' : '显示诗词'}
+                </Menu.Item>
               </Menu.Group>
 
               <Menu.Divider />
 
               <Menu.Group title='设置'>
-                <Menu.Item intent='success'>
-                  <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                    {isShici ? '显示成语' : '显示诗词'}
-                    <Switch
-                      checked={isShici}
-                      onChange={onDisplayShiciChange}
-                    />
-                  </div>
-                </Menu.Item>
                 <Menu.Item intent='success'>
                   <div style={{ display: 'flex', justifyContent: 'space-between' }}>
                     默认播放动画

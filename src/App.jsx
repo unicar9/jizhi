@@ -17,6 +17,7 @@ import { HORIZONTAL, VERTICAL, WAVES, GOOGLE_SEARCH, DEFAULT_SHICI } from './con
 import './styles/app.scss'
 
 const DEFAULT_SHICI_LIST = require('./constants/shici.json')
+const DEFAULT_IDIOM_LIST = require('./constants/idiom.json')
 
 class App extends Component {
   constructor (props) {
@@ -49,8 +50,8 @@ class App extends Component {
       Storager.set({ idioms: data })
     }, err => {
       this.setState({ errMessage: err.errMessage })
-      const localShici = DEFAULT_SHICI_LIST[Math.floor(Math.random() * DEFAULT_SHICI_LIST.length)]
-      Storager.set({ verses: localShici })
+      const localIdiom = DEFAULT_IDIOM_LIST[Math.floor(Math.random() * DEFAULT_IDIOM_LIST.length)]
+      Storager.set({ verses: localIdiom })
     })
     Storager.get(['verses', 'idioms', 'versesLayout', 'selected', 'colorStayChecked', 'defaultPlayChecked', 'engineOption', 'showSearchBarChecked', 'isShici'], res => {
       this.setState({

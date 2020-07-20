@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Icon } from 'evergreen-ui'
 import PropTypes from 'prop-types'
 import { VERTICAL } from '../constants/app-constants'
-import { pureWords } from '../utils'
+import { pureWords, cleanIdioms } from '../utils'
 
 class HorizontalIdioms extends Component {
   render () {
@@ -22,7 +22,11 @@ class HorizontalIdioms extends Component {
 
     const searchLink = `${engineOption}${word}`
     const classes = `verses ${bgOption} ${versesLayout}`
-    const filteredContent = versesLayout === VERTICAL ? pureWords(explanation) : explanation
+    const cleanedExplanation = cleanIdioms(explanation)
+    const filteredContent = versesLayout === VERTICAL ? pureWords(cleanedExplanation) : cleanedExplanation
+    // const pinyins = pinyin.split(' ')
+    // const words = word.split('')
+    // console.assert(pinyins.length == words.length)
 
     return (
       <div className={classes}>

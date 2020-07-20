@@ -7,7 +7,7 @@ function load (callback, errHandler) {
       const data = res[Math.floor(Math.random() * res.length)]
       callback(data)
     } else {
-      errHandler(res)
+      errHandler({ errMessage: '没有缓存的成语，正为您展示本地成语' })
     }
   })
   updateIdioms(data => {

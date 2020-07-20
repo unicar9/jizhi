@@ -8,6 +8,11 @@ export const DEFAULT_SHICI = {
   }
 }
 
+export const DEFAULT_IDIOM = {
+  explanation: '用不着多说。',
+  word: '毋庸赘述'
+}
+
 export const WAVES = 'waves'
 export const BLOBS = 'blobs'
 export const HORIZONTAL = 'horizontal'

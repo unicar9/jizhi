@@ -12,7 +12,7 @@ import Storager from './utils/storager'
 import { InlineAlert } from 'evergreen-ui'
 import { load as shiciLoad } from './utils/jinrishici'
 import { load as idiomLoad } from './utils/idiom'
-import { HORIZONTAL, VERTICAL, WAVES, GOOGLE_SEARCH, DEFAULT_SHICI } from './constants/app-constants'
+import { HORIZONTAL, VERTICAL, WAVES, GOOGLE_SEARCH, DEFAULT_SHICI, DEFAULT_IDIOM } from './constants/app-constants'
 
 import './styles/app.scss'
 
@@ -51,7 +51,7 @@ class App extends Component {
     }, err => {
       this.setState({ errMessage: err.errMessage })
       const localIdiom = DEFAULT_IDIOM_LIST[Math.floor(Math.random() * DEFAULT_IDIOM_LIST.length)]
-      Storager.set({ verses: localIdiom })
+      Storager.set({ idioms: localIdiom })
     })
     Storager.get(['verses', 'idioms', 'versesLayout', 'selected', 'colorStayChecked', 'defaultPlayChecked', 'engineOption', 'showSearchBarChecked', 'isShici'], res => {
       this.setState({
@@ -61,7 +61,7 @@ class App extends Component {
         isVerticalVerses: res.versesLayout === VERTICAL,
         isPlaying: res.defaultPlayChecked !== false,
         verses: res.verses || DEFAULT_SHICI,
-        idioms: res.idioms || DEFAULT_SHICI,
+        idioms: res.idioms || DEFAULT_IDIOM,
         selected: res.selected || WAVES,
         engineOption: res.engineOption || GOOGLE_SEARCH,
         isShici: !!res.isShici

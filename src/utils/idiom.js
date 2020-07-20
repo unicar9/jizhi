@@ -16,7 +16,7 @@ function load (callback, errHandler) {
   }, 'https://raw.githubusercontent.com/pwxcoo/chinese-xinhua/master/data/idiom.json')
 }
 
-function updateIdioms (callback, errHandler, apiUrl) {
+function updateIdioms (callback, apiUrl) {
   var xhr = new XMLHttpRequest()
   xhr.open('get', apiUrl)
   xhr.withCredentials = false

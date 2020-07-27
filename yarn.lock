@@ -3979,10 +3979,10 @@ eventsource@^1.0.7:
   dependencies:
     original "^1.0.0"
 
-evergreen-ui@^4.25.0:
-  version "4.25.0"
-  resolved "https://registry.yarnpkg.com/evergreen-ui/-/evergreen-ui-4.25.0.tgz#dd62e69d7017b2dbfac961a308775acd203c2edd"
-  integrity sha512-5DuaxlvstmfIsNGw0FtcUjxQTNq0qHrgaXYZVueVmcr2BqVpotB9W3e0gLASIZD5HfJC6r7o2spIGpsb9+C0Dg==
+evergreen-ui@^4.29.0:
+  version "4.29.0"
+  resolved "https://registry.yarnpkg.com/evergreen-ui/-/evergreen-ui-4.29.0.tgz#bc06894004ec105f672e9008d809c8011bfc41ae"
+  integrity sha512-33jOMsTMGwjEFm/I+LaRPuQdkLzxOMisyQ2IHr2KLCCF1/TTLOm9VRkUBQX2/ZQnluPbwrHgk7G/h+jFiz8tZQ==
   dependencies:
     "@babel/runtime" "^7.1.2"
     "@blueprintjs/icons" "^3.2.0"
@@ -3994,8 +3994,9 @@ evergreen-ui@^4.25.0:
     fuzzaldrin-plus "^0.6.0"
     glamor "^2.20.40"
     lodash.debounce "^4.0.8"
-    lodash.mapvalues "^4.6.0"
+    lodash.startcase "^4.4.0"
     prop-types "^15.6.2"
+    react-is "^16.13.1"
     react-scrollbar-size "^2.0.2"
     react-tiny-virtual-list "^2.1.4"
     react-transition-group "^2.5.0"
@@ -6332,11 +6333,6 @@ lodash.isplainobject@^4.0.6:
   resolved "https://registry.yarnpkg.com/lodash.isplainobject/-/lodash.isplainobject-4.0.6.tgz#7c526a52d89b45c45cc690b88163be0497f550cb"
   integrity sha1-fFJqUtibRcRcxpC4gWO+BJf1UMs=
 
-lodash.mapvalues@^4.6.0:
-  version "4.6.0"
-  resolved "https://registry.yarnpkg.com/lodash.mapvalues/-/lodash.mapvalues-4.6.0.tgz#1bafa5005de9dd6f4f26668c30ca37230cc9689c"
-  integrity sha1-G6+lAF3p3W9PJmaMMMo3IwzJaJw=
-
 lodash.omit@^4.5.0:
   version "4.5.0"
   resolved "https://registry.yarnpkg.com/lodash.omit/-/lodash.omit-4.5.0.tgz#6eb19ae5a1ee1dd9df0b969e66ce0b7fa30b5e60"
@@ -6346,6 +6342,11 @@ lodash.sortby@^4.7.0:
   version "4.7.0"
   resolved "https://registry.yarnpkg.com/lodash.sortby/-/lodash.sortby-4.7.0.tgz#edd14c824e2cc9c1e0b0a1b42bb5210516a42438"
   integrity sha1-7dFMgk4sycHgsKG0K7UhBRakJDg=
+
+lodash.startcase@^4.4.0:
+  version "4.4.0"
+  resolved "https://registry.yarnpkg.com/lodash.startcase/-/lodash.startcase-4.4.0.tgz#9436e34ed26093ed7ffae1936144350915d9add8"
+  integrity sha1-lDbjTtJgk+1/+uGTYUQ1CRXZrdg=
 
 lodash.union@^4.6.0:
   version "4.6.0"
@@ -7935,7 +7936,7 @@ react-hot-loader@^4:
     shallowequal "^1.1.0"
     source-map "^0.7.3"
 
-react-is@^16.12.0, react-is@^16.7.0, react-is@^16.8.1, react-is@^16.8.6, react-is@^16.9.0:
+react-is@^16.12.0, react-is@^16.13.1, react-is@^16.7.0, react-is@^16.8.1, react-is@^16.8.6, react-is@^16.9.0:
   version "16.13.1"
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.13.1.tgz#789729a4dc36de2999dc156dd6c1d9c18cea56a4"
   integrity sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==

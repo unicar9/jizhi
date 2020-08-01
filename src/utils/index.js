@@ -32,3 +32,11 @@ export const cleanIdioms = (idiom = '') => {
   const regex = /[\u201D]/gi
   return idiom.replace(regex, '')
 }
+
+export const cleanExample = (example = '', word = '') => {
+  if (example === '无') {
+    return ''
+  } else {
+    return example.replace('～', word)
+  }
+}

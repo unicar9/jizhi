@@ -1,0 +1,98 @@
+@import './colors';
+@import './mixins';
+
+.idioms {
+  font-family: 'FZXiJinLJW';
+  position: absolute;
+  transform: translate(-50%, -50%);
+  left: 50vw;
+  text-align: center;
+  opacity: .8;
+  word-break: keep-all;
+
+  #pinyin {
+    font-size: calc(0.8vw);
+    word-spacing: 0.4vw;
+    opacity: 0;
+    transition: all 200ms ease-in;
+  }
+
+  #idioms-content {
+    font-size: calc(30px + 1vw);
+    width: 80vw;
+  }
+
+  #idioms-origin {
+    display: flex;
+    margin-top: 1em;
+    font-size: calc(10px + 1vw);
+    justify-content: center;
+    align-items: center;
+
+    .stamp {
+      color: $white;
+      background-color: $dark-red;
+      border-radius: 3px;
+      padding: 3px 4px 3px 3px;
+      margin: .5em;
+      font-size: 67%;
+      letter-spacing: -1px;
+    }
+  }
+  #idioms-example {
+    display: flex;
+    margin-top: 1em;
+    font-size: calc(1vw);
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: all 200ms ease-in;
+  }
+}
+
+.idioms.horizontal {
+  transition: top 500ms ease-in-out;
+  @include fadein(horizontalFadein);
+}
+
+.idioms.vertical {
+  text-align: left;
+  top: 50vh;
+  transform: translate(-50%, -80%);
+  writing-mode: vertical-rl;
+  @include fadein(verticalFadein);
+
+  #idioms-content {
+    width: auto;
+    line-height: 1.35;
+  }
+
+  #idioms-origin {
+    margin: 0;
+    margin-right: 10px;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    word-break: keep-all;
+
+    .stamp {
+      padding: 3px 2px 4px;
+    }
+  }
+}
+
+.idioms:hover .origin-search-icon {
+  opacity: .5;
+}
+
+.idioms:hover #pinyin {
+  opacity: 0.7;
+}
+
+.idioms:hover #idioms-example {
+  opacity: 0.7;
+}
+
+.origin-search-icon {
+  opacity: 0;
+  transition: all 200ms ease-in;
+}

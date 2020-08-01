@@ -17,15 +17,15 @@ class HorizontalIdioms extends Component {
       },
       engineOption,
       bgOption,
-      versesLayout
+      idiomsLayout
     } = this.props
 
     const searchLink = `${engineOption}${word}`
-    const classes = `idioms ${bgOption} ${versesLayout}`
+    const classes = `idioms ${bgOption} ${idiomsLayout}`
     const cleanedExplanation = cleanIdioms(explanation)
-    const filteredContent = versesLayout === VERTICAL ? pureWords(cleanedExplanation) : cleanedExplanation
+    const filteredContent = idiomsLayout === VERTICAL ? pureWords(cleanedExplanation) : cleanedExplanation
     const cleanedExample = cleanExample(example, word)
-    const filteredExample = versesLayout === VERTICAL ? pureWords(cleanedExample) : cleanedExample
+    const filteredExample = idiomsLayout === VERTICAL ? pureWords(cleanedExample) : cleanedExample
 
     return (
       <div className={classes}>
@@ -50,7 +50,7 @@ class HorizontalIdioms extends Component {
 HorizontalIdioms.propTypes = {
   idioms: PropTypes.object,
   bgOption: PropTypes.string,
-  versesLayout: PropTypes.string,
+  idiomsLayout: PropTypes.string,
   engineOption: PropTypes.string
 }
 

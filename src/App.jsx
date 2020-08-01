@@ -150,7 +150,7 @@ class App extends Component {
           <Idioms
             bgOption={selected}
             idioms={idioms}
-            versesLayout={isVerticalVerses ? VERTICAL : HORIZONTAL}
+            idiomsLayout={isVerticalVerses ? VERTICAL : HORIZONTAL}
             engineOption={engineOption}
           />}
         <P5Wrapper sketch={sketches[selected]} isPlaying={isPlaying} />

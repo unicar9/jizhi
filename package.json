@@ -25,7 +25,7 @@
   },
   "devDependencies": {
     "@neutrinojs/copy": "^9.0.0-rc.0",
-    "@neutrinojs/jest": "^9.0.0-rc.0",
+    "@neutrinojs/jest": "^9.3.0",
     "@neutrinojs/react": "^9.0.0-rc.0",
     "@neutrinojs/standardjs": "^9.0.0-rc.0",
     "copy-webpack-plugin": "^5.0.4",

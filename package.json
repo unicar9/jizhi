@@ -12,7 +12,7 @@
   },
   "dependencies": {
     "archiver": "^3.1.1",
-    "chalk": "^4.0.0",
+    "chalk": "^4.1.0",
     "evergreen-ui": "^4.19.1",
     "handlebars": "^4.7.6",
     "node-sass": "^4.12.0",

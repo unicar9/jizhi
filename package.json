@@ -24,7 +24,7 @@
     "retina-dom-to-image": "^2.5.6"
   },
   "devDependencies": {
-    "@neutrinojs/copy": "^9.0.0-rc.0",
+    "@neutrinojs/copy": "^9.4.0",
     "@neutrinojs/jest": "^9.0.0-rc.0",
     "@neutrinojs/react": "^9.0.0-rc.0",
     "@neutrinojs/standardjs": "^9.0.0-rc.0",

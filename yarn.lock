@@ -1083,10 +1083,10 @@
     "@babel/core" "^7.8.3"
     babel-loader "^8.0.6"
 
-"@neutrinojs/copy@^9.0.0-rc.0":
-  version "9.1.0"
-  resolved "https://registry.yarnpkg.com/@neutrinojs/copy/-/copy-9.1.0.tgz#b5d8850380c6009d9ddf36c21beda0a556f4e5a1"
-  integrity sha512-U2OEUPRYQGIPTF2Ka7hoxJiMDWYJH8ipsqXn/YhNh7EWnPjjG99cHU7k622EAgF7Cb6vLG3zlVha/lO3fRn9qQ==
+"@neutrinojs/copy@^9.4.0":
+  version "9.4.0"
+  resolved "https://registry.yarnpkg.com/@neutrinojs/copy/-/copy-9.4.0.tgz#258b72297c2feac32d3fc756175fa539c0543d62"
+  integrity sha512-8Ki7aFHZV+3FNHTDNPfIfOHYVAVDVrv1GGiyHwEGpXEjYIioSVT9KlWXanJpNEJZ2MkEduhljL7mcM5+5yBRcg==
   dependencies:
     copy-webpack-plugin "^5.1.1"
 

@@ -18,7 +18,7 @@ const DEFAULT_SHICI_LIST = require('./constants/shici.json')
 
 class App extends Component {
   constructor (props) {
-    super()
+    super(props)
 
     this.state = {
       isPlaying: true,
@@ -57,36 +57,36 @@ class App extends Component {
     })
   }
 
-  handlePlayPauseSelect = () => this.setState({ isPlaying: !this.state.isPlaying })
+  handlePlayPauseSelect = () => this.setState((state) => ({ isPlaying: !state.isPlaying }))
 
   handleShowSearchBarChange = () => {
-    this.setState({
-      showSearchBarChecked: !this.state.showSearchBarChecked
-    }, () => {
+    this.setState((state) => ({
+      showSearchBarChecked: !state.showSearchBarChecked
+    }), () => {
       Storager.set({ showSearchBarChecked: this.state.showSearchBarChecked })
     })
   }
 
   handleVersesLayoutChange = () => {
-    this.setState({
-      isVerticalVerses: !this.state.isVerticalVerses
-    }, () => {
+    this.setState((state) => ({
+      isVerticalVerses: !state.isVerticalVerses
+    }), () => {
       Storager.set({ versesLayout: this.state.isVerticalVerses ? VERTICAL : HORIZONTAL })
     })
   }
 
   handleDefaultPlayChange = () => {
-    this.setState({
-      defaultPlayChecked: !this.state.defaultPlayChecked
-    }, () => {
+    this.setState((state) => ({
+      defaultPlayChecked: !state.defaultPlayChecked
+    }), () => {
       Storager.set({ defaultPlayChecked: this.state.defaultPlayChecked })
     })
   }
 
   handleColorStayChange = () => {
-    this.setState({
-      colorStayChecked: !this.state.colorStayChecked
-    }, () => {
+    this.setState((state) => ({
+      colorStayChecked: !state.colorStayChecked
+    }), () => {
       Storager.set({ colorStayChecked: this.state.colorStayChecked })
     })
   }
@@ -99,7 +99,7 @@ class App extends Component {
 
   handleKeyPress = ({ charCode, altKey }) => {
     // space
-    if (charCode === 32) this.setState({ isPlaying: !this.state.isPlaying })
+    if (charCode === 32) this.setState((state) => ({ isPlaying: !state.isPlaying }))
     // S + alt
     if (charCode === 223 && altKey) saveBackground()
   }

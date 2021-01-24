@@ -1,5 +1,12 @@
 import React, { Component } from 'react'
-import { Popover, Menu, Position, Switch, Icon, SegmentedControl } from 'evergreen-ui'
+import {
+  Popover,
+  Menu,
+  Position,
+  Switch,
+  Icon,
+  SegmentedControl
+} from 'evergreen-ui'
 import PropTypes from 'prop-types'
 import Legal from './Legal'
 import SaveBgMenuItem from './SaveBgMenuItem'
@@ -69,7 +76,9 @@ class ConfigMenu extends Component {
 
               <Menu.Group title='设置'>
                 <Menu.Item intent='success'>
-                  <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                  <div
+                    style={{ display: 'flex', justifyContent: 'space-between' }}
+                  >
                     默认播放动画
                     <Switch
                       checked={defaultPlayChecked}
@@ -79,7 +88,12 @@ class ConfigMenu extends Component {
                 </Menu.Item>
                 {selected === 'waves' && (
                   <Menu.Item intent='success'>
-                    <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                    <div
+                      style={{
+                        display: 'flex',
+                        justifyContent: 'space-between'
+                      }}
+                    >
                       保留颜色名称
                       <Switch
                         checked={colorStayChecked}
@@ -89,7 +103,9 @@ class ConfigMenu extends Component {
                   </Menu.Item>
                 )}
                 <Menu.Item intent='success'>
-                  <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                  <div
+                    style={{ display: 'flex', justifyContent: 'space-between' }}
+                  >
                     显示搜索框
                     <Switch
                       checked={showSearchBarChecked}
@@ -98,7 +114,9 @@ class ConfigMenu extends Component {
                   </div>
                 </Menu.Item>
                 <Menu.Item intent='success'>
-                  <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                  <div
+                    style={{ display: 'flex', justifyContent: 'space-between' }}
+                  >
                     竖版诗词
                     <Switch
                       checked={isVerticalVerses}
@@ -114,9 +132,15 @@ class ConfigMenu extends Component {
                   <SegmentedControl
                     width={300}
                     options={[
-                      { label: 'Google', value: 'https://www.google.com/search?q=' },
+                      {
+                        label: 'Google',
+                        value: 'https://www.google.com/search?q='
+                      },
                       { label: 'Baidu', value: 'https://www.baidu.com/s?wd=' },
-                      { label: 'Bing', value: 'https://www.bing.com/search?q=' }
+                      {
+                        label: 'Bing',
+                        value: 'https://www.bing.com/search?q='
+                      }
                     ]}
                     value={engineOption}
                     onChange={onEngineOptionChange}
@@ -144,7 +168,8 @@ class ConfigMenu extends Component {
 }
 
 ConfigMenu.propTypes = {
-  onSaveSelect: PropTypes.func,
+  showSearchBarChecked: PropTypes.bool.isRequired,
+  onShowSearchBarChange: PropTypes.func.isRequired,
   onPlayPauseSelect: PropTypes.func.isRequired,
   onVersesLayoutChange: PropTypes.func.isRequired,
   isVerticalVerses: PropTypes.bool.isRequired,
@@ -156,7 +181,8 @@ ConfigMenu.propTypes = {
   selected: PropTypes.string,
   onBgOptionChange: PropTypes.func,
   engineOption: PropTypes.string,
-  onEngineOptionChange: PropTypes.func
+  onEngineOptionChange: PropTypes.func,
+  children: PropTypes.any
 }
 
 export default ConfigMenu

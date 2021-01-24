@@ -9,10 +9,7 @@ class HorizontalVerses extends Component {
     const {
       verses: {
         content,
-        origin: {
-          author,
-          title
-        }
+        origin: { author, title }
       },
       engineOption,
       bgOption,
@@ -21,7 +18,8 @@ class HorizontalVerses extends Component {
 
     const searchLink = `${engineOption}${author} ${title}`
     const classes = `verses ${bgOption} ${versesLayout}`
-    const filteredContent = versesLayout === VERTICAL ? pureWords(content) : content
+    const filteredContent =
+      versesLayout === VERTICAL ? pureWords(content) : content
 
     return (
       <div className={classes}>
@@ -42,8 +40,9 @@ class HorizontalVerses extends Component {
 
 HorizontalVerses.propTypes = {
   verses: PropTypes.object,
-  className: PropTypes.string,
-  engineOption: PropTypes.string
+  engineOption: PropTypes.string,
+  versesLayout: PropTypes.string,
+  bgOption: PropTypes.string
 }
 
 export default HorizontalVerses

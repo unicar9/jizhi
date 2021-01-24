@@ -10,7 +10,13 @@ import { saveBackground } from './utils'
 import Storager from './utils/storager'
 import { InlineAlert } from 'evergreen-ui'
 import { load } from './utils/jinrishici'
-import { HORIZONTAL, VERTICAL, WAVES, GOOGLE_SEARCH, DEFAULT_SHICI } from './constants/app-constants'
+import {
+  HORIZONTAL,
+  VERTICAL,
+  WAVES,
+  GOOGLE_SEARCH,
+  DEFAULT_SHICI
+} from './constants/app-constants'
 
 import './styles/app.scss'
 
@@ -35,63 +41,95 @@ class App extends Component {
   }
 
   componentDidMount () {
-    load(result => {
-      Storager.set({ verses: result.data })
-    }, err => {
-      this.setState({ errMessage: err.errMessage })
-      const localShici = DEFAULT_SHICI_LIST[Math.floor(Math.random() * DEFAULT_SHICI_LIST.length)]
-      Storager.set({ verses: localShici })
-    })
+    load(
+      (result) => {
+        Storager.set({ verses: result.data })
+      },
+      (err) => {
+        this.setState({ errMessage: err.errMessage })
+        const localShici =
+          DEFAULT_SHICI_LIST[
+            Math.floor(Math.random() * DEFAULT_SHICI_LIST.length)
+          ]
+        Storager.set({ verses: localShici })
+      }
+    )
 
-    Storager.get(['verses', 'versesLayout', 'selected', 'colorStayChecked', 'defaultPlayChecked', 'engineOption', 'showSearchBarChecked'], res => {
-      this.setState({
-        showSearchBarChecked: !!res.showSearchBarChecked,
-        colorStayChecked: !!res.colorStayChecked,
-        defaultPlayChecked: res.defaultPlayChecked !== false,
-        isVerticalVerses: res.versesLayout === VERTICAL,
-        isPlaying: res.defaultPlayChecked !== false,
-        verses: res.verses || DEFAULT_SHICI,
-        selected: res.selected || WAVES,
-        engineOption: res.engineOption || GOOGLE_SEARCH
-      })
-    })
+    Storager.get(
+      [
+        'verses',
+        'versesLayout',
+        'selected',
+        'colorStayChecked',
+        'defaultPlayChecked',
+        'engineOption',
+        'showSearchBarChecked'
+      ],
+      (res) => {
+        this.setState({
+          showSearchBarChecked: !!res.showSearchBarChecked,
+          colorStayChecked: !!res.colorStayChecked,
+          defaultPlayChecked: res.defaultPlayChecked !== false,
+          isVerticalVerses: res.versesLayout === VERTICAL,
+          isPlaying: res.defaultPlayChecked !== false,
+          verses: res.verses || DEFAULT_SHICI,
+          selected: res.selected || WAVES,
+          engineOption: res.engineOption || GOOGLE_SEARCH
+        })
+      }
+    )
   }
 
-  onPlayPauseSelect = () => this.setState({ isPlaying: !this.state.isPlaying })
+  handlePlayPauseSelect = () =>
+    this.setState({ isPlaying: !this.state.isPlaying })
 
-  onShowSearchBarChange = () => {
-    this.setState({
-      showSearchBarChecked: !this.state.showSearchBarChecked
-    }, () => {
-      Storager.set({ showSearchBarChecked: this.state.showSearchBarChecked })
-    })
+  handleShowSearchBarChange = () => {
+    this.setState(
+      {
+        showSearchBarChecked: !this.state.showSearchBarChecked
+      },
+      () => {
+        Storager.set({ showSearchBarChecked: this.state.showSearchBarChecked })
+      }
+    )
   }
 
-  onVersesLayoutChange = () => {
-    this.setState({
-      isVerticalVerses: !this.state.isVerticalVerses
-    }, () => {
-      Storager.set({ versesLayout: this.state.isVerticalVerses ? VERTICAL : HORIZONTAL })
-    })
+  handleVersesLayoutChange = () => {
+    this.setState(
+      {
+        isVerticalVerses: !this.state.isVerticalVerses
+      },
+      () => {
+        Storager.set({
+          versesLayout: this.state.isVerticalVerses ? VERTICAL : HORIZONTAL
+        })
+      }
+    )
   }
 
-  onDefaultPlayChange = () => {
-    this.setState({
-      defaultPlayChecked: !this.state.defaultPlayChecked
-    }, () => {
-      Storager.set({ defaultPlayChecked: this.state.defaultPlayChecked })
-    })
+  handleDefaultPlayChange = () => {
+    this.setState(
+      {
+        defaultPlayChecked: !this.state.defaultPlayChecked
+      },
+      () => {
+        Storager.set({ defaultPlayChecked: this.state.defaultPlayChecked })
+      }
+    )
   }
 
-  onColorStayChange = () => {
-    this.setState({
-      colorStayChecked: !this.state.colorStayChecked
-    }, () => {
-      Storager.set({ colorStayChecked: this.state.colorStayChecked })
-    })
+  handleColorStayChange = () => {
+    this.setState(
+      {
+        colorStayChecked: !this.state.colorStayChecked
+      },
+      () => {
+        Storager.set({ colorStayChecked: this.state.colorStayChecked })
+      }
+    )
   }
 
-  onBgOptionChange = selected => {
+  handleBgOptionChange = (selected) => {
     this.setState({ selected }, () => {
       Storager.set({ selected })
     })
@@ -104,7 +142,8 @@ class App extends Component {
     if (charCode === 223 && altKey) saveBackground()
   }
 
-  onEngineOptionChange = engineOption => this.setState({ engineOption }, () => Storager.set({ engineOption }))
+  handleEngineOptionChange = (engineOption) =>
+    this.setState({ engineOption }, () => Storager.set({ engineOption }))
 
   handleChange = ({ target: { value } }) => this.setState({ value })
 
@@ -113,12 +152,26 @@ class App extends Component {
   handleBlur = () => this.setState({ focused: false })
 
   render () {
-    const { verses, isVerticalVerses, isPlaying, showSearchBarChecked, defaultPlayChecked, colorStayChecked, selected, errMessage, engineOption, value, focused } = this.state
+    const {
+      verses,
+      isVerticalVerses,
+      isPlaying,
+      showSearchBarChecked,
+      defaultPlayChecked,
+      colorStayChecked,
+      selected,
+      errMessage,
+      engineOption,
+      value,
+      focused
+    } = this.state
     const sketches = { blobs, waves }
 
     return selected ? (
       <div className='App' tabIndex='-1' onKeyPress={this.handleKeyPress}>
-        {selected === WAVES && <div id='color-name' className={colorStayChecked ? '' : 'fadeout'} />}
+        {selected === WAVES && (
+          <div id='color-name' className={colorStayChecked ? '' : 'fadeout'} />
+        )}
         <Verses
           bgOption={selected}
           verses={verses}
@@ -127,37 +180,39 @@ class App extends Component {
         />
         <P5Wrapper sketch={sketches[selected]} isPlaying={isPlaying} />
         <ConfigMenu
-          onPlayPauseSelect={this.onPlayPauseSelect}
+          onPlayPauseSelect={this.handlePlayPauseSelect}
           isPlaying={isPlaying}
           isVerticalVerses={isVerticalVerses}
           showSearchBarChecked={showSearchBarChecked}
-          onShowSearchBarChange={this.onShowSearchBarChange}
+          onShowSearchBarChange={this.handleShowSearchBarChange}
           defaultPlayChecked={defaultPlayChecked}
-          onDefaultPlayChange={this.onDefaultPlayChange}
-          onVersesLayoutChange={this.onVersesLayoutChange}
+          onDefaultPlayChange={this.handleDefaultPlayChange}
+          onVersesLayoutChange={this.handleVersesLayoutChange}
           colorStayChecked={colorStayChecked}
-          onColorStayChange={this.onColorStayChange}
+          onColorStayChange={this.handleColorStayChange}
           selected={selected}
-          onBgOptionChange={this.onBgOptionChange}
+          onBgOptionChange={this.handleBgOptionChange}
           engineOption={engineOption}
-          onEngineOptionChange={this.onEngineOptionChange}
+          onEngineOptionChange={this.handleEngineOptionChange}
         >
-          {errMessage && <div style={{ height: 30 }}>
-            <InlineAlert intent='warning' marginLeft={20} marginRight={20}>
-              {errMessage}
-            </InlineAlert>
-          </div>}
+          {errMessage && (
+            <div style={{ height: 30 }}>
+              <InlineAlert intent='warning' marginLeft={20} marginRight={20}>
+                {errMessage}
+              </InlineAlert>
+            </div>
+          )}
         </ConfigMenu>
-        {showSearchBarChecked &&
+        {showSearchBarChecked && (
           <SearchInput
             value={value}
             focused={focused}
-            handleFocus={this.handleFocus}
-            handleBlur={this.handleBlur}
-            handleChange={this.handleChange}
+            onFocus={this.handleFocus}
+            onBlur={this.handleBlur}
+            onChange={this.handleChange}
             engineOption={engineOption}
           />
-        }
+        )}
       </div>
     ) : null
   }

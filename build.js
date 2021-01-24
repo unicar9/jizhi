@@ -4,6 +4,8 @@ const path = require('path')
 const archiver = require('archiver')
 const log = console.log
 
+log(process.argv.slice(2))
+
 const browsers = {
   chrome: {
     name: 'chrome',
@@ -60,5 +62,6 @@ const getArchive = browser => {
   archive.finalize()
 }
 
+// generate archive for different browsers
 getArchive('chrome')
 getArchive('firefox')

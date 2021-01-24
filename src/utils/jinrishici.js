@@ -19,7 +19,7 @@ limitations under the License.
 
 const keyName = 'jinrishici-token'
 
-function load (callback, errHandler) {
+const load = (callback, errHandler) {
   if (window.localStorage && window.localStorage.getItem(keyName)) {
     return commonLoad(callback, errHandler, window.localStorage.getItem(keyName))
   } else {
@@ -27,7 +27,8 @@ function load (callback, errHandler) {
   }
 }
 
-function corsLoad (callback, errHandler) {
+
+const corsLoad = (callback, errHandler) => {
   const newCallBack = function (result) {
     window.localStorage.setItem(keyName, result.token)
     callback(result)
@@ -35,18 +36,18 @@ function corsLoad (callback, errHandler) {
   return sendRequest(newCallBack, errHandler, 'https://v2.jinrishici.com/one.json?client=npm-sdk/1.0')
 }
 
-function commonLoad (callback, errHandler, token) {
+const commonLoad = (callback, errHandler, token) => {
   return sendRequest(callback, errHandler, 'https://v2.jinrishici.com/one.json?client=npm-sdk/1.0&X-User-Token=' + encodeURIComponent(token))
 }
 
-function sendRequest (callback, errHandler, apiUrl) {
-  var xhr = new XMLHttpRequest()
+const sendRequest = (callback, errHandler, apiUrl) => {
+  const xhr = new XMLHttpRequest()
   xhr.open('get', apiUrl)
   xhr.withCredentials = true
   xhr.send()
   xhr.onreadystatechange = function () {
     if (xhr.readyState === 4) {
-      var data = xhr.responseText ? JSON.parse(xhr.responseText) : { errMessage: '无法获取诗词，请检查网络连接，正为您显示本地诗词...' }
+      let data = xhr.responseText ? JSON.parse(xhr.responseText) : { errMessage: '无法获取诗词，请检查网络连接，正为您显示本地诗词...' }
       if (data.status === 'success') {
         callback(data)
       } else {

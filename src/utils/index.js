@@ -2,7 +2,7 @@ import domtoimage from 'retina-dom-to-image'
 
 export const saveBackground = () => {
   const node = document.getElementById('root')
-  const githubLink = `https://github.com/unicar9/jizhi/issues`
+  const githubLink = 'https://github.com/unicar9/jizhi/issues'
   domtoimage.toPng(node)
     .then(function (dataUrl) {
       var link = document.createElement('a')

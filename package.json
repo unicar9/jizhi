@@ -40,7 +40,7 @@
     "jest": "^25",
     "neutrino": "^9.5.0",
     "prettier": "^2.2.1",
-    "sass-loader": "^8.0.0",
+    "sass-loader": "^10.1.1",
     "webpack": "^4",
     "webpack-cli": "^3",
     "webpack-dev-server": "^3"

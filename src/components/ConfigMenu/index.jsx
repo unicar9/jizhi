@@ -143,14 +143,9 @@ class ConfigMenu extends Component {
 }
 
 ConfigMenu.propTypes = {
-<<<<<<< HEAD
-  showSearchBarChecked: PropTypes.bool.isRequired,
-  onShowSearchBarChange: PropTypes.func.isRequired,
-=======
   children: PropTypes.any,
   showSearchBarChecked: PropTypes.func,
   onShowSearchBarChange: PropTypes.func,
->>>>>>> 5f1bf7772c58bead3f56d1c390b5c32f8f8be9e0
   onPlayPauseSelect: PropTypes.func.isRequired,
   onVersesLayoutChange: PropTypes.func.isRequired,
   isVerticalVerses: PropTypes.bool.isRequired,
@@ -163,11 +158,6 @@ ConfigMenu.propTypes = {
   onBgOptionChange: PropTypes.func,
   engineOption: PropTypes.string,
   onEngineOptionChange: PropTypes.func,
-<<<<<<< HEAD
-  children: PropTypes.any
-}
-=======
 };
->>>>>>> 5f1bf7772c58bead3f56d1c390b5c32f8f8be9e0
 
 export default ConfigMenu;

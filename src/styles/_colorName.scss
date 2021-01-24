@@ -1,10 +1,10 @@
 #color-name {
-  font-family: "FZXiJinLJW";
+  font-family: 'FZXiJinLJW';
   position: absolute;
   font-size: calc(100px + 5vw);
   right: 0;
   top: 0;
-  color: rgba(0, 0, 0, .1);
+  color: rgba(0, 0, 0, 0.1);
   opacity: 1;
   writing-mode: vertical-rl;
   white-space: nowrap;
@@ -17,7 +17,13 @@
 }
 
 @keyframes fadeOut {
-  0% { opacity: 1; }
-  50% { opacity: 1; }
-  100% { opacity: 0; }
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
 }

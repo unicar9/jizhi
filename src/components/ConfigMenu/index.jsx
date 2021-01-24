@@ -1,22 +1,22 @@
-import React, { Component } from 'react'
-import { Popover, Menu, Position, Switch, Icon, SegmentedControl } from 'evergreen-ui'
-import PropTypes from 'prop-types'
-import Legal from './Legal'
-import SaveBgMenuItem from './SaveBgMenuItem'
+import React, { Component } from 'react';
+import { Popover, Menu, Position, Switch, Icon, SegmentedControl } from 'evergreen-ui';
+import PropTypes from 'prop-types';
+import Legal from './Legal';
+import SaveBgMenuItem from './SaveBgMenuItem';
 
 class ConfigMenu extends Component {
-  constructor (props) {
-    super()
+  constructor(props) {
+    super(props);
     this.state = {
-      isOpen: false
-    }
+      isOpen: false,
+    };
   }
 
-  handleOnOpen = () => this.setState({ isOpen: true })
+  handleOnOpen = () => this.setState({ isOpen: true });
 
-  handleOnClose = () => this.setState({ isOpen: false })
+  handleOnClose = () => this.setState({ isOpen: false });
 
-  render () {
+  render() {
     const {
       isPlaying,
       onPlayPauseSelect,
@@ -31,11 +31,11 @@ class ConfigMenu extends Component {
       selected,
       onBgOptionChange,
       engineOption,
-      onEngineOptionChange
-    } = this.props
+      onEngineOptionChange,
+    } = this.props;
 
     return (
-      <div id='menu' data-html2canvas-ignore>
+      <div id="menu" data-html2canvas-ignore>
         <Popover
           position={Position.BOTTOM_LEFT}
           onOpen={this.handleOnOpen}
@@ -43,23 +43,23 @@ class ConfigMenu extends Component {
           content={
             <Menu>
               <Menu.OptionsGroup
-                title='背景'
+                title="背景"
                 options={[
                   { label: 'Waves', value: 'waves' },
-                  { label: 'Blobs', value: 'blobs' }
+                  { label: 'Blobs', value: 'blobs' },
                 ]}
                 selected={selected}
                 onChange={onBgOptionChange}
               />
               <Menu.Divider />
 
-              <Menu.Group title='操作'>
+              <Menu.Group title="操作">
                 <SaveBgMenuItem />
                 <Menu.Item
                   icon={isPlaying ? 'pause' : 'play'}
-                  intent='success'
+                  intent="success"
                   onSelect={onPlayPauseSelect}
-                  secondaryText='Space'
+                  secondaryText="Space"
                 >
                   {isPlaying ? '暂停动画' : '播放动画'}
                 </Menu.Item>
@@ -67,56 +67,55 @@ class ConfigMenu extends Component {
 
               <Menu.Divider />
 
-              <Menu.Group title='设置'>
-                <Menu.Item intent='success'>
+              <Menu.Group title="设置">
+                <Menu.Item intent="success">
                   <div style={{ display: 'flex', justifyContent: 'space-between' }}>
                     默认播放动画
-                    <Switch
-                      checked={defaultPlayChecked}
-                      onChange={onDefaultPlayChange}
-                    />
+                    <Switch checked={defaultPlayChecked} onChange={onDefaultPlayChange} />
                   </div>
                 </Menu.Item>
                 {selected === 'waves' && (
-                  <Menu.Item intent='success'>
-                    <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                  <Menu.Item intent="success">
+                    <div
+                      style={{
+                        display: 'flex',
+                        justifyContent: 'space-between',
+                      }}
+                    >
                       保留颜色名称
-                      <Switch
-                        checked={colorStayChecked}
-                        onChange={onColorStayChange}
-                      />
+                      <Switch checked={colorStayChecked} onChange={onColorStayChange} />
                     </div>
                   </Menu.Item>
                 )}
-                <Menu.Item intent='success'>
+                <Menu.Item intent="success">
                   <div style={{ display: 'flex', justifyContent: 'space-between' }}>
                     显示搜索框
-                    <Switch
-                      checked={showSearchBarChecked}
-                      onChange={onShowSearchBarChange}
-                    />
+                    <Switch checked={showSearchBarChecked} onChange={onShowSearchBarChange} />
                   </div>
                 </Menu.Item>
-                <Menu.Item intent='success'>
+                <Menu.Item intent="success">
                   <div style={{ display: 'flex', justifyContent: 'space-between' }}>
                     竖版诗词
-                    <Switch
-                      checked={isVerticalVerses}
-                      onChange={onVersesLayoutChange}
-                    />
+                    <Switch checked={isVerticalVerses} onChange={onVersesLayoutChange} />
                   </div>
                 </Menu.Item>
               </Menu.Group>
               <Menu.Divider />
 
-              <Menu.Group title='搜索引擎'>
+              <Menu.Group title="搜索引擎">
                 <div style={{ margin: 16 }}>
                   <SegmentedControl
                     width={300}
                     options={[
-                      { label: 'Google', value: 'https://www.google.com/search?q=' },
+                      {
+                        label: 'Google',
+                        value: 'https://www.google.com/search?q=',
+                      },
                       { label: 'Baidu', value: 'https://www.baidu.com/s?wd=' },
-                      { label: 'Bing', value: 'https://www.bing.com/search?q=' }
+                      {
+                        label: 'Bing',
+                        value: 'https://www.bing.com/search?q=',
+                      },
                     ]}
                     value={engineOption}
                     onChange={onEngineOptionChange}
@@ -131,15 +130,15 @@ class ConfigMenu extends Component {
           }
         >
           <Icon
-            id='menu-btn'
-            icon='cog'
+            id="menu-btn"
+            icon="cog"
             size={20}
-            color='white'
+            color="white"
             className={this.state.isOpen && 'open'}
           />
         </Popover>
       </div>
-    )
+    );
   }
 }
 
@@ -158,7 +157,7 @@ ConfigMenu.propTypes = {
   selected: PropTypes.string,
   onBgOptionChange: PropTypes.func,
   engineOption: PropTypes.string,
-  onEngineOptionChange: PropTypes.func
-}
+  onEngineOptionChange: PropTypes.func,
+};
 
-export default ConfigMenu
+export default ConfigMenu;

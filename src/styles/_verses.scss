@@ -7,7 +7,7 @@
   transform: translate(-50%, -50%);
   left: 50vw;
   text-align: center;
-  opacity: .8;
+  opacity: 0.8;
   word-break: keep-all;
   #verses-content {
     font-size: calc(30px + 1vw);
@@ -24,7 +24,7 @@
       background-color: $dark-red;
       border-radius: 3px;
       padding: 3px 4px 3px 3px;
-      margin: .5em;
+      margin: 0.5em;
       font-size: 67%;
       letter-spacing: -1px;
     }
@@ -53,14 +53,14 @@
     justify-content: flex-start;
     flex-wrap: wrap;
     word-break: keep-all;
-    .stamp{
+    .stamp {
       padding: 3px 2px 4px;
     }
   }
 }
 
 #verses-origin:hover .origin-search-icon {
-  opacity: .5;
+  opacity: 0.5;
 }
 
 .origin-search-icon {

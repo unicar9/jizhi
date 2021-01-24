@@ -6,7 +6,7 @@
   left: 30px;
   display: flex;
   align-items: center;
-  opacity: .4;
+  opacity: 0.4;
 
   input {
     outline: none;
@@ -23,10 +23,10 @@
     opacity: 0;
 
     &:hover {
-      opacity: .4;
+      opacity: 0.4;
     }
     &.active {
-      opacity: .8;
+      opacity: 0.8;
     }
   }
 }

@@ -1,4 +1,4 @@
-export const blobsColors = [
+const blobsColors = [
   ['#84A6C9', '#FEC1D2', '#FF64B8', '#E3378D'],
   ['#ffd7e8', '#f2c0ff', '#bf9fee', '#866ec7'],
   ['#00a8b5', '#774898', '#de4383', '#f3ae4b'],
@@ -7,5 +7,7 @@ export const blobsColors = [
   ['#6fe7dd', '#3490de', '#6639a6', '#521262'],
   ['#1fab89', '#62d2a2', '#9df3c4', '#d7fbe8'],
   ['#071a52', '#086972', '#17b978', '#a7ff83'],
-  ['#071a52', '#086972', '#17b978', '#a7ff83']
-]
+  ['#071a52', '#086972', '#17b978', '#a7ff83'],
+];
+
+export { blobsColors as default };

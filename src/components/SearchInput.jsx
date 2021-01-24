@@ -1,23 +1,23 @@
-import React, { Component } from 'react'
-import { Icon } from 'evergreen-ui'
-import PropTypes from 'prop-types'
+import React, { Component } from 'react';
+import { Icon } from 'evergreen-ui';
+import PropTypes from 'prop-types';
 
 class SearchInput extends Component {
-  render () {
-    const { engineOption, value, focused, handleFocus, handleBlur, handleChange } = this.props
+  render() {
+    const { engineOption, value, focused, onFocus, onBlur, onChange } = this.props;
     return (
-      <form id='jizhi-search' action={engineOption.split('?')[0]} data-html2canvas-ignore>
-        <Icon id='jizhi-search-icon' icon='search' size={16} />
+      <form id="jizhi-search" action={engineOption.split('?')[0]} data-html2canvas-ignore>
+        <Icon id="jizhi-search-icon" icon="search" size={16} />
         <input
-          className={(focused || value) ? 'active' : null}
-          onFocus={handleFocus}
-          onBlur={handleBlur}
-          onChange={handleChange}
+          className={focused || value ? 'active' : null}
+          onFocus={onFocus}
+          onBlur={onBlur}
+          onChange={onChange}
           name={engineOption.split('.')[1] === 'baidu' ? 'wd' : 'q'}
-          autoComplete='off'
+          autoComplete="off"
         />
       </form>
-    )
+    );
   }
 }
 
@@ -25,9 +25,9 @@ SearchInput.propTypes = {
   value: PropTypes.string,
   focused: PropTypes.bool,
   engineOption: PropTypes.string,
-  handleFocus: PropTypes.func,
-  handleBlur: PropTypes.func,
-  handleChange: PropTypes.func
-}
+  onFocus: PropTypes.func,
+  onBlur: PropTypes.func,
+  onChange: PropTypes.func,
+};
 
-export default SearchInput
+export default SearchInput;

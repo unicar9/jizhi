@@ -1,30 +1,30 @@
-import React, { Component } from 'react'
-import { hot } from 'react-hot-loader'
-import P5Wrapper from 'react-p5-wrapper'
-import waves from './sketchs/waves'
-import blobs from './sketchs/blobs'
-import Verses from './components/Verses'
-import ConfigMenu from './components/ConfigMenu'
-import SearchInput from './components/SearchInput'
-import { saveBackground } from './utils'
-import Storager from './utils/storager'
-import { InlineAlert } from 'evergreen-ui'
-import { load } from './utils/jinrishici'
+import React, { Component } from 'react';
+import { hot } from 'react-hot-loader';
+import P5Wrapper from 'react-p5-wrapper';
+import { InlineAlert } from 'evergreen-ui';
+import waves from './sketchs/waves';
+import blobs from './sketchs/blobs';
+import Verses from './components/Verses';
+import ConfigMenu from './components/ConfigMenu';
+import SearchInput from './components/SearchInput';
+import { saveBackground } from './utils';
+import Storager from './utils/storager';
+import { load } from './utils/jinrishici';
 import {
   HORIZONTAL,
   VERTICAL,
   WAVES,
   GOOGLE_SEARCH,
-  DEFAULT_SHICI
-} from './constants/app-constants'
+  DEFAULT_SHICI,
+} from './constants/app-constants';
 
-import './styles/app.scss'
+import './styles/app.scss';
 
-const DEFAULT_SHICI_LIST = require('./constants/shici.json')
+const DEFAULT_SHICI_LIST = require('./constants/shici.json');
 
 class App extends Component {
-  constructor (props) {
-    super()
+  constructor(props) {
+    super(props);
 
     this.state = {
       isPlaying: true,
@@ -36,24 +36,22 @@ class App extends Component {
       errMessage: '',
       engineOption: GOOGLE_SEARCH,
       value: '',
-      focused: false
-    }
+      focused: false,
+    };
   }
 
-  componentDidMount () {
+  componentDidMount() {
     load(
       (result) => {
-        Storager.set({ verses: result.data })
+        Storager.set({ verses: result.data });
       },
       (err) => {
-        this.setState({ errMessage: err.errMessage })
+        this.setState({ errMessage: err.errMessage });
         const localShici =
-          DEFAULT_SHICI_LIST[
-            Math.floor(Math.random() * DEFAULT_SHICI_LIST.length)
-          ]
-        Storager.set({ verses: localShici })
+          DEFAULT_SHICI_LIST[Math.floor(Math.random() * DEFAULT_SHICI_LIST.length)];
+        Storager.set({ verses: localShici });
       }
-    )
+    );
 
     Storager.get(
       [
@@ -63,7 +61,7 @@ class App extends Component {
         'colorStayChecked',
         'defaultPlayChecked',
         'engineOption',
-        'showSearchBarChecked'
+        'showSearchBarChecked',
       ],
       (res) => {
         this.setState({
@@ -74,84 +72,87 @@ class App extends Component {
           isPlaying: res.defaultPlayChecked !== false,
           verses: res.verses || DEFAULT_SHICI,
           selected: res.selected || WAVES,
-          engineOption: res.engineOption || GOOGLE_SEARCH
-        })
+          engineOption: res.engineOption || GOOGLE_SEARCH,
+        });
       }
-    )
+    );
   }
 
-  handlePlayPauseSelect = () =>
-    this.setState({ isPlaying: !this.state.isPlaying })
+  handlePlayPauseSelect = () => this.setState((state) => ({ isPlaying: !state.isPlaying }));
 
   handleShowSearchBarChange = () => {
     this.setState(
-      {
-        showSearchBarChecked: !this.state.showSearchBarChecked
-      },
+      (state) => ({
+        showSearchBarChecked: !state.showSearchBarChecked,
+      }),
       () => {
-        Storager.set({ showSearchBarChecked: this.state.showSearchBarChecked })
+        Storager.set({ showSearchBarChecked: this.state.showSearchBarChecked });
       }
-    )
-  }
+    );
+  };
 
   handleVersesLayoutChange = () => {
+    const { isVerticalVerses } = this.state;
+
     this.setState(
-      {
-        isVerticalVerses: !this.state.isVerticalVerses
-      },
+      (state) => ({
+        isVerticalVerses: !state.isVerticalVerses,
+      }),
       () => {
         Storager.set({
-          versesLayout: this.state.isVerticalVerses ? VERTICAL : HORIZONTAL
-        })
+          versesLayout: isVerticalVerses ? VERTICAL : HORIZONTAL,
+        });
       }
-    )
-  }
+    );
+  };
 
   handleDefaultPlayChange = () => {
+    const { defaultPlayChecked } = this.state;
     this.setState(
-      {
-        defaultPlayChecked: !this.state.defaultPlayChecked
-      },
+      (state) => ({
+        defaultPlayChecked: !state.defaultPlayChecked,
+      }),
       () => {
-        Storager.set({ defaultPlayChecked: this.state.defaultPlayChecked })
+        Storager.set({ defaultPlayChecked });
       }
-    )
-  }
+    );
+  };
 
   handleColorStayChange = () => {
+    // const { colorStayChecked } = this.state;
     this.setState(
-      {
-        colorStayChecked: !this.state.colorStayChecked
-      },
+      (state) => ({
+        colorStayChecked: !state.colorStayChecked,
+      }),
       () => {
-        Storager.set({ colorStayChecked: this.state.colorStayChecked })
+        Storager.set({ colorStayChecked: this.state.colorStayChecked });
       }
-    )
-  }
+    );
+  };
 
   handleBgOptionChange = (selected) => {
     this.setState({ selected }, () => {
-      Storager.set({ selected })
-    })
-  }
+      Storager.set({ selected });
+    });
+  };
 
   handleKeyPress = ({ charCode, altKey }) => {
     // space
-    if (charCode === 32) this.setState({ isPlaying: !this.state.isPlaying })
+    if (charCode === 32) this.setState((state) => ({ isPlaying: !state.isPlaying }));
     // S + alt
-    if (charCode === 223 && altKey) saveBackground()
-  }
+    if (charCode === 223 && altKey) saveBackground();
+  };
 
   handleEngineOptionChange = (engineOption) =>
-    this.setState({ engineOption }, () => Storager.set({ engineOption }))
+    this.setState({ engineOption }, () => Storager.set({ engineOption }));
 
-  handleChange = ({ target: { value } }) => this.setState({ value })
+  handleChange = ({ target: { value } }) => this.setState({ value });
 
-  handleFocus = () => this.setState({ focused: true })
+  handleFocus = () => this.setState({ focused: true });
 
-  handleBlur = () => this.setState({ focused: false })
+  handleBlur = () => this.setState({ focused: false });
 
-  render () {
+  render() {
     const {
       verses,
       isVerticalVerses,
@@ -163,14 +164,14 @@ class App extends Component {
       errMessage,
       engineOption,
       value,
-      focused
-    } = this.state
-    const sketches = { blobs, waves }
+      focused,
+    } = this.state;
+    const sketches = { blobs, waves };
 
     return selected ? (
-      <div className='App' tabIndex='-1' onKeyPress={this.handleKeyPress}>
+      <div className="App" tabIndex="-1" onKeyPress={this.handleKeyPress}>
         {selected === WAVES && (
-          <div id='color-name' className={colorStayChecked ? '' : 'fadeout'} />
+          <div id="color-name" className={colorStayChecked ? '' : 'fadeout'} />
         )}
         <Verses
           bgOption={selected}
@@ -197,7 +198,7 @@ class App extends Component {
         >
           {errMessage && (
             <div style={{ height: 30 }}>
-              <InlineAlert intent='warning' marginLeft={20} marginRight={20}>
+              <InlineAlert intent="warning" marginLeft={20} marginRight={20}>
                 {errMessage}
               </InlineAlert>
             </div>
@@ -214,8 +215,8 @@ class App extends Component {
           />
         )}
       </div>
-    ) : null
+    ) : null;
   }
 }
 
-export default hot(module)(App)
+export default hot(module)(App);

@@ -13,6 +13,7 @@
   },
   "dependencies": {
     "archiver": "^3.1.1",
+    "axios": "^0.21.1",
     "chalk": "^4.0.0",
     "evergreen-ui": "^4.19.1",
     "handlebars": "^4.7.6",
@@ -22,7 +23,8 @@
     "react-dom": "^16",
     "react-hot-loader": "^4",
     "react-p5-wrapper": "^0.0.4",
-    "retina-dom-to-image": "^2.5.6"
+    "retina-dom-to-image": "^2.5.6",
+    "youziku": "9.0.1"
   },
   "devDependencies": {
     "@neutrinojs/copy": "^9.5.0",

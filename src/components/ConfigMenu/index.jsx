@@ -32,6 +32,8 @@ class ConfigMenu extends Component {
       onBgOptionChange,
       engineOption,
       onEngineOptionChange,
+      fontName,
+      onFontTypeChange,
     } = this.props;
 
     return (
@@ -123,6 +125,22 @@ class ConfigMenu extends Component {
                 </div>
               </Menu.Group>
 
+              <Menu.Group title="选择字体">
+                <div style={{ margin: 16 }}>
+                  <SegmentedControl
+                    width={300}
+                    options={[
+                      { label: '细金陵', value: 'FZXiJinLJW' },
+                      { label: '齐伋体', value: 'qiji' },
+                      { label: '冰宇雅宋', value: 'ZHBingYuYaSong' },
+                      { label: '大明宋', value: 'ZHDaMingSong' },
+                    ]}
+                    value={fontName}
+                    onChange={onFontTypeChange}
+                  />
+                </div>
+              </Menu.Group>
+
               <Menu.Divider />
               <Legal />
               {this.props.children}
@@ -158,6 +176,8 @@ ConfigMenu.propTypes = {
   onBgOptionChange: PropTypes.func,
   engineOption: PropTypes.string,
   onEngineOptionChange: PropTypes.func,
+  fontName: PropTypes.string,
+  onFontTypeChange: PropTypes.func,
 };
 
 export default ConfigMenu;

@@ -10,6 +10,19 @@ A Chrome/Firefox extension with custom new tab page featuring Chinese poems and 
 
 ## 功能请查看[更新日志](./CHANGELOG.md)
 
+---
+
+## 相关创意编程（Creative Coding）教程（我参与哒~）
+
+文字版课程搭配 Web IDE，实例多多，干货多多。很可能是中文全网 p5.js 最系统最实用的教程了。对编程和 Web 开发有兴趣的同学可以学学，应该会有不一样的体会和认识，也欢迎帮忙宣传一下：）
+
+- [p5.js 创意编程之旅 - 蓝桥云课](https://www.lanqiao.cn/courses/3117)
+
+我和国内首次 Processing 社区日的组织者之一 [Ye Qianqian](https://www.qianqian-ye.com/about.html) 也合作录过两个《几枝》相关的迷你视频教程：
+
+- [Guest Tutorial #1: p5.js Noise with Unicar - Youtube](https://www.youtube.com/watch?v=QxsFY2GOhNU&t=3s) | [bilibili](https://www.bilibili.com/video/BV1WJ411K7E4?from=search&seid=11104983032650609196)
+- [Guest Tutorial #2: Noise Waves in p5.js with Unicar - Youtube](https://www.youtube.com/watch?v=3E8Kt8Sx_x4&t=11s) | [bilibili](https://www.bilibili.com/video/BV1qJ411w7nJ?from=search&seid=11104983032650609196)
+
 ## Chrome 本地装载
 
 - 下载最新的 release 打包文件，首先运行 `yarn` 再运行 `yarn build` 生成 **builds 文件夹(包含 Chrome 和 Firefox 的 build 文件以及压缩包)**

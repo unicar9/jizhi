@@ -43,8 +43,8 @@ A Chrome/Firefox extension with custom new tab page featuring Chinese poems and 
 ## 鸣谢
 
 - 使用的字体为[方正金陵系列](http://www.foundertype.com/index.php/FontInfo/index/id/202#)的金陵细简体。
-- 层叠的波浪动画效果是利用[P5.js](http://p5js.org/)实现的。
-- 诗词名句调用使用[古诗词·一言 API](https://gushi.ci/)。
+- 层叠的波浪动画效果是利用[p5.js](http://p5js.org/)实现的。
+- 诗词名句调用使用[今日诗词 API](https://www.jinrishici.com/)。
 - 中国传统色名称及色号参考了以下来源：
   - [中国色－中国传统颜色](http://zhongguose.com/)
   - [Traditional Chinese Colors | 中国传统颜色](http://boxingp.github.io/traditional-chinese-colors/)

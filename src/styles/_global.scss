@@ -1,12 +1,11 @@
-// @font-face {
-//   font-family: 'FZXiJinLJW';
-//   src: url('../fonts/FZXiJinLJW.ttf') format('truetype');
-// }
+:root {
+  --font-name: JXZhuoKai;
+}
 
-// @font-face {
-//   font-family: 'qiji';
-//   src: url('../fonts/qiji.woff2') format('woff2');
-// }
+@font-face {
+  font-family: 'JXZhuoKai';
+  src: url('../fonts/JXZhuoKai.woff') format('woff');
+}
 
 a {
   color: inherit;

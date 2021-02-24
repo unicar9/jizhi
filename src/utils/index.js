@@ -1,4 +1,6 @@
 import domtoimage from 'retina-dom-to-image';
+import axios from 'axios';
+import storager from './storager';
 
 function filter(node) {
   return node.id !== 'menu';
@@ -33,10 +35,28 @@ export const pureWords = (sentense = '') => {
   return sentense.replace(regex, ' ');
 };
 
-export const insertFont = (fontName, value) => {
-  console.log('Inserting font', value);
-  const style = document.createElement('style');
-  style.innerHTML = value + '.verses { font-family:' + fontName + '; }';
+export const setFont = (fontName) => {
+  document.querySelector('body').style.setProperty('--font-name', fontName);
+};
 
+export const insertFont = (fontName, data) => {
+  const style = document.createElement('style');
+  style.innerHTML = data;
   document.head.appendChild(style);
+
+  setFont(fontName);
+};
+
+export const fetchAndSetFont = (fontName) => {
+  const WEB_FONT_URL = `https://romantic-bell-b49acd.netlify.app/${fontName}.woff.json`;
+
+  return axios
+    .get(WEB_FONT_URL, { crossdomain: true })
+    .then((res) => {
+      insertFont(res.data.fontName, res.data.value);
+      storager.set({ fonts: res.data });
+    })
+    .catch((error) => {
+      console.log(error);
+    });
 };

@@ -130,10 +130,9 @@ class ConfigMenu extends Component {
                   <SegmentedControl
                     width={300}
                     options={[
-                      { label: '细金陵', value: 'FZXiJinLJW' },
-                      { label: '齐伋体', value: 'qiji' },
-                      { label: '冰宇雅宋', value: 'ZHBingYuYaSong' },
-                      { label: '大明宋', value: 'ZHDaMingSong' },
+                      { label: '江西拙楷', value: 'JXZhuoKai' },
+                      { label: '欣意吉祥宋', value: 'JiXiangSong' },
+                      { label: '方正细金陵', value: 'FZXiJinLJW' },
                     ]}
                     value={fontName}
                     onChange={onFontTypeChange}

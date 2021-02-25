@@ -32,7 +32,7 @@
     "@neutrinojs/eslint": "^9.5.0",
     "@neutrinojs/jest": "^9.5.0",
     "@neutrinojs/react": "^9.5.0",
-    "copy-webpack-plugin": "^5.0.4",
+    "copy-webpack-plugin": "^6.4.1",
     "enzyme": "^3.9.0",
     "enzyme-adapter-react-16": "^1.13.0",
     "eslint": "^7.18.0",

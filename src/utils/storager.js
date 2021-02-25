@@ -22,6 +22,6 @@ const storageLocal = {
 
 // Default using: chrome.storage.sync
 // eslint-disable-next-line no-undef
-const storager = process.env.NODE_ENV === 'development' ? storageLocal : chrome.storage.sync;
+const storager = process.env.NODE_ENV === 'development' ? storageLocal : chrome.storage.local;
 
 export default storager;

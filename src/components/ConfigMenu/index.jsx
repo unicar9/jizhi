@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Popover, Menu, Position, Switch, Icon, SegmentedControl } from 'evergreen-ui';
 import PropTypes from 'prop-types';
 import Legal from './Legal';
+import FontStatement from './FontStatement';
 import SaveBgMenuItem from './SaveBgMenuItem';
 
 class ConfigMenu extends Component {
@@ -138,6 +139,7 @@ class ConfigMenu extends Component {
                     value={fontName}
                     onChange={onFontTypeChange}
                   />
+                  <FontStatement fontName={fontName} />
                 </div>
               </Menu.Group>
 

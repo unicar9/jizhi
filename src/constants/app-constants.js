@@ -13,3 +13,18 @@ export const BLOBS = 'blobs';
 export const HORIZONTAL = 'horizontal';
 export const VERTICAL = 'vertical';
 export const DEFAULT_FONT = 'JXZhuoKai';
+
+export const FONTS_INFO = {
+  JXZhuoKai: {
+    name: '江西拙楷',
+    link: 'https://mp.weixin.qq.com/s/H_jrZJIHwNCSyUncVpyXUQ',
+  },
+  JiXiangSong: {
+    name: '欣意吉祥宋',
+    link: 'https://mp.weixin.qq.com/s/WCwaKtfAiPD8uwSBGU4dNg',
+  },
+  FZXiJinLJW: {
+    name: '方正细金陵',
+    link: 'http://www.foundertype.com/index.php/FontInfo/index/id/202#',
+  },
+};

@@ -6,5 +6,3 @@ builds
 build
 *.zip
 .eslintcache
-
-src/fonts

@@ -68,6 +68,7 @@ class App extends Component {
         'fonts',
       ],
       (res) => {
+        console.log('res', res);
         if (res.fonts && res.fontName === res.fonts.fontName) {
           insertFont(res.fontName, res.fonts.value);
         }
@@ -101,28 +102,25 @@ class App extends Component {
   };
 
   handleVersesLayoutChange = () => {
-    const { isVerticalVerses } = this.state;
-
     this.setState(
       (state) => ({
         isVerticalVerses: !state.isVerticalVerses,
       }),
       () => {
         Storager.set({
-          versesLayout: isVerticalVerses ? VERTICAL : HORIZONTAL,
+          versesLayout: this.state.isVerticalVerses ? VERTICAL : HORIZONTAL,
         });
       }
     );
   };
 
   handleDefaultPlayChange = () => {
-    const { defaultPlayChecked } = this.state;
     this.setState(
       (state) => ({
         defaultPlayChecked: !state.defaultPlayChecked,
       }),
       () => {
-        Storager.set({ defaultPlayChecked });
+        Storager.set({ defaultPlayChecked: this.state.defaultPlayChecked });
       }
     );
   };

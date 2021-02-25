@@ -58,11 +58,11 @@ A Chrome/Firefox extension with custom new tab page featuring Chinese poems and 
 ![jizhi-2.1.0 gif](https://github.com/unicar9/jizhi/blob/master/examples/jizhi-2.1.0.gif)
 ![jizhi gif](https://github.com/unicar9/jizhi/blob/master/examples/jizhi.gif)
 
-## 示例
+## 示例 - 最新版 2.4.0
 
-![jizhi bg 1](https://github.com/unicar9/jizhi/blob/master/examples/jizhi-bg-1.jpg)
-![jizhi bg 2](https://github.com/unicar9/jizhi/blob/master/examples/jizhi-bg-2.jpg)
-![jizhi bg 3](https://github.com/unicar9/jizhi/blob/master/examples/jizhi-bg-3.jpg)
+![bg-1](https://github.com/unicar9/jizhi/blob/master/examples/jizhi-2.4.0-1.jpg)
+![bg-2](https://github.com/unicar9/jizhi/blob/master/examples/jizhi-2.4.0-2.jpg)
+![bg-3](https://github.com/unicar9/jizhi/blob/master/examples/jizhi-2.4.0-3.jpg)
 
 ## 鸣谢
 

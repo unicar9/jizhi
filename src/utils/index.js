@@ -35,10 +35,28 @@ export const pureWords = (sentense = '') => {
   return sentense.replace(regex, ' ');
 };
 
-export const insertFont = (fontName, value) => {
+export const setFont = (fontName) => {
+  document.querySelector('body').style.setProperty('--font-name', fontName);
+};
+
+export const insertFont = (fontName, data) => {
   const style = document.createElement('style');
-  style.innerHTML = value + `.verses {font-family: ${fontName}}`;
+  style.innerHTML = data;
   document.head.appendChild(style);
+
+  setFont(fontName);
+};
+
+export const fetchAndSetFont = async (fontName) => {
+  const WEB_FONT_URL = `https://romantic-bell-b49acd.netlify.app/${fontName}.woff.json`;
+
+  try {
+    const res = await axios.get(WEB_FONT_URL, { crossdomain: true });
+    insertFont(res.data.fontName, res.data.value);
+    storager.set({ fonts: res.data });
+  } catch (error) {
+    console.log(error);
+  }
 };
 
 export const setFontFamily = (fontName, elementId) => {

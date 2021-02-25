@@ -7,7 +7,7 @@ import blobs from './sketchs/blobs';
 import Verses from './components/Verses';
 import ConfigMenu from './components/ConfigMenu';
 import SearchInput from './components/SearchInput';
-import { saveBackground, insertFont, setFontFamily, fetchAndStoreFont } from './utils';
+import { saveBackground, insertFont, fetchAndSetFont, setFont } from './utils';
 import Storager from './utils/storager';
 import { load } from './utils/jinrishici';
 import {
@@ -68,8 +68,10 @@ class App extends Component {
         'fonts',
       ],
       (res) => {
-        console.log('res', res);
-        const fontName = res.fontName || DEFAULT_FONT;
+        if (res.fonts && res.fontName === res.fonts.fontName) {
+          insertFont(res.fontName, res.fonts.value);
+        }
+
         this.setState({
           showSearchBarChecked: !!res.showSearchBarChecked,
           colorStayChecked: !!res.colorStayChecked,
@@ -79,7 +81,7 @@ class App extends Component {
           verses: res.verses || DEFAULT_SHICI,
           selected: res.selected || WAVES,
           engineOption: res.engineOption || GOOGLE_SEARCH,
-          fontName: fontName,
+          fontName: res.fontName || DEFAULT_FONT,
         });
 
         if (res.fonts && res.fonts.fontName == fontName) {
@@ -131,7 +133,6 @@ class App extends Component {
   };
 
   handleColorStayChange = () => {
-    // const { colorStayChecked } = this.state;
     this.setState(
       (state) => ({
         colorStayChecked: !state.colorStayChecked,
@@ -156,6 +157,18 @@ class App extends Component {
   };
 
   handleFontTypeChange = (fontName) => {
+    if (fontName === DEFAULT_FONT) {
+      setFont(fontName);
+    } else {
+      Storager.get(['fonts'], (res) => {
+        if (res.fonts && res.fonts.fontName === fontName) {
+          insertFont(fontName, res.fonts.value);
+        } else {
+          fetchAndSetFont(fontName);
+        }
+      });
+    }
+
     this.setState({ fontName }, () => Storager.set({ fontName }));
     if (fontName == DEFAULT_FONT) {
       setFontFamily(fontName, 'verse-wrapper');

@@ -23,6 +23,30 @@ A Chrome/Firefox extension with custom new tab page featuring Chinese poems and 
 - [Guest Tutorial #1: p5.js Noise with Unicar - Youtube](https://www.youtube.com/watch?v=QxsFY2GOhNU&t=3s) | [bilibili](https://www.bilibili.com/video/BV1WJ411K7E4?from=search&seid=11104983032650609196)
 - [Guest Tutorial #2: Noise Waves in p5.js with Unicar - Youtube](https://www.youtube.com/watch?v=3E8Kt8Sx_x4&t=11s) | [bilibili](https://www.bilibili.com/video/BV1qJ411w7nJ?from=search&seid=11104983032650609196)
 
+---
+
+## 中文字体说明
+
+几枝目前使用了以下几种字体：
+
+- [江西拙楷体](https://mp.weixin.qq.com/s/H_jrZJIHwNCSyUncVpyXUQ)
+
+江西拙楷体是设计师黄煜臣的个人原创字体，可免费商用。字体本身有一种拙朴憨厚的气质，设计师也想就此推广一下自己的家乡文化。
+
+- [字体圈欣意吉祥宋](https://mp.weixin.qq.com/s/WCwaKtfAiPD8uwSBGU4dNg)
+
+字体圈欣意吉祥宋是设计师邹乐伟的个人原创字体，可免费商用。字体本身是圆润娟秀的感觉，是非常有设计感的宋体。
+
+- [方正细金陵](http://www.foundertype.com/index.php/FontInfo/index/id/202#)
+
+《几枝》从一开始使用了方正细金陵体，该字体支持设计师免费自用，但《几枝》在最初的源代码中附上了字体文件，并且在浏览器扩展中使用应该也超过了“设计师自用”的范畴，算是一种侵权行为。因此《几枝》会在不久的将来将该字体移除，同时探索一个能在不侵权的情况下让大家有更多选择的方案。
+
+对于中文字体的使用，我们纠结了很久，一直没有找到完美的解决方案。中文字体本身字形复杂，设计一套完整的中文字体比英文字体要复杂得多，而且中文字体文件一般比较大，在网页端使用也会造成一些性能上的问题，无论如何，我们都希望在推广中文字体的同时能尊重中文字体设计师的巧思和辛劳。关于中文字体的使用权限有很多类别，有些字体可供个人免费使用，有些字体可用于个人商用但不支持软件的嵌入式使用，我也购买了相关中文字体，但无奈这些有设计感的中文字体都无法在《几枝》中嵌入使用。总的来说，我们希望可以在尊重原创尊重版权的同时，提供更大的自由度和更多的可能性，同时也希望能通过《几枝》推广更多的中文原创字体。
+
+如果大家在字体方面有任何想法和建议，也欢迎随时和我联系：）
+
+---
+
 ## Chrome 本地装载
 
 - 下载最新的 release 打包文件，首先运行 `yarn` 再运行 `yarn build` 生成 **builds 文件夹(包含 Chrome 和 Firefox 的 build 文件以及压缩包)**
@@ -43,8 +67,8 @@ A Chrome/Firefox extension with custom new tab page featuring Chinese poems and 
 ## 鸣谢
 
 - 使用的字体为[方正金陵系列](http://www.foundertype.com/index.php/FontInfo/index/id/202#)的金陵细简体。
-- 层叠的波浪动画效果是利用[P5.js](http://p5js.org/)实现的。
-- 诗词名句调用使用[古诗词·一言 API](https://gushi.ci/)。
+- 层叠的波浪动画效果是利用[p5.js](http://p5js.org/)实现的。
+- 诗词名句调用使用[今日诗词 API](https://www.jinrishici.com/)。
 - 中国传统色名称及色号参考了以下来源：
   - [中国色－中国传统颜色](http://zhongguose.com/)
   - [Traditional Chinese Colors | 中国传统颜色](http://boxingp.github.io/traditional-chinese-colors/)

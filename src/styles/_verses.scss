@@ -2,7 +2,7 @@
 @import './mixins';
 
 .verses {
-  font-family: $fontName;
+  font-family: var(--font-name);
   position: absolute;
   transform: translate(-50%, -50%);
   left: 50vw;

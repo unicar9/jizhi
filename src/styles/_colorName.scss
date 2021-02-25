@@ -1,5 +1,5 @@
 #color-name {
-  font-family: $fontName;
+  font-family: var(--font-name);
   position: absolute;
   font-size: calc(100px + 5vw);
   right: 0;

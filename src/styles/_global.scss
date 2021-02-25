@@ -1,8 +1,10 @@
-$fontName: 'jixiangsong';
+:root {
+  --font-name: JXZhuoKai;
+}
 
 @font-face {
-  font-family: $fontName;
-  src: url('../fonts/#{$fontName}.woff') format('woff');
+  font-family: 'JXZhuoKai';
+  src: url('../fonts/JXZhuoKai.woff') format('woff');
 }
 
 a {

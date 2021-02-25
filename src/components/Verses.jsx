@@ -23,15 +23,15 @@ class HorizontalVerses extends Component {
     return (
       <div id="verse-wrapper" className={classes}>
         <div id="verses-content">{filteredContent}</div>
-        <a href={searchLink} target="_blank" rel="noopener noreferrer">
-          <div id="verses-origin">
+        <div id="verses-origin">
+          <a href={searchLink} target="_blank" rel="noopener noreferrer">
             <span className="title">{`「${title}」`}</span>
-            <span className="stamp">{author}</span>
-            <span className="origin-search-icon">
-              <Icon icon="search-text" color="black" />
-            </span>
-          </div>
-        </a>
+          </a>
+          <span className="stamp">{author}</span>
+          <span className="origin-search-icon">
+            <Icon size={14} icon="search-text" color="black" />
+          </span>
+        </div>
       </div>
     );
   }

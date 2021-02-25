@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Popover, Menu, Position, Switch, Icon, SegmentedControl } from 'evergreen-ui';
 import PropTypes from 'prop-types';
 import Legal from './Legal';
+import FontStatement from './FontStatement';
 import SaveBgMenuItem from './SaveBgMenuItem';
 
 class ConfigMenu extends Component {
@@ -125,19 +126,20 @@ class ConfigMenu extends Component {
                 </div>
               </Menu.Group>
 
+              <Menu.Divider />
               <Menu.Group title="选择字体">
                 <div style={{ margin: 16 }}>
                   <SegmentedControl
                     width={300}
                     options={[
+                      { label: '江西拙楷', value: 'JXZhuoKai' },
+                      { label: '欣意吉祥宋', value: 'JiXiangSong' },
                       { label: '方正细金陵', value: 'FZXiJinLJW' },
-                      { label: '冰语雅宋', value: 'ZHBingYuYaSong' },
-                      { label: '落霞孤鹜', value: 'LXGWWenkai' },
-                      { label: '吉祥宋', value: 'JiXiangSong' },
                     ]}
                     value={fontName}
                     onChange={onFontTypeChange}
                   />
+                  <FontStatement fontName={fontName} />
                 </div>
               </Menu.Group>
 
@@ -162,7 +164,7 @@ class ConfigMenu extends Component {
 
 ConfigMenu.propTypes = {
   children: PropTypes.any,
-  showSearchBarChecked: PropTypes.func,
+  showSearchBarChecked: PropTypes.bool,
   onShowSearchBarChange: PropTypes.func,
   onPlayPauseSelect: PropTypes.func.isRequired,
   onVersesLayoutChange: PropTypes.func.isRequired,

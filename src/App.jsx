@@ -38,7 +38,7 @@ class App extends Component {
       engineOption: GOOGLE_SEARCH,
       value: '',
       focused: false,
-      fontName: 'FZXiJinLJW',
+      fontName: DEFAULT_FONT,
     };
   }
 

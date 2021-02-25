@@ -1,6 +1,6 @@
 {
   "name": "jizhi-react",
-  "version": "2.4.0",
+  "version": "2.4.1",
   "main": "index.js",
   "license": "MIT",
   "scripts": {
@@ -18,14 +18,13 @@
     "evergreen-ui": "^4.19.1",
     "handlebars": "^4.7.6",
     "lodash": "^4.17.21",
-    "node-sass": "^5.0.0",
+    "node-sass": "4.14.1",
     "prop-types": "^15",
     "react": "^16",
     "react-dom": "^16",
     "react-hot-loader": "^4",
     "react-p5-wrapper": "^0.0.4",
-    "retina-dom-to-image": "^2.5.6",
-    "youziku": "9.0.1"
+    "retina-dom-to-image": "^2.5.6"
   },
   "devDependencies": {
     "@neutrinojs/copy": "^9.5.0",

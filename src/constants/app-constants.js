@@ -12,3 +12,4 @@ export const WAVES = 'waves';
 export const BLOBS = 'blobs';
 export const HORIZONTAL = 'horizontal';
 export const VERTICAL = 'vertical';
+export const DEFAULT_FONT = 'jixiangsong';

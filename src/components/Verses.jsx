@@ -21,7 +21,7 @@ class HorizontalVerses extends Component {
     const filteredContent = versesLayout === VERTICAL ? pureWords(content) : content;
 
     return (
-      <div className={classes}>
+      <div id="verse-wrapper" className={classes}>
         <div id="verses-content">{filteredContent}</div>
         <a href={searchLink} target="_blank" rel="noopener noreferrer">
           <div id="verses-origin">

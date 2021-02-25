@@ -1,12 +1,9 @@
-// @font-face {
-//   font-family: 'FZXiJinLJW';
-//   src: url('../fonts/FZXiJinLJW.ttf') format('truetype');
-// }
+$fontName: 'jixiangsong';
 
-// @font-face {
-//   font-family: 'qiji';
-//   src: url('../fonts/qiji.woff2') format('woff2');
-// }
+@font-face {
+  font-family: $fontName;
+  src: url('../fonts/#{$fontName}.woff') format('woff');
+}
 
 a {
   color: inherit;

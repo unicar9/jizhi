@@ -2,14 +2,12 @@ import React, { Component } from 'react';
 import { hot } from 'react-hot-loader';
 import P5Wrapper from 'react-p5-wrapper';
 import { InlineAlert } from 'evergreen-ui';
-import axios from 'axios';
-import youziku from 'youziku';
 import waves from './sketchs/waves';
 import blobs from './sketchs/blobs';
 import Verses from './components/Verses';
 import ConfigMenu from './components/ConfigMenu';
 import SearchInput from './components/SearchInput';
-import { saveBackground, insertFont } from './utils';
+import { saveBackground, insertFont, setFontFamily, fetchAndStoreFont } from './utils';
 import Storager from './utils/storager';
 import { load } from './utils/jinrishici';
 import {
@@ -18,13 +16,12 @@ import {
   WAVES,
   GOOGLE_SEARCH,
   DEFAULT_SHICI,
+  DEFAULT_FONT,
 } from './constants/app-constants';
 
 import './styles/app.scss';
 
 const DEFAULT_SHICI_LIST = require('./constants/shici.json');
-
-const youzikuClient = new youziku.youzikuClient('xxxxxx'); //apikey
 
 class App extends Component {
   constructor(props) {
@@ -68,9 +65,11 @@ class App extends Component {
         'engineOption',
         'showSearchBarChecked',
         'fontName',
+        'fonts',
       ],
       (res) => {
         console.log('res', res);
+        const fontName = res.fontName || DEFAULT_FONT;
         this.setState({
           showSearchBarChecked: !!res.showSearchBarChecked,
           colorStayChecked: !!res.colorStayChecked,
@@ -80,8 +79,13 @@ class App extends Component {
           verses: res.verses || DEFAULT_SHICI,
           selected: res.selected || WAVES,
           engineOption: res.engineOption || GOOGLE_SEARCH,
-          fontName: res.fontName || 'FZXiJinLJW',
+          fontName: fontName,
         });
+
+        if (res.fonts && res.fonts.fontName == fontName) {
+          insertFont(fontName, res.fonts.value);
+          setFontFamily(fontName, 'verse-wrapper');
+        }
       }
     );
   }
@@ -152,22 +156,12 @@ class App extends Component {
   };
 
   handleFontTypeChange = (fontName) => {
-    Storager.get(['fonts'], () => {
-      const WEB_FONT_URL = `https://romantic-bell-b49acd.netlify.app/${fontName}.woff.json`;
-
-      console.log('WEB_FONT_URL', WEB_FONT_URL);
-
-      axios
-        .get(WEB_FONT_URL)
-        .then((res) => {
-          insertFont(res.data.fontName, res.data.value);
-          Storager.set({ fonts: res.data });
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-    });
     this.setState({ fontName }, () => Storager.set({ fontName }));
+    if (fontName == DEFAULT_FONT) {
+      setFontFamily(fontName, 'verse-wrapper');
+    } else {
+      fetchAndStoreFont(fontName, 'verse-wrapper');
+    }
   };
 
   handleEngineOptionChange = (engineOption) =>

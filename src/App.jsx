@@ -68,8 +68,6 @@ class App extends Component {
         'fonts',
       ],
       (res) => {
-        console.log('res', res);
-
         if (res.fonts && res.fontName === res.fonts.fontName) {
           insertFont(res.fontName, res.fonts.value);
         }
@@ -130,7 +128,6 @@ class App extends Component {
   };
 
   handleColorStayChange = () => {
-    // const { colorStayChecked } = this.state;
     this.setState(
       (state) => ({
         colorStayChecked: !state.colorStayChecked,
@@ -159,8 +156,6 @@ class App extends Component {
       setFont(fontName);
     } else {
       Storager.get(['fonts'], (res) => {
-        console.log('res', res);
-
         if (res.fonts && res.fonts.fontName === fontName) {
           insertFont(fontName, res.fonts.value);
         } else {

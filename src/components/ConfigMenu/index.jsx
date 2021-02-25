@@ -125,6 +125,7 @@ class ConfigMenu extends Component {
                 </div>
               </Menu.Group>
 
+              <Menu.Divider />
               <Menu.Group title="选择字体">
                 <div style={{ margin: 16 }}>
                   <SegmentedControl
@@ -161,7 +162,7 @@ class ConfigMenu extends Component {
 
 ConfigMenu.propTypes = {
   children: PropTypes.any,
-  showSearchBarChecked: PropTypes.func,
+  showSearchBarChecked: PropTypes.bool,
   onShowSearchBarChange: PropTypes.func,
   onPlayPauseSelect: PropTypes.func.isRequired,
   onVersesLayoutChange: PropTypes.func.isRequired,

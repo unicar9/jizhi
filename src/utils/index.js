@@ -47,16 +47,14 @@ export const insertFont = (fontName, data) => {
   setFont(fontName);
 };
 
-export const fetchAndSetFont = (fontName) => {
+export const fetchAndSetFont = async (fontName) => {
   const WEB_FONT_URL = `https://romantic-bell-b49acd.netlify.app/${fontName}.woff.json`;
 
-  return axios
-    .get(WEB_FONT_URL, { crossdomain: true })
-    .then((res) => {
-      insertFont(res.data.fontName, res.data.value);
-      storager.set({ fonts: res.data });
-    })
-    .catch((error) => {
-      console.log(error);
-    });
+  try {
+    const res = await axios.get(WEB_FONT_URL, { crossdomain: true });
+    insertFont(res.data.fontName, res.data.value);
+    storager.set({ fonts: res.data });
+  } catch (error) {
+    console.log(error);
+  }
 };

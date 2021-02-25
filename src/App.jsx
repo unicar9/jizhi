@@ -83,6 +83,11 @@ class App extends Component {
           engineOption: res.engineOption || GOOGLE_SEARCH,
           fontName: res.fontName || DEFAULT_FONT,
         });
+
+        if (res.fonts && res.fonts.fontName == fontName) {
+          insertFont(fontName, res.fonts.value);
+          setFontFamily(fontName, 'verse-wrapper');
+        }
       }
     );
   }
@@ -165,6 +170,11 @@ class App extends Component {
     }
 
     this.setState({ fontName }, () => Storager.set({ fontName }));
+    if (fontName == DEFAULT_FONT) {
+      setFontFamily(fontName, 'verse-wrapper');
+    } else {
+      fetchAndStoreFont(fontName, 'verse-wrapper');
+    }
   };
 
   handleEngineOptionChange = (engineOption) =>

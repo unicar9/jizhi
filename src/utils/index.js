@@ -58,3 +58,34 @@ export const fetchAndSetFont = async (fontName) => {
     console.log(error);
   }
 };
+
+export const setFontFamily = (fontName, elementId) => {
+  const el = document.getElementById(elementId);
+  if (el) {
+    el.style.fontFamily = fontName;
+  }
+};
+
+export const fetchAndStoreFont = (fontName, elementId) => {
+  const WEB_FONT_URL = `https://romantic-bell-b49acd.netlify.app/${fontName}.woff.json`;
+  storager.get(['fonts'], (res) => {
+    if (res.fonts && res.fonts.fontName == fontName) {
+      console.log('inserting from localStorage');
+      insertFont(fontName, res.fonts.value);
+      setFontFamily(fontName, elementId);
+    } else {
+      console.log('fetching from remote....', fontName);
+      axios
+        .get(WEB_FONT_URL)
+        .then((res) => {
+          console.log('fetched font', res.data.fontName);
+          insertFont(fontName, res.data.value);
+          setFontFamily(fontName, elementId);
+          storager.set({ fonts: res.data });
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
+  });
+};

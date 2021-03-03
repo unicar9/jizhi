@@ -7,7 +7,7 @@ import blobs from './sketchs/blobs';
 import Verses from './components/Verses';
 import ConfigMenu from './components/ConfigMenu';
 import SearchInput from './components/SearchInput';
-import { saveBackground, insertFont, fetchAndSetFont, setFont } from './utils';
+import { saveBackground, insertFont, fetchAndSetFont } from './utils';
 import Storager from './utils/storager';
 import { load } from './utils/jinrishici';
 import {
@@ -40,6 +40,7 @@ class App extends Component {
       value: '',
       focused: false,
       fontName: DEFAULT_FONT,
+      darkModeChanged: false,
     };
   }
 
@@ -108,6 +109,7 @@ class App extends Component {
     this.setState(
       (state) => ({
         darkModeChecked: !state.darkModeChecked,
+        colorModeChanged: true,
       }),
       () => {
         Storager.set({ darkModeChecked: this.state.darkModeChecked });
@@ -164,12 +166,10 @@ class App extends Component {
   };
 
   handleFontTypeChange = (fontName) => {
-    if (fontName === DEFAULT_FONT) {
-      setFont(fontName);
-    } else {
+    if (fontName !== DEFAULT_FONT) {
       Storager.get(['fonts'], (res) => {
         if (res.fonts && res.fonts.fontName === fontName) {
-          insertFont(fontName, res.fonts.value);
+          insertFont(res.fonts.value);
         } else {
           fetchAndSetFont(fontName);
         }
@@ -203,6 +203,7 @@ class App extends Component {
       focused,
       fontName,
       darkModeChecked,
+      colorModeChanged,
     } = this.state;
     const sketches = { blobs, waves };
 
@@ -219,7 +220,12 @@ class App extends Component {
           isDarkMode={darkModeChecked}
           fontName={fontName}
         />
-        <P5Wrapper sketch={sketches[selected]} isPlaying={isPlaying} isDarkMode={darkModeChecked} />
+        <P5Wrapper
+          sketch={sketches[selected]}
+          isPlaying={isPlaying}
+          isDarkMode={darkModeChecked}
+          colorModeChanged={colorModeChanged}
+        />
         <ConfigMenu
           onPlayPauseSelect={this.handlePlayPauseSelect}
           isPlaying={isPlaying}

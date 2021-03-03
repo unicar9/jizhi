@@ -3,7 +3,6 @@ const wavesColors = require('../constants/wavesColors.json');
 export default function waves(p) {
   let mountains = [];
   let bgColor = 230;
-  let isDarkModeChanged = false;
   let isDarkMode = false;
 
   p.setup = function () {
@@ -26,10 +25,9 @@ export default function waves(p) {
   p.myCustomRedrawAccordingToNewPropsHandler = function (newProps) {
     !newProps.isPlaying ? p.frameRate(0) : p.frameRate(30);
     bgColor = newProps.isDarkMode ? 50 : 230;
-    isDarkModeChanged = newProps.isDarkMode !== isDarkMode;
     isDarkMode = newProps.isDarkMode;
 
-    if (isDarkModeChanged) {
+    if (newProps.colorModeChanged) {
       mountains = [];
       growMountains(p, mountains, isDarkMode);
     }

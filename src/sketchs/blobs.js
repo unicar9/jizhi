@@ -3,6 +3,7 @@ import blobsColors from '../constants/colors';
 export default function blobs(p) {
   const blobsArray = [];
   const colors = p.random(blobsColors);
+  let bgColor = 230;
 
   p.setup = function () {
     p.createCanvas(p.windowWidth, p.windowHeight);
@@ -11,7 +12,7 @@ export default function blobs(p) {
 
   p.draw = function () {
     p.clear();
-    p.background(230);
+    p.background(bgColor);
     p.noStroke();
 
     blobsArray.forEach((blob) => blob.display(p));
@@ -27,6 +28,7 @@ export default function blobs(p) {
 
   p.myCustomRedrawAccordingToNewPropsHandler = function (newProps) {
     !newProps.isPlaying ? p.frameRate(0) : p.frameRate(30);
+    bgColor = newProps.isDarkMode ? 50 : 230;
   };
 }
 

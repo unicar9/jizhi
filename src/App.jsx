@@ -30,6 +30,7 @@ class App extends Component {
     this.state = {
       isPlaying: true,
       showSearchBarChecked: false,
+      darkModeChecked: false,
       defaultPlayChecked: true,
       colorStayChecked: false,
       verses: DEFAULT_SHICI,
@@ -66,6 +67,7 @@ class App extends Component {
         'showSearchBarChecked',
         'fontName',
         'fonts',
+        'darkModeChecked',
       ],
       (res) => {
         console.log('res', res);
@@ -75,6 +77,7 @@ class App extends Component {
 
         this.setState({
           showSearchBarChecked: !!res.showSearchBarChecked,
+          darkModeChecked: !!res.darkModeChecked,
           colorStayChecked: !!res.colorStayChecked,
           defaultPlayChecked: res.defaultPlayChecked !== false,
           isVerticalVerses: res.versesLayout === VERTICAL,
@@ -97,6 +100,17 @@ class App extends Component {
       }),
       () => {
         Storager.set({ showSearchBarChecked: this.state.showSearchBarChecked });
+      }
+    );
+  };
+
+  handleDarkModeChange = () => {
+    this.setState(
+      (state) => ({
+        darkModeChecked: !state.darkModeChecked,
+      }),
+      () => {
+        Storager.set({ darkModeChecked: this.state.darkModeChecked });
       }
     );
   };
@@ -188,6 +202,7 @@ class App extends Component {
       value,
       focused,
       fontName,
+      darkModeChecked,
     } = this.state;
     const sketches = { blobs, waves };
 
@@ -199,15 +214,19 @@ class App extends Component {
         <Verses
           bgOption={selected}
           verses={verses}
-          versesLayout={isVerticalVerses ? VERTICAL : HORIZONTAL}
+          isVerticalVerses={isVerticalVerses}
           engineOption={engineOption}
+          isDarkMode={darkModeChecked}
+          fontName={fontName}
         />
-        <P5Wrapper sketch={sketches[selected]} isPlaying={isPlaying} />
+        <P5Wrapper sketch={sketches[selected]} isPlaying={isPlaying} isDarkMode={darkModeChecked} />
         <ConfigMenu
           onPlayPauseSelect={this.handlePlayPauseSelect}
           isPlaying={isPlaying}
           isVerticalVerses={isVerticalVerses}
           showSearchBarChecked={showSearchBarChecked}
+          darkModeChecked={darkModeChecked}
+          onDarkModeChange={this.handleDarkModeChange}
           onShowSearchBarChange={this.handleShowSearchBarChange}
           defaultPlayChecked={defaultPlayChecked}
           onDefaultPlayChange={this.handleDefaultPlayChange}

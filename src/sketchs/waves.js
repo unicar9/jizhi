@@ -2,16 +2,20 @@ const wavesColors = require('../constants/wavesColors.json');
 
 export default function waves(p) {
   let mountains = [];
+  let bgColor = 230;
+  let isDarkModeChanged = false;
+  let isDarkMode = false;
 
   p.setup = function () {
     p.createCanvas(p.windowWidth, p.windowHeight);
-    growMountains(p, mountains);
-    p.background(230);
+
+    growMountains(p, mountains, isDarkMode);
+    p.background(bgColor);
     mountains.forEach((m) => m.display(p));
   };
 
   p.draw = function () {
-    p.background(230);
+    p.background(bgColor);
     mountains.forEach((m) => m.display(p));
   };
 
@@ -21,14 +25,22 @@ export default function waves(p) {
 
   p.myCustomRedrawAccordingToNewPropsHandler = function (newProps) {
     !newProps.isPlaying ? p.frameRate(0) : p.frameRate(30);
+    bgColor = newProps.isDarkMode ? 50 : 230;
+    isDarkModeChanged = newProps.isDarkMode !== isDarkMode;
+    isDarkMode = newProps.isDarkMode;
+
+    if (isDarkModeChanged) {
+      mountains = [];
+      growMountains(p, mountains, isDarkMode);
+    }
   };
 
   p.keyPressed = function () {
     if (p.keyCode === 39 || p.keyCode === 37) {
       // left or right arrow keys
       mountains = [];
-      growMountains(p, mountains);
-      p.background(230);
+      growMountains(p, mountains, isDarkMode);
+      p.background(bgColor);
       mountains.forEach((m) => m.display(p));
     }
   };
@@ -66,8 +78,13 @@ class Mountain {
   }
 }
 
-function growMountains(p, mountains) {
-  const colorSelected = p.random(wavesColors);
+function growMountains(p, mountains, isDarkMode) {
+  const suitableColors = isDarkMode
+    ? wavesColors.filter((c) => c.darkSuitable)
+    : wavesColors.filter((c) => c.lightSuitable);
+
+  const colorSelected = p.random(suitableColors);
+  console.log('colorSelected', colorSelected);
   const c = p.color(colorSelected.hex);
 
   const colorNameDiv = document.getElementById('color-name');

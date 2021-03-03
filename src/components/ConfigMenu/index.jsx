@@ -35,6 +35,8 @@ class ConfigMenu extends Component {
       onEngineOptionChange,
       fontName,
       onFontTypeChange,
+      darkModeChecked,
+      onDarkModeChange,
     } = this.props;
 
     return (
@@ -71,6 +73,12 @@ class ConfigMenu extends Component {
               <Menu.Divider />
 
               <Menu.Group title="设置">
+                <Menu.Item intent="success">
+                  <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                    黑夜模式
+                    <Switch checked={darkModeChecked} onChange={onDarkModeChange} />
+                  </div>
+                </Menu.Item>
                 <Menu.Item intent="success">
                   <div style={{ display: 'flex', justifyContent: 'space-between' }}>
                     默认播放动画
@@ -166,6 +174,8 @@ ConfigMenu.propTypes = {
   children: PropTypes.any,
   showSearchBarChecked: PropTypes.bool,
   onShowSearchBarChange: PropTypes.func,
+  darkModeChecked: PropTypes.bool,
+  onDarkModeChange: PropTypes.func,
   onPlayPauseSelect: PropTypes.func.isRequired,
   onVersesLayoutChange: PropTypes.func.isRequired,
   isVerticalVerses: PropTypes.bool.isRequired,

@@ -24,7 +24,8 @@
     "react-dom": "^16",
     "react-hot-loader": "^4",
     "react-p5-wrapper": "^0.0.4",
-    "retina-dom-to-image": "^2.5.6"
+    "retina-dom-to-image": "^2.5.6",
+    "styled-components": "^5.2.1"
   },
   "devDependencies": {
     "@neutrinojs/copy": "^9.5.0",

@@ -43,8 +43,6 @@ export const insertFont = (fontName, data) => {
   const style = document.createElement('style');
   style.innerHTML = data;
   document.head.appendChild(style);
-
-  setFont(fontName);
 };
 
 export const fetchAndSetFont = async (fontName) => {

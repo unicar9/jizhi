@@ -63,10 +63,6 @@ module.exports = {
       html: {
         title: 'New Tab',
       },
-      style: {
-        test: /\.(css|sass|scss)$/,
-        loaders: [{ loader: 'sass-loader', useId: 'sass' }],
-      },
     }),
     jest({
       setupFilesAfterEnv: ['<rootDir>/src/setupTests.js'],

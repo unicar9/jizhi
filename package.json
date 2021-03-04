@@ -18,7 +18,6 @@
     "evergreen-ui": "^4.19.1",
     "handlebars": "^4.7.6",
     "lodash": "^4.17.21",
-    "node-sass": "4.14.1",
     "prop-types": "^15",
     "react": "^16",
     "react-dom": "^16",
@@ -44,7 +43,6 @@
     "neutrino": "^9.5.0",
     "prettier": "^2.2.1",
     "rimraf": "^3.0.2",
-    "sass-loader": "^8.0.0",
     "webpack": "^4",
     "webpack-cli": "^3",
     "webpack-dev-server": "^3"

@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled, { keyframes } from 'styled-components';
-import { WAVES } from '../../constants/app-constants';
+import { WAVES } from '../../constants/appConstants';
 import VersesContent from './VersesContent';
 
 const fadeIn = keyframes`

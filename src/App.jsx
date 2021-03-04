@@ -17,7 +17,7 @@ import {
   GOOGLE_SEARCH,
   DEFAULT_SHICI,
   DEFAULT_FONT,
-} from './constants/app-constants';
+} from './constants/appConstants';
 
 import './styles/app.scss';
 
@@ -87,9 +87,20 @@ class App extends Component {
           selected: res.selected || WAVES,
           engineOption: res.engineOption || GOOGLE_SEARCH,
           fontName: res.fontName || DEFAULT_FONT,
+          darkModeChanged: false,
         });
       }
     );
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    console.log('prevProps', prevProps);
+    console.log('prevState', prevState);
+    if (prevState.darkModeChecked !== this.state.darkModeChecked) {
+      // this.setState(() => ({ colorModeChanged: true }));
+    } else {
+      // this.setState(() => ({ colorModeChanged: false }));
+    }
   }
 
   handlePlayPauseSelect = () => this.setState((state) => ({ isPlaying: !state.isPlaying }));
@@ -109,7 +120,6 @@ class App extends Component {
     this.setState(
       (state) => ({
         darkModeChecked: !state.darkModeChecked,
-        colorModeChanged: true,
       }),
       () => {
         Storager.set({ darkModeChecked: this.state.darkModeChecked });

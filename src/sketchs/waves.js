@@ -23,6 +23,7 @@ export default function waves(p) {
   };
 
   p.myCustomRedrawAccordingToNewPropsHandler = function (newProps) {
+    console.log('newProps', newProps);
     !newProps.isPlaying ? p.frameRate(0) : p.frameRate(30);
     bgColor = newProps.isDarkMode ? 50 : 230;
     isDarkMode = newProps.isDarkMode;

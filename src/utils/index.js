@@ -1,5 +1,7 @@
 import domtoimage from 'retina-dom-to-image';
 import axios from 'axios';
+import { sample } from 'lodash';
+import wavesColors from '../constants/wavesColors.json';
 import storager from './storager';
 
 function filter(node) {
@@ -51,4 +53,12 @@ export const fetchAndSetFont = async (fontName) => {
   } catch (error) {
     console.log(error);
   }
+};
+
+export const pickColor = (isDarkMode) => {
+  const suitableColors = isDarkMode
+    ? wavesColors.filter((c) => c.darkSuitable)
+    : wavesColors.filter((c) => c.lightSuitable);
+
+  return sample(suitableColors);
 };

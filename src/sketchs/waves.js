@@ -1,14 +1,13 @@
-const wavesColors = require('../constants/wavesColors.json');
-
 export default function waves(p) {
   let mountains = [];
-  let bgColor = 230;
+  let bgColor = '#e6e6e6';
   let isDarkMode = false;
+  let waveColor = bgColor;
 
   p.setup = function () {
     p.createCanvas(p.windowWidth, p.windowHeight);
-
-    growMountains(p, mountains, isDarkMode);
+    mountains = [];
+    growMountains(p, mountains, waveColor);
     p.background(bgColor);
     mountains.forEach((m) => m.display(p));
   };
@@ -25,12 +24,15 @@ export default function waves(p) {
   p.myCustomRedrawAccordingToNewPropsHandler = function (newProps) {
     console.log('newProps', newProps);
     !newProps.isPlaying ? p.frameRate(0) : p.frameRate(30);
-    bgColor = newProps.isDarkMode ? 50 : 230;
-    isDarkMode = newProps.isDarkMode;
+    bgColor = newProps.isDarkMode ? '#323232' : '#e6e6e6';
 
-    if (newProps.colorModeChanged) {
-      mountains = [];
-      growMountains(p, mountains, isDarkMode);
+    console.log('Current?', isDarkMode);
+    console.log('Turn dark?', newProps.isDarkMode);
+
+    if (isDarkMode !== newProps.isDarkMode || waveColor !== newProps.waveColor) {
+      waveColor = newProps.waveColor;
+      isDarkMode = newProps.isDarkMode;
+      p.setup();
     }
   };
 
@@ -77,17 +79,17 @@ class Mountain {
   }
 }
 
-function growMountains(p, mountains, isDarkMode) {
-  const suitableColors = isDarkMode
-    ? wavesColors.filter((c) => c.darkSuitable)
-    : wavesColors.filter((c) => c.lightSuitable);
+function growMountains(p, mountains, hexColor) {
+  // const suitableColors = isDarkMode
+  //   ? wavesColors.filter((c) => c.darkSuitable)
+  //   : wavesColors.filter((c) => c.lightSuitable);
 
-  const colorSelected = p.random(suitableColors);
-  console.log('colorSelected', colorSelected);
-  const c = p.color(colorSelected.hex);
+  // const colorSelected = p.random(suitableColors);
+  // console.log('colorSelected', colorSelected);
+  const c = p.color(hexColor);
 
-  const colorNameDiv = document.getElementById('color-name');
-  if (colorNameDiv) colorNameDiv.innerText = colorSelected.name;
+  // const colorNameDiv = document.getElementById('color-name');
+  // if (colorNameDiv) colorNameDiv.innerText = colorSelected.name;
 
   new Array(5).fill(1).map((_, i) => {
     const a = 255 - 50 * i;

@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled, { keyframes } from 'styled-components';
+import styled, { css, keyframes } from 'styled-components';
 import { WAVES } from '../../constants/appConstants';
 import VersesContent from './VersesContent';
 
@@ -23,46 +23,33 @@ const VersesWrapper = styled.div`
   text-align: center;
   opacity: 0.8;
   word-break: keep-all;
-`;
-
-const HorizontalVersesWrapper = styled(VersesWrapper)`
-  transition: top 500ms ease-in-out;
-  animation: ${fadeIn} 1s ease-in;
-`;
-
-const VerticalVersesWrapper = styled(VersesWrapper)`
-  text-align: left;
-  top: 40vh;
-  transform: translate(-50%, -50%);
-  writing-mode: vertical-rl;
-  animation: ${fadeIn} 500ms ease-in;
+  ${(props) =>
+    props.isVerticalVerses
+      ? css`
+          text-align: left;
+          top: 40vh;
+          transform: translate(-50%, -50%);
+          writing-mode: vertical-rl;
+          animation: ${fadeIn} 500ms ease-in;
+        `
+      : css`
+          transition: top 500ms ease-in-out;
+          animation: ${fadeIn} 1s ease-in;
+        `};
 `;
 
 const Verses = (props) => {
   const { verses, engineOption, bgOption, isVerticalVerses, fontName, isDarkMode } = props;
 
-  return !isVerticalVerses ? (
-    <HorizontalVersesWrapper
+  return (
+    <VersesWrapper
+      isVerticalVerses={isVerticalVerses}
       isDarkMode={isDarkMode}
       fontName={fontName}
       isWaves={bgOption === WAVES}
     >
-      <VersesContent
-        verses={verses}
-        bgOption={bgOption}
-        engineOption={engineOption}
-        isVertical={isVerticalVerses}
-      />
-    </HorizontalVersesWrapper>
-  ) : (
-    <VerticalVersesWrapper isDarkMode={isDarkMode} fontName={fontName} isWaves={bgOption === WAVES}>
-      <VersesContent
-        verses={verses}
-        bgOption={bgOption}
-        engineOption={engineOption}
-        isVertical={isVerticalVerses}
-      />
-    </VerticalVersesWrapper>
+      <VersesContent verses={verses} engineOption={engineOption} isVertical={isVerticalVerses} />
+    </VersesWrapper>
   );
 };
 

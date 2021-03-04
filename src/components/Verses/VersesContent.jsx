@@ -86,7 +86,6 @@ const VersesContent = (props) => {
 
 VersesContent.propTypes = {
   verses: PropTypes.object,
-  bgOption: PropTypes.string,
   isVertical: PropTypes.bool,
   engineOption: PropTypes.string,
   fontName: PropTypes.string,

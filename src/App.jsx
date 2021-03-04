@@ -7,7 +7,8 @@ import blobs from './sketchs/blobs';
 import Verses from './components/Verses';
 import ConfigMenu from './components/ConfigMenu';
 import SearchInput from './components/SearchInput';
-import { saveBackground, insertFont, fetchAndSetFont } from './utils';
+import ColorName from './components/ColorName';
+import { saveBackground, insertFont, fetchAndSetFont, pickColor } from './utils';
 import Storager from './utils/storager';
 import { load } from './utils/jinrishici';
 import {
@@ -40,7 +41,7 @@ class App extends Component {
       value: '',
       focused: false,
       fontName: DEFAULT_FONT,
-      darkModeChanged: false,
+      waveColor: pickColor(false),
     };
   }
 
@@ -87,19 +88,15 @@ class App extends Component {
           selected: res.selected || WAVES,
           engineOption: res.engineOption || GOOGLE_SEARCH,
           fontName: res.fontName || DEFAULT_FONT,
-          darkModeChanged: false,
+          waveColor: pickColor(!!res.darkModeChecked),
         });
       }
     );
   }
 
   componentDidUpdate(prevProps, prevState) {
-    console.log('prevProps', prevProps);
-    console.log('prevState', prevState);
     if (prevState.darkModeChecked !== this.state.darkModeChecked) {
-      // this.setState(() => ({ colorModeChanged: true }));
-    } else {
-      // this.setState(() => ({ colorModeChanged: false }));
+      this.setState(() => ({ waveColor: pickColor(this.state.darkModeChecked) }));
     }
   }
 
@@ -213,16 +210,23 @@ class App extends Component {
       focused,
       fontName,
       darkModeChecked,
-      colorModeChanged,
+      waveColor,
     } = this.state;
     const sketches = { blobs, waves };
 
     return selected ? (
       <div className="App" tabIndex="-1" onKeyPress={this.handleKeyPress}>
         {selected === WAVES && (
-          <div id="color-name" className={colorStayChecked ? '' : 'fadeout'} />
+          <ColorName
+            key={darkModeChecked}
+            fontName={fontName}
+            colorName={waveColor.name}
+            colorStayChecked={colorStayChecked}
+            isDarkMode={darkModeChecked}
+          />
         )}
         <Verses
+          key={isVerticalVerses}
           bgOption={selected}
           verses={verses}
           isVerticalVerses={isVerticalVerses}
@@ -234,7 +238,7 @@ class App extends Component {
           sketch={sketches[selected]}
           isPlaying={isPlaying}
           isDarkMode={darkModeChecked}
-          colorModeChanged={colorModeChanged}
+          waveColor={waveColor.hex}
         />
         <ConfigMenu
           onPlayPauseSelect={this.handlePlayPauseSelect}

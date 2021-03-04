@@ -19,8 +19,7 @@ import {
   DEFAULT_SHICI,
   DEFAULT_FONT,
 } from './constants/appConstants';
-
-import './styles/app.scss';
+import GlobalStyle from './components/GlobalStyle';
 
 const DEFAULT_SHICI_LIST = require('./constants/shici.json');
 
@@ -216,6 +215,7 @@ class App extends Component {
 
     return selected ? (
       <div className="App" tabIndex="-1" onKeyPress={this.handleKeyPress}>
+        <GlobalStyle />
         {selected === WAVES && (
           <ColorName
             key={darkModeChecked}

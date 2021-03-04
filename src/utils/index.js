@@ -5,7 +5,7 @@ import wavesColors from '../constants/wavesColors.json';
 import storager from './storager';
 
 function filter(node) {
-  return node.id !== 'menu';
+  return node.id !== 'menu-button' && node.id !== 'jizhi-search-icon';
 }
 
 export const saveBackground = () => {

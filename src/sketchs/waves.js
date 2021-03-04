@@ -22,12 +22,8 @@ export default function waves(p) {
   };
 
   p.myCustomRedrawAccordingToNewPropsHandler = function (newProps) {
-    console.log('newProps', newProps);
     !newProps.isPlaying ? p.frameRate(0) : p.frameRate(30);
     bgColor = newProps.isDarkMode ? '#323232' : '#e6e6e6';
-
-    console.log('Current?', isDarkMode);
-    console.log('Turn dark?', newProps.isDarkMode);
 
     if (isDarkMode !== newProps.isDarkMode || waveColor !== newProps.waveColor) {
       waveColor = newProps.waveColor;
@@ -80,16 +76,7 @@ class Mountain {
 }
 
 function growMountains(p, mountains, hexColor) {
-  // const suitableColors = isDarkMode
-  //   ? wavesColors.filter((c) => c.darkSuitable)
-  //   : wavesColors.filter((c) => c.lightSuitable);
-
-  // const colorSelected = p.random(suitableColors);
-  // console.log('colorSelected', colorSelected);
   const c = p.color(hexColor);
-
-  // const colorNameDiv = document.getElementById('color-name');
-  // if (colorNameDiv) colorNameDiv.innerText = colorSelected.name;
 
   new Array(5).fill(1).map((_, i) => {
     const a = 255 - 50 * i;

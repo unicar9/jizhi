@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Icon } from 'evergreen-ui';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
@@ -19,11 +19,11 @@ const Input = styled.input`
   box-shadow: none;
   width: 150px;
   font-size: 16px;
-  color: #000;
+  color: ${(props) => (props.isDarkMode ? '#fff' : '#000')};
   margin-left: -25px;
   padding-left: 35px;
   height: 40px;
-  border-bottom: 2px #242424 solid;
+  border-bottom: 2px ${(props) => (props.isDarkMode ? '#dbdbdb' : ' #242424 ')} solid;
   opacity: 0;
 
   &:hover {
@@ -34,24 +34,24 @@ const Input = styled.input`
   }
 `;
 
-class SearchInput extends Component {
-  render() {
-    const { engineOption, value, focused, onFocus, onBlur, onChange } = this.props;
-    return (
-      <SearchForm action={engineOption.split('?')[0]}>
-        <Icon id="jizhi-search-icon" icon="search" size={16} />
-        <Input
-          className={focused || value ? 'active' : null}
-          onFocus={onFocus}
-          onBlur={onBlur}
-          onChange={onChange}
-          name={engineOption.split('.')[1] === 'baidu' ? 'wd' : 'q'}
-          autoComplete="off"
-        />
-      </SearchForm>
-    );
-  }
-}
+const SearchInput = (props) => {
+  const { engineOption, value, focused, onFocus, onBlur, onChange, isDarkMode } = props;
+  const iconColor = isDarkMode ? 'white' : null;
+  return (
+    <SearchForm action={engineOption.split('?')[0]}>
+      <Icon id="jizhi-search-icon" icon="search" size={16} color={iconColor} />
+      <Input
+        className={focused || value ? 'active' : null}
+        onFocus={onFocus}
+        onBlur={onBlur}
+        onChange={onChange}
+        name={engineOption.split('.')[1] === 'baidu' ? 'wd' : 'q'}
+        autoComplete="off"
+        isDarkMode={isDarkMode}
+      />
+    </SearchForm>
+  );
+};
 
 SearchInput.propTypes = {
   value: PropTypes.string,
@@ -60,6 +60,7 @@ SearchInput.propTypes = {
   onFocus: PropTypes.func,
   onBlur: PropTypes.func,
   onChange: PropTypes.func,
+  isDarkMode: PropTypes.bool,
 };
 
 export default SearchInput;

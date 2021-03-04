@@ -276,6 +276,7 @@ class App extends Component {
             onBlur={this.handleBlur}
             onChange={this.handleChange}
             engineOption={engineOption}
+            isDarkMode={darkModeChecked}
           />
         )}
       </div>

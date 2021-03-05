@@ -32,15 +32,15 @@ export default function waves(p) {
     }
   };
 
-  p.keyPressed = function () {
-    if (p.keyCode === 39 || p.keyCode === 37) {
-      // left or right arrow keys
-      mountains = [];
-      growMountains(p, mountains, isDarkMode);
-      p.background(bgColor);
-      mountains.forEach((m) => m.display(p));
-    }
-  };
+  // p.keyPressed = function () {
+  //   if (p.keyCode === 39 || p.keyCode === 37) {
+  //     // left or right arrow keys
+  //     mountains = [];
+  //     growMountains(p, mountains, isDarkMode);
+  //     p.background(bgColor);
+  //     mountains.forEach((m) => m.display(p));
+  //   }
+  // };
 }
 
 class Mountain {

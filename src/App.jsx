@@ -164,11 +164,16 @@ class App extends Component {
     });
   };
 
-  handleKeyPress = ({ charCode, altKey }) => {
+  handleKeyDown = ({ keyCode, altKey }) => {
     // space
-    if (charCode === 32) this.setState((state) => ({ isPlaying: !state.isPlaying }));
+    if (keyCode === 32) this.setState((state) => ({ isPlaying: !state.isPlaying }));
     // S + alt
-    if (charCode === 223 && altKey) saveBackground();
+    if (keyCode === 83 && altKey) saveBackground();
+
+    // left or right arrow keys
+    if (keyCode === 37 || keyCode === 39) {
+      this.setState(() => ({ waveColor: pickColor(this.state.darkModeChecked) }));
+    }
   };
 
   handleFontTypeChange = (fontName) => {
@@ -214,7 +219,7 @@ class App extends Component {
     const sketches = { blobs, waves };
 
     return selected ? (
-      <div className="App" tabIndex="-1" onKeyPress={this.handleKeyPress}>
+      <div className="App" tabIndex="-1" onKeyDown={this.handleKeyDown}>
         <GlobalStyle />
         {selected === WAVES && (
           <ColorName

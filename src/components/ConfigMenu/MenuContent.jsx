@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Pane, Menu, Tablist, Switch, SidebarTab, SegmentedControl } from 'evergreen-ui';
 import styled from 'styled-components';
+import { WAVES } from '../../constants/appConstants';
 import Legal from './Legal';
 import FontStatement from './FontStatement';
 import SaveBgMenuItem from './SaveBgMenuItem';
@@ -119,6 +120,7 @@ const MenuContent = (props) => {
         <>
           <Menu.Group title="偏好">
             {switchOptions.map((option) => {
+              if (selected !== WAVES && option.name === '保留颜色名称') return;
               return (
                 <Menu.Item key={option.name}>
                   <SwitchWrapper>

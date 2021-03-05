@@ -11,6 +11,10 @@ const SwitchWrapper = styled.div`
   justify-content: space-between;
 `;
 
+const SegmentedControlWrapper = styled.div`
+  margin: 16px;
+`;
+
 const MenuContent = (props) => {
   const [selectedIndex, setSelectedIndex] = useState(0);
 
@@ -20,8 +24,8 @@ const MenuContent = (props) => {
     showSearchBarChecked,
     onShowSearchBarChange,
     defaultPlayChecked,
-    isVerticalVerses,
-    onVersesLayoutChange,
+    verticalVersesChecked,
+    onVerticalVersesChange,
     onDefaultPlayChange,
     colorStayChecked,
     onColorStayChange,
@@ -35,18 +39,62 @@ const MenuContent = (props) => {
     onDarkModeChange,
   } = props;
 
+  const bgOptions = [
+    { label: 'Waves', value: 'waves' },
+    { label: 'Blobs', value: 'blobs' },
+  ];
+
+  const engineOptions = [
+    {
+      label: 'Google',
+      value: 'https://www.google.com/search?q=',
+    },
+    { label: 'Baidu', value: 'https://www.baidu.com/s?wd=' },
+    {
+      label: 'Bing',
+      value: 'https://www.bing.com/search?q=',
+    },
+  ];
+
+  const fontOptions = [
+    { label: '江西拙楷', value: 'JXZhuoKai' },
+    { label: '欣意吉祥宋', value: 'JiXiangSong' },
+    { label: '方正细金陵', value: 'FZXiJinLJW' },
+  ];
+
+  const switchOptions = [
+    {
+      name: '黑夜模式',
+      checkedState: darkModeChecked,
+      onChangeFunc: onDarkModeChange,
+    },
+    {
+      name: '竖版诗词',
+      checkedState: verticalVersesChecked,
+      onChangeFunc: onVerticalVersesChange,
+    },
+    {
+      name: '默认播放动画',
+      checkedState: defaultPlayChecked,
+      onChangeFunc: onDefaultPlayChange,
+    },
+    {
+      name: '显示搜索框',
+      checkedState: showSearchBarChecked,
+      onChangeFunc: onShowSearchBarChange,
+    },
+    {
+      name: '保留颜色名称',
+      checkedState: colorStayChecked,
+      onChangeFunc: onColorStayChange,
+    },
+  ];
+
   const tabs = [
     {
       tabName: '背景',
       tabContent: (
-        <Menu.OptionsGroup
-          options={[
-            { label: 'Waves', value: 'waves' },
-            { label: 'Blobs', value: 'blobs' },
-          ]}
-          selected={selected}
-          onChange={onBgOptionChange}
-        />
+        <Menu.OptionsGroup options={bgOptions} selected={selected} onChange={onBgOptionChange} />
       ),
     },
     {
@@ -70,60 +118,28 @@ const MenuContent = (props) => {
       tabContent: (
         <>
           <Menu.Group title="偏好">
-            <Menu.Item intent="success">
-              <SwitchWrapper>
-                黑夜模式
-                <Switch checked={darkModeChecked} onChange={onDarkModeChange} />
-              </SwitchWrapper>
-            </Menu.Item>
-            <Menu.Item intent="success">
-              <SwitchWrapper>
-                默认播放动画
-                <Switch checked={defaultPlayChecked} onChange={onDefaultPlayChange} />
-              </SwitchWrapper>
-            </Menu.Item>
-            {selected === 'waves' && (
-              <Menu.Item intent="success">
-                <SwitchWrapper>
-                  保留颜色名称
-                  <Switch checked={colorStayChecked} onChange={onColorStayChange} />
-                </SwitchWrapper>
-              </Menu.Item>
-            )}
-            <Menu.Item intent="success">
-              <SwitchWrapper>
-                显示搜索框
-                <Switch checked={showSearchBarChecked} onChange={onShowSearchBarChange} />
-              </SwitchWrapper>
-            </Menu.Item>
-            <Menu.Item intent="success">
-              <SwitchWrapper>
-                竖版诗词
-                <Switch checked={isVerticalVerses} onChange={onVersesLayoutChange} />
-              </SwitchWrapper>
-            </Menu.Item>
+            {switchOptions.map((option) => {
+              return (
+                <Menu.Item key={option.name}>
+                  <SwitchWrapper>
+                    {option.name}
+                    <Switch checked={option.checkedState} onChange={option.onChangeFunc} />
+                  </SwitchWrapper>
+                </Menu.Item>
+              );
+            })}
           </Menu.Group>
           <Menu.Divider />
 
           <Menu.Group title="搜索引擎">
-            <div style={{ margin: 16 }}>
+            <SegmentedControlWrapper>
               <SegmentedControl
-                width={300}
-                options={[
-                  {
-                    label: 'Google',
-                    value: 'https://www.google.com/search?q=',
-                  },
-                  { label: 'Baidu', value: 'https://www.baidu.com/s?wd=' },
-                  {
-                    label: 'Bing',
-                    value: 'https://www.bing.com/search?q=',
-                  },
-                ]}
+                width={280}
+                options={engineOptions}
                 value={engineOption}
                 onChange={onEngineOptionChange}
               />
-            </div>
+            </SegmentedControlWrapper>
           </Menu.Group>
         </>
       ),
@@ -132,19 +148,15 @@ const MenuContent = (props) => {
       tabName: '字体',
       tabContent: (
         <Menu.Group title="选择字体">
-          <div style={{ margin: 16 }}>
+          <SegmentedControlWrapper>
             <SegmentedControl
-              width={300}
-              options={[
-                { label: '江西拙楷', value: 'JXZhuoKai' },
-                { label: '欣意吉祥宋', value: 'JiXiangSong' },
-                { label: '方正细金陵', value: 'FZXiJinLJW' },
-              ]}
+              width={280}
+              options={fontOptions}
               value={fontName}
               onChange={onFontTypeChange}
             />
             <FontStatement fontName={fontName} />
-          </div>
+          </SegmentedControlWrapper>
         </Menu.Group>
       ),
     },
@@ -191,8 +203,8 @@ MenuContent.propTypes = {
   darkModeChecked: PropTypes.bool,
   onDarkModeChange: PropTypes.func,
   onPlayPauseSelect: PropTypes.func.isRequired,
-  onVersesLayoutChange: PropTypes.func.isRequired,
-  isVerticalVerses: PropTypes.bool.isRequired,
+  onVerticalVersesChange: PropTypes.func.isRequired,
+  verticalVersesChecked: PropTypes.bool.isRequired,
   isPlaying: PropTypes.bool.isRequired,
   defaultPlayChecked: PropTypes.bool.isRequired,
   onDefaultPlayChange: PropTypes.func.isRequired,

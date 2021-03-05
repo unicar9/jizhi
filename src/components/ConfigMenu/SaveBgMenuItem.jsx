@@ -13,4 +13,4 @@ const SaveBgMenuItem = () => (
   </Menu.Item>
 );
 
-export { SaveBgMenuItem as default };
+export default SaveBgMenuItem;

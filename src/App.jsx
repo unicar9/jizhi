@@ -243,14 +243,14 @@ class App extends Component {
         <ConfigMenu
           onPlayPauseSelect={this.handlePlayPauseSelect}
           isPlaying={isPlaying}
-          isVerticalVerses={isVerticalVerses}
+          verticalVersesChecked={isVerticalVerses}
           showSearchBarChecked={showSearchBarChecked}
           darkModeChecked={darkModeChecked}
           onDarkModeChange={this.handleDarkModeChange}
           onShowSearchBarChange={this.handleShowSearchBarChange}
           defaultPlayChecked={defaultPlayChecked}
           onDefaultPlayChange={this.handleDefaultPlayChange}
-          onVersesLayoutChange={this.handleVersesLayoutChange}
+          onVerticalVersesChange={this.handleVersesLayoutChange}
           colorStayChecked={colorStayChecked}
           onColorStayChange={this.handleColorStayChange}
           selected={selected}

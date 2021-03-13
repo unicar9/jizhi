@@ -59,11 +59,7 @@ module.exports = {
         },
       ],
     }),
-    react({
-      html: {
-        title: 'New Tab',
-      },
-    }),
+    react(),
     jest({
       setupFilesAfterEnv: ['<rootDir>/src/setupTests.js'],
     }),

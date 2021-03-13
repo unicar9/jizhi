@@ -45,6 +45,9 @@ class App extends Component {
   }
 
   componentDidMount() {
+    const hasZh = navigator.languages.includes('zh');
+    document.title = hasZh ? '新标签页' : 'New Tab';
+
     load(
       (result) => {
         Storager.set({ verses: result.data });
@@ -71,7 +74,6 @@ class App extends Component {
         'darkModeChecked',
       ],
       (res) => {
-        console.log('res', res);
         if (res.fonts && res.fontName === res.fonts.fontName) {
           insertFont(res.fonts.value);
         }
@@ -94,8 +96,6 @@ class App extends Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
-    console.log('prevState', prevState);
-    console.log('props', this.props);
     if (prevState.darkModeChecked !== this.state.darkModeChecked) {
       this.setState(() => ({ waveColor: pickColor(this.state.darkModeChecked) }));
     }

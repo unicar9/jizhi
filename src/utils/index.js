@@ -55,7 +55,6 @@ export const fetchAndSetFont = async (fontName) => {
         return resolve(res.data);
       })
       .catch((error) => {
-        console.log(error);
         return reject(error);
       });
   });

@@ -1,6 +1,15 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { Pane, Menu, Tablist, Switch, SidebarTab, SegmentedControl } from 'evergreen-ui';
+import {
+  Pane,
+  Menu,
+  Tablist,
+  Switch,
+  SidebarTab,
+  SegmentedControl,
+  Spinner,
+  Text,
+} from 'evergreen-ui';
 import styled from 'styled-components';
 import { WAVES } from '../../constants/appConstants';
 import Legal from './Legal';
@@ -38,6 +47,7 @@ const MenuContent = (props) => {
     onFontTypeChange,
     darkModeChecked,
     onDarkModeChange,
+    isFontLoading,
   } = props;
 
   const bgOptions = [
@@ -157,7 +167,14 @@ const MenuContent = (props) => {
               value={fontName}
               onChange={onFontTypeChange}
             />
-            <FontStatement fontName={fontName} />
+            {isFontLoading ? (
+              <Pane height={30} width={280} marginBottom={-10} marginTop={10} display="flex">
+                <Spinner size={20} marginRight={5} />
+                <Text>远程加载中……</Text>
+              </Pane>
+            ) : (
+              <FontStatement fontName={fontName} />
+            )}
           </SegmentedControlWrapper>
         </Menu.Group>
       ),
@@ -218,6 +235,7 @@ MenuContent.propTypes = {
   onEngineOptionChange: PropTypes.func,
   fontName: PropTypes.string,
   onFontTypeChange: PropTypes.func,
+  isFontLoading: PropTypes.bool,
 };
 
 export default MenuContent;

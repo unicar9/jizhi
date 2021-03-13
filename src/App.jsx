@@ -73,7 +73,7 @@ class App extends Component {
       (res) => {
         console.log('res', res);
         if (res.fonts && res.fontName === res.fonts.fontName) {
-          insertFont(res.fontName, res.fonts.value);
+          insertFont(res.fonts.value);
         }
 
         this.setState({
@@ -94,6 +94,8 @@ class App extends Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
+    console.log('prevState', prevState);
+    console.log('props', this.props);
     if (prevState.darkModeChecked !== this.state.darkModeChecked) {
       this.setState(() => ({ waveColor: pickColor(this.state.darkModeChecked) }));
     }
@@ -178,11 +180,18 @@ class App extends Component {
 
   handleFontTypeChange = (fontName) => {
     if (fontName !== DEFAULT_FONT) {
+      this.setState(() => ({ isFontLoading: true }));
+
       Storager.get(['fonts'], (res) => {
         if (res.fonts && res.fonts.fontName === fontName) {
           insertFont(res.fonts.value);
+          this.setState(() => ({ isFontLoading: false }));
         } else {
-          fetchAndSetFont(fontName);
+          fetchAndSetFont(fontName)
+            .then(() => {
+              this.setState(() => ({ isFontLoading: false }));
+            })
+            .catch((err) => console.log(err));
         }
       });
     }
@@ -215,6 +224,7 @@ class App extends Component {
       fontName,
       darkModeChecked,
       waveColor,
+      isFontLoading,
     } = this.state;
     const sketches = { blobs, waves };
 
@@ -264,6 +274,7 @@ class App extends Component {
           onEngineOptionChange={this.handleEngineOptionChange}
           fontName={fontName}
           onFontTypeChange={this.handleFontTypeChange}
+          isFontLoading={isFontLoading}
         >
           {errMessage && (
             <div style={{ height: 30 }}>

@@ -1,35 +1,41 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Paragraph, Link, Avatar, Heading } from 'evergreen-ui';
-import { WAVES } from '../../constants/appConstants';
+import { Paragraph, Avatar, Heading, Pane, HeartIcon } from 'evergreen-ui';
+import styled, { keyframes } from 'styled-components';
+import { WAVES, JIZHI_LINKS } from '../../constants/appConstants';
 import { version } from '../../../package.json';
+import CustomLink from './CustomLink';
+
+const pulse = keyframes`
+  10% {
+    transform: scale(1.2)
+  }
+`;
+
+const HeartPulse = styled(HeartIcon)`
+  animation: ${pulse} 1.2s infinite;
+`;
+
+const LegalWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: 20px;
+`;
 
 const Legal = (props) => {
   const { waveColor, selected } = props;
   const hex = waveColor.hex || '';
 
   return (
-    <div
-      style={{
-        display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'space-between',
-        margin: 20,
-      }}
-    >
-      <div
-        style={{
-          display: 'flex',
-          justifyContent: 'flex-start',
-          alignItems: 'center',
-        }}
-      >
+    <LegalWrapper>
+      <Pane display="flex" alignItems="center">
         <Avatar src="/static/icons/jizhi-64.png" size={32} name="几枝" />
         <Heading size={500} marginLeft={10}>
           几枝 v{version}
         </Heading>
-      </div>
-      <div style={{ marginTop: 20 }}></div>
+      </Pane>
+
       {selected === WAVES && (
         <Paragraph size={400} marginTop="default">
           中国色：{hex.toUpperCase()} | {waveColor && waveColor.name}
@@ -37,57 +43,20 @@ const Legal = (props) => {
       )}
       <Paragraph size={400} marginTop="default">
         本扩展使用了
-        <Link
-          href="https://www.jinrishici.com/"
-          target="_blank"
-          rel="noopener noreferrer"
-          marginLeft={5}
-          marginRight={5}
-          color="green"
-        >
-          今日诗词 API
-        </Link>
+        <CustomLink url={JIZHI_LINKS.jinrishici.link} name={JIZHI_LINKS.jinrishici.name} />
       </Paragraph>
       <Paragraph size={400} marginTop="default">
         欢迎访问几枝
-        <Link
-          href="https://github.com/unicar9/jizhi"
-          target="_blank"
-          rel="noopener noreferrer"
-          marginLeft={5}
-          marginRight={5}
-          color="green"
-        >
-          Github主页
-        </Link>
+        <CustomLink url={JIZHI_LINKS.home.link} name={JIZHI_LINKS.home.name} />
         查看
-        <Link
-          href="https://github.com/unicar9/jizhi/blob/master/CHANGELOG.md"
-          target="_blank"
-          rel="noopener noreferrer"
-          marginLeft={5}
-          marginRight={5}
-          color="green"
-        >
-          更新日志
-        </Link>
-        和
-        <Link
-          href="https://github.com/unicar9/jizhi/issues
-          "
-          target="_blank"
-          rel="noopener noreferrer"
-          marginLeft={5}
-          marginRight={5}
-          color="green"
-        >
-          提交反馈
-        </Link>
+        <CustomLink url={JIZHI_LINKS.changelog.link} name={JIZHI_LINKS.changelog.name} />和
+        <CustomLink url={JIZHI_LINKS.issues.link} name={JIZHI_LINKS.issues.name} />
       </Paragraph>
       <Paragraph size={400} marginTop="default">
-        <span style={{ color: '#e25555' }}>&#9829;</span>感谢您的支持和喜爱 !
+        <HeartPulse color="#e25555" size={14} marginRight={5} />
+        感谢您的支持和喜爱
       </Paragraph>
-    </div>
+    </LegalWrapper>
   );
 };
 

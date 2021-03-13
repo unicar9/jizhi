@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import { Popover, Position, Icon } from 'evergreen-ui';
 import styled, { css } from 'styled-components';
 import MenuContent from './MenuContent';
@@ -27,38 +27,29 @@ const MenuButton = styled(Icon)`
     `}
 `;
 
-class ConfigMenu extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      isOpen: false,
-    };
-  }
+const ConfigMenu = (props) => {
+  const [isOpen, setIsOpen] = useState(false);
 
-  handleOnOpen = () => this.setState({ isOpen: true });
+  const handleOnOpen = () => {
+    setIsOpen(true);
+  };
 
-  handleOnClose = () => this.setState({ isOpen: false });
+  const handleOnClose = () => {
+    setIsOpen(false);
+  };
 
-  render() {
-    return (
-      <MenuWrapper>
-        <Popover
-          position={Position.BOTTOM_LEFT}
-          onOpen={this.handleOnOpen}
-          onClose={this.handleOnClose}
-          content={<MenuContent {...this.props} />}
-        >
-          <MenuButton
-            id="menu-button"
-            icon="cog"
-            size={20}
-            color="white"
-            isOpen={this.state.isOpen}
-          />
-        </Popover>
-      </MenuWrapper>
-    );
-  }
-}
+  return (
+    <MenuWrapper>
+      <Popover
+        position={Position.BOTTOM_LEFT}
+        onOpen={handleOnOpen}
+        onClose={handleOnClose}
+        content={<MenuContent {...props} />}
+      >
+        <MenuButton id="menu-button" icon="cog" size={20} color="white" isOpen={isOpen} />
+      </Popover>
+    </MenuWrapper>
+  );
+};
 
 export default ConfigMenu;

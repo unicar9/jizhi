@@ -9,6 +9,7 @@ import {
   SegmentedControl,
   Spinner,
   Text,
+  InlineAlert,
 } from 'evergreen-ui';
 import styled from 'styled-components';
 import { WAVES } from '../../constants/appConstants';
@@ -48,6 +49,7 @@ const MenuContent = (props) => {
     darkModeChecked,
     onDarkModeChange,
     isFontLoading,
+    waveColor,
   } = props;
 
   const bgOptions = [
@@ -103,28 +105,6 @@ const MenuContent = (props) => {
 
   const tabs = [
     {
-      tabName: '背景',
-      tabContent: (
-        <Menu.OptionsGroup options={bgOptions} selected={selected} onChange={onBgOptionChange} />
-      ),
-    },
-    {
-      tabName: '操作',
-      tabContent: (
-        <Menu.Group>
-          <SaveBgMenuItem />
-          <Menu.Item
-            icon={isPlaying ? 'pause' : 'play'}
-            intent="success"
-            onSelect={onPlayPauseSelect}
-            secondaryText="Space"
-          >
-            {isPlaying ? '暂停动画' : '播放动画'}
-          </Menu.Item>
-        </Menu.Group>
-      ),
-    },
-    {
       tabName: '设置',
       tabContent: (
         <>
@@ -157,6 +137,32 @@ const MenuContent = (props) => {
       ),
     },
     {
+      tabName: '背景',
+      tabContent: (
+        <Menu.OptionsGroup options={bgOptions} selected={selected} onChange={onBgOptionChange} />
+      ),
+    },
+    {
+      tabName: '操作',
+      tabContent: (
+        <Menu.Group>
+          <SaveBgMenuItem />
+          <Menu.Item
+            icon={isPlaying ? 'pause' : 'play'}
+            intent="success"
+            onSelect={onPlayPauseSelect}
+            secondaryText="Space"
+          >
+            {isPlaying ? '暂停动画' : '播放动画'}
+          </Menu.Item>
+          <InlineAlert intent="none" marginRight={15} marginLeft={15}>
+            <p>波纹背景下使用左右键可以随机切换颜色</p>
+          </InlineAlert>
+        </Menu.Group>
+      ),
+    },
+
+    {
       tabName: '字体',
       tabContent: (
         <Menu.Group title="选择字体">
@@ -179,7 +185,7 @@ const MenuContent = (props) => {
         </Menu.Group>
       ),
     },
-    { tabName: '声明', tabContent: <Legal /> },
+    { tabName: '关于', tabContent: <Legal waveColor={waveColor} selected={selected} /> },
   ];
 
   return (
@@ -236,6 +242,7 @@ MenuContent.propTypes = {
   fontName: PropTypes.string,
   onFontTypeChange: PropTypes.func,
   isFontLoading: PropTypes.bool,
+  waveColor: PropTypes.object,
 };
 
 export default MenuContent;

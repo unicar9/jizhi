@@ -23,8 +23,7 @@ const LegalWrapper = styled.div`
   margin: 20px;
 `;
 
-const Legal = (props) => {
-  const { waveColor, selected } = props;
+const Legal = ({ waveColor, selected }) => {
   const hex = waveColor.hex || '';
 
   return (

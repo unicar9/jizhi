@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
 import { Paragraph, Link, Avatar, Heading } from 'evergreen-ui';
 import { WAVES } from '../../constants/appConstants';
+import { version } from '../../../package.json';
 
 const Legal = (props) => {
   const { waveColor, selected } = props;
@@ -26,7 +26,7 @@ const Legal = (props) => {
       >
         <Avatar src="/static/icons/jizhi-64.png" size={32} name="几枝" />
         <Heading size={500} marginLeft={10}>
-          几枝 v.1.2.2
+          几枝 v{version}
         </Heading>
       </div>
       <div style={{ marginTop: 20 }}></div>
@@ -92,10 +92,7 @@ const Legal = (props) => {
 };
 
 Legal.propTypes = {
-  waveColor: {
-    name: PropTypes.string,
-    hex: PropTypes.string,
-  },
+  waveColor: PropTypes.object,
   selected: PropTypes.string,
 };
 

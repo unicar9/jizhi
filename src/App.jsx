@@ -233,7 +233,7 @@ class App extends Component {
         <GlobalStyle />
         {selected === WAVES && (
           <ColorName
-            key={darkModeChecked}
+            key={waveColor.name}
             fontName={fontName}
             colorName={waveColor.name}
             colorStayChecked={colorStayChecked}

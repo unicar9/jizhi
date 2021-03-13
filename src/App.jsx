@@ -275,6 +275,7 @@ class App extends Component {
           fontName={fontName}
           onFontTypeChange={this.handleFontTypeChange}
           isFontLoading={isFontLoading}
+          waveColor={waveColor}
         >
           {errMessage && (
             <div style={{ height: 30 }}>

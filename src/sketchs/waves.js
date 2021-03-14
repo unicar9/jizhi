@@ -1,17 +1,19 @@
-const wavesColors = require('../constants/wavesColors.json');
-
 export default function waves(p) {
   let mountains = [];
+  let bgColor = '#e6e6e6';
+  let isDarkMode = false;
+  let waveColor = bgColor;
 
   p.setup = function () {
     p.createCanvas(p.windowWidth, p.windowHeight);
-    growMountains(p, mountains);
-    p.background(230);
+    mountains = [];
+    growMountains(p, mountains, waveColor);
+    p.background(bgColor);
     mountains.forEach((m) => m.display(p));
   };
 
   p.draw = function () {
-    p.background(230);
+    p.background(bgColor);
     mountains.forEach((m) => m.display(p));
   };
 
@@ -21,17 +23,24 @@ export default function waves(p) {
 
   p.myCustomRedrawAccordingToNewPropsHandler = function (newProps) {
     !newProps.isPlaying ? p.frameRate(0) : p.frameRate(30);
-  };
+    bgColor = newProps.isDarkMode ? '#323232' : '#e6e6e6';
 
-  p.keyPressed = function () {
-    if (p.keyCode === 39 || p.keyCode === 37) {
-      // left or right arrow keys
-      mountains = [];
-      growMountains(p, mountains);
-      p.background(230);
-      mountains.forEach((m) => m.display(p));
+    if (isDarkMode !== newProps.isDarkMode || waveColor !== newProps.waveColor) {
+      waveColor = newProps.waveColor;
+      isDarkMode = newProps.isDarkMode;
+      p.setup();
     }
   };
+
+  // p.keyPressed = function () {
+  //   if (p.keyCode === 39 || p.keyCode === 37) {
+  //     // left or right arrow keys
+  //     mountains = [];
+  //     growMountains(p, mountains, isDarkMode);
+  //     p.background(bgColor);
+  //     mountains.forEach((m) => m.display(p));
+  //   }
+  // };
 }
 
 class Mountain {
@@ -66,12 +75,8 @@ class Mountain {
   }
 }
 
-function growMountains(p, mountains) {
-  const colorSelected = p.random(wavesColors);
-  const c = p.color(colorSelected.hex);
-
-  const colorNameDiv = document.getElementById('color-name');
-  if (colorNameDiv) colorNameDiv.innerText = colorSelected.name;
+function growMountains(p, mountains, hexColor) {
+  const c = p.color(hexColor);
 
   new Array(5).fill(1).map((_, i) => {
     const a = 255 - 50 * i;

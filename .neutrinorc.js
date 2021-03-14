@@ -59,15 +59,7 @@ module.exports = {
         },
       ],
     }),
-    react({
-      html: {
-        title: 'New Tab',
-      },
-      style: {
-        test: /\.(css|sass|scss)$/,
-        loaders: [{ loader: 'sass-loader', useId: 'sass' }],
-      },
-    }),
+    react(),
     jest({
       setupFilesAfterEnv: ['<rootDir>/src/setupTests.js'],
     }),

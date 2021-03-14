@@ -1,9 +1,11 @@
 import domtoimage from 'retina-dom-to-image';
 import axios from 'axios';
+import { sample } from 'lodash';
+import wavesColors from '../constants/wavesColors.json';
 import storager from './storager';
 
 function filter(node) {
-  return node.id !== 'menu';
+  return node.id !== 'menu-button' && node.id !== 'jizhi-search-icon';
 }
 
 export const saveBackground = () => {
@@ -35,26 +37,33 @@ export const pureWords = (sentense = '') => {
   return sentense.replace(regex, ' ');
 };
 
-export const setFont = (fontName) => {
-  document.querySelector('body').style.setProperty('--font-name', fontName);
-};
-
-export const insertFont = (fontName, data) => {
+export const insertFont = (data) => {
   const style = document.createElement('style');
   style.innerHTML = data;
   document.head.appendChild(style);
-
-  setFont(fontName);
 };
 
 export const fetchAndSetFont = async (fontName) => {
   const WEB_FONT_URL = `https://romantic-bell-b49acd.netlify.app/${fontName}.woff.json`;
 
-  try {
-    const res = await axios.get(WEB_FONT_URL, { crossdomain: true });
-    insertFont(res.data.fontName, res.data.value);
-    storager.set({ fonts: res.data });
-  } catch (error) {
-    console.log(error);
-  }
+  return new Promise((resolve, reject) => {
+    axios
+      .get(WEB_FONT_URL, { crossdomain: true })
+      .then((res) => {
+        insertFont(res.data.value);
+        storager.set({ fonts: res.data });
+        return resolve(res.data);
+      })
+      .catch((error) => {
+        return reject(error);
+      });
+  });
+};
+
+export const pickColor = (isDarkMode) => {
+  const suitableColors = isDarkMode
+    ? wavesColors.filter((c) => c.darkSuitable)
+    : wavesColors.filter((c) => c.lightSuitable);
+
+  return sample(suitableColors);
 };

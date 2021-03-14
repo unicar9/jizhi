@@ -28,3 +28,22 @@ export const FONTS_INFO = {
     link: 'http://www.foundertype.com/index.php/FontInfo/index/id/202#',
   },
 };
+
+export const JIZHI_LINKS = {
+  jinrishici: {
+    name: '今日诗词 API',
+    link: 'https://www.jinrishici.com/',
+  },
+  home: {
+    name: 'Github 主页',
+    link: 'https://github.com/unicar9/jizhi',
+  },
+  changelog: {
+    name: '更新日志',
+    link: 'https://github.com/unicar9/jizhi/blob/master/CHANGELOG.md',
+  },
+  issues: {
+    name: '提交反馈',
+    link: 'https://github.com/unicar9/jizhi/issues',
+  },
+};

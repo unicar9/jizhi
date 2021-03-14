@@ -7,10 +7,10 @@ const SaveBgMenuItem = () => (
     icon="download"
     intent="success"
     onSelect={() => saveBackground()}
-    secondaryText="Alt + S"
+    secondaryText="Alt/Option + S"
   >
     保存背景
   </Menu.Item>
 );
 
-export { SaveBgMenuItem as default };
+export default SaveBgMenuItem;

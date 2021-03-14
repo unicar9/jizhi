@@ -7,7 +7,8 @@ import blobs from './sketchs/blobs';
 import Verses from './components/Verses';
 import ConfigMenu from './components/ConfigMenu';
 import SearchInput from './components/SearchInput';
-import { saveBackground, insertFont, fetchAndSetFont, setFont } from './utils';
+import ColorName from './components/ColorName';
+import { saveBackground, insertFont, fetchAndSetFont, pickColor } from './utils';
 import Storager from './utils/storager';
 import { load } from './utils/jinrishici';
 import {
@@ -17,9 +18,8 @@ import {
   GOOGLE_SEARCH,
   DEFAULT_SHICI,
   DEFAULT_FONT,
-} from './constants/app-constants';
-
-import './styles/app.scss';
+} from './constants/appConstants';
+import GlobalStyle from './components/GlobalStyle';
 
 const DEFAULT_SHICI_LIST = require('./constants/shici.json');
 
@@ -30,6 +30,7 @@ class App extends Component {
     this.state = {
       isPlaying: true,
       showSearchBarChecked: false,
+      darkModeChecked: false,
       defaultPlayChecked: true,
       colorStayChecked: false,
       verses: DEFAULT_SHICI,
@@ -39,10 +40,14 @@ class App extends Component {
       value: '',
       focused: false,
       fontName: DEFAULT_FONT,
+      waveColor: pickColor(false),
     };
   }
 
   componentDidMount() {
+    const hasZh = navigator.languages.includes('zh');
+    document.title = hasZh ? '新标签页' : 'New Tab';
+
     load(
       (result) => {
         Storager.set({ verses: result.data });
@@ -66,15 +71,16 @@ class App extends Component {
         'showSearchBarChecked',
         'fontName',
         'fonts',
+        'darkModeChecked',
       ],
       (res) => {
-        console.log('res', res);
         if (res.fonts && res.fontName === res.fonts.fontName) {
-          insertFont(res.fontName, res.fonts.value);
+          insertFont(res.fonts.value);
         }
 
         this.setState({
           showSearchBarChecked: !!res.showSearchBarChecked,
+          darkModeChecked: !!res.darkModeChecked,
           colorStayChecked: !!res.colorStayChecked,
           defaultPlayChecked: res.defaultPlayChecked !== false,
           isVerticalVerses: res.versesLayout === VERTICAL,
@@ -83,9 +89,16 @@ class App extends Component {
           selected: res.selected || WAVES,
           engineOption: res.engineOption || GOOGLE_SEARCH,
           fontName: res.fontName || DEFAULT_FONT,
+          waveColor: pickColor(!!res.darkModeChecked),
         });
       }
     );
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (prevState.darkModeChecked !== this.state.darkModeChecked) {
+      this.setState(() => ({ waveColor: pickColor(this.state.darkModeChecked) }));
+    }
   }
 
   handlePlayPauseSelect = () => this.setState((state) => ({ isPlaying: !state.isPlaying }));
@@ -97,6 +110,17 @@ class App extends Component {
       }),
       () => {
         Storager.set({ showSearchBarChecked: this.state.showSearchBarChecked });
+      }
+    );
+  };
+
+  handleDarkModeChange = () => {
+    this.setState(
+      (state) => ({
+        darkModeChecked: !state.darkModeChecked,
+      }),
+      () => {
+        Storager.set({ darkModeChecked: this.state.darkModeChecked });
       }
     );
   };
@@ -142,22 +166,32 @@ class App extends Component {
     });
   };
 
-  handleKeyPress = ({ charCode, altKey }) => {
+  handleKeyDown = ({ keyCode, altKey }) => {
     // space
-    if (charCode === 32) this.setState((state) => ({ isPlaying: !state.isPlaying }));
+    if (keyCode === 32) this.setState((state) => ({ isPlaying: !state.isPlaying }));
     // S + alt
-    if (charCode === 223 && altKey) saveBackground();
+    if (keyCode === 83 && altKey) saveBackground();
+
+    // left or right arrow keys
+    if (keyCode === 37 || keyCode === 39) {
+      this.setState(() => ({ waveColor: pickColor(this.state.darkModeChecked) }));
+    }
   };
 
   handleFontTypeChange = (fontName) => {
-    if (fontName === DEFAULT_FONT) {
-      setFont(fontName);
-    } else {
+    if (fontName !== DEFAULT_FONT) {
+      this.setState(() => ({ isFontLoading: true }));
+
       Storager.get(['fonts'], (res) => {
         if (res.fonts && res.fonts.fontName === fontName) {
-          insertFont(fontName, res.fonts.value);
+          insertFont(res.fonts.value);
+          this.setState(() => ({ isFontLoading: false }));
         } else {
-          fetchAndSetFont(fontName);
+          fetchAndSetFont(fontName)
+            .then(() => {
+              this.setState(() => ({ isFontLoading: false }));
+            })
+            .catch((err) => console.log(err));
         }
       });
     }
@@ -188,30 +222,50 @@ class App extends Component {
       value,
       focused,
       fontName,
+      darkModeChecked,
+      waveColor,
+      isFontLoading,
     } = this.state;
     const sketches = { blobs, waves };
 
     return selected ? (
-      <div className="App" tabIndex="-1" onKeyPress={this.handleKeyPress}>
+      <div className="App" tabIndex="-1" onKeyDown={this.handleKeyDown}>
+        <GlobalStyle />
         {selected === WAVES && (
-          <div id="color-name" className={colorStayChecked ? '' : 'fadeout'} />
+          <ColorName
+            key={waveColor.name}
+            fontName={fontName}
+            colorName={waveColor.name}
+            colorStayChecked={colorStayChecked}
+            isDarkMode={darkModeChecked}
+          />
         )}
         <Verses
+          key={isVerticalVerses}
           bgOption={selected}
           verses={verses}
-          versesLayout={isVerticalVerses ? VERTICAL : HORIZONTAL}
+          isVerticalVerses={isVerticalVerses}
           engineOption={engineOption}
+          isDarkMode={darkModeChecked}
+          fontName={fontName}
         />
-        <P5Wrapper sketch={sketches[selected]} isPlaying={isPlaying} />
+        <P5Wrapper
+          sketch={sketches[selected]}
+          isPlaying={isPlaying}
+          isDarkMode={darkModeChecked}
+          waveColor={waveColor.hex}
+        />
         <ConfigMenu
           onPlayPauseSelect={this.handlePlayPauseSelect}
           isPlaying={isPlaying}
-          isVerticalVerses={isVerticalVerses}
+          verticalVersesChecked={isVerticalVerses}
           showSearchBarChecked={showSearchBarChecked}
+          darkModeChecked={darkModeChecked}
+          onDarkModeChange={this.handleDarkModeChange}
           onShowSearchBarChange={this.handleShowSearchBarChange}
           defaultPlayChecked={defaultPlayChecked}
           onDefaultPlayChange={this.handleDefaultPlayChange}
-          onVersesLayoutChange={this.handleVersesLayoutChange}
+          onVerticalVersesChange={this.handleVersesLayoutChange}
           colorStayChecked={colorStayChecked}
           onColorStayChange={this.handleColorStayChange}
           selected={selected}
@@ -220,6 +274,8 @@ class App extends Component {
           onEngineOptionChange={this.handleEngineOptionChange}
           fontName={fontName}
           onFontTypeChange={this.handleFontTypeChange}
+          isFontLoading={isFontLoading}
+          waveColor={waveColor}
         >
           {errMessage && (
             <div style={{ height: 30 }}>
@@ -237,6 +293,7 @@ class App extends Component {
             onBlur={this.handleBlur}
             onChange={this.handleChange}
             engineOption={engineOption}
+            isDarkMode={darkModeChecked}
           />
         )}
       </div>

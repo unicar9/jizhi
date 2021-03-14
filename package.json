@@ -12,7 +12,7 @@
     "format": "prettier --list-different --write  \"**/*.{js,jsx}\""
   },
   "dependencies": {
-    "archiver": "^3.1.1",
+    "archiver": "^5.3.0",
     "axios": "^0.21.1",
     "chalk": "^4.0.0",
     "evergreen-ui": "^4.19.1",

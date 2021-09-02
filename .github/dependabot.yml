@@ -1,0 +1,60 @@
+version: 2
+updates:
+- package-ecosystem: npm
+  directory: "/"
+  schedule:
+    interval: daily
+    time: "19:00"
+  open-pull-requests-limit: 10
+  ignore:
+  - dependency-name: eslint-config-prettier
+    versions:
+    - 8.1.0
+    - 8.2.0
+  - dependency-name: eslint
+    versions:
+    - 7.20.0
+    - 7.21.0
+    - 7.22.0
+    - 7.23.0
+    - 7.24.0
+  - dependency-name: styled-components
+    versions:
+    - 5.2.2
+  - dependency-name: eslint-plugin-react
+    versions:
+    - 7.23.0
+    - 7.23.1
+  - dependency-name: node-sass
+    versions:
+    - 5.0.0
+  - dependency-name: handlebars
+    versions:
+    - 4.7.7
+  - dependency-name: copy-webpack-plugin
+    versions:
+    - 6.4.1
+    - 7.0.0
+  - dependency-name: eslint-plugin-prettier
+    versions:
+    - 3.3.1
+  - dependency-name: archiver
+    versions:
+    - 5.2.0
+  - dependency-name: enzyme-adapter-react-16
+    versions:
+    - 1.15.6
+  - dependency-name: jest
+    versions:
+    - 26.6.3
+  - dependency-name: webpack
+    versions:
+    - 4.46.0
+    - 5.21.2
+  - dependency-name: webpack-dev-server
+    versions:
+    - 3.11.2
+  - dependency-name: sass-loader
+    versions:
+    - 10.1.1
+    - 11.0.1

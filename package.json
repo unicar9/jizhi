@@ -20,7 +20,7 @@
     "lodash": "^4.17.21",
     "prop-types": "^15",
     "react": "^16",
-    "react-dom": "^16",
+    "react-dom": "^17",
     "react-hot-loader": "^4",
     "react-p5-wrapper": "^0.0.4",
     "retina-dom-to-image": "^2.5.6",

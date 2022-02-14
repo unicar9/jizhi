@@ -13,7 +13,7 @@
   },
   "dependencies": {
     "archiver": "^3.1.1",
-    "axios": "^0.21.1",
+    "axios": "^0.26.0",
     "chalk": "^4.0.0",
     "evergreen-ui": "^4.19.1",
     "handlebars": "^4.7.6",

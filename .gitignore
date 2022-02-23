@@ -6,3 +6,4 @@ builds
 build
 *.zip
 .eslintcache
+keys.json

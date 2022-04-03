@@ -5,7 +5,7 @@
   "license": "MIT",
   "scripts": {
     "build": "rimraf builds && webpack --mode production && node build.js",
-    "start": "webpack-dev-server --mode development --open --watch",
+    "start": "webpack-dev-server --mode development --open --watch --port=3000",
     "test": "jest",
     "lint": "eslint --cache --format codeframe --ext .mjs,.jsx,.js src",
     "lint:fix": "yarn lint --fix",

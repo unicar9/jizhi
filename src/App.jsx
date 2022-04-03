@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { hot } from 'react-hot-loader';
-import P5Wrapper from 'react-p5-wrapper';
+import { ReactP5Wrapper } from 'react-p5-wrapper';
 import { InlineAlert } from 'evergreen-ui';
 import waves from './sketchs/waves';
 import blobs from './sketchs/blobs';
@@ -249,7 +249,7 @@ class App extends Component {
           isDarkMode={darkModeChecked}
           fontName={fontName}
         />
-        <P5Wrapper
+        <ReactP5Wrapper
           sketch={sketches[selected]}
           isPlaying={isPlaying}
           isDarkMode={darkModeChecked}

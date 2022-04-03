@@ -21,7 +21,7 @@ export default function waves(p) {
     p.resizeCanvas(p.windowWidth, p.windowHeight);
   };
 
-  p.myCustomRedrawAccordingToNewPropsHandler = function (newProps) {
+  p.updateWithProps = function (newProps) {
     !newProps.isPlaying ? p.frameRate(0) : p.frameRate(30);
     bgColor = newProps.isDarkMode ? '#323232' : '#e6e6e6';
 

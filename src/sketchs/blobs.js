@@ -26,7 +26,7 @@ export default function blobs(p) {
     generateBlobs(p, blobsArray, colors, p.mouseX, p.mouseY);
   };
 
-  p.myCustomRedrawAccordingToNewPropsHandler = function (newProps) {
+  p.updateWithProps = function (newProps) {
     !newProps.isPlaying ? p.frameRate(0) : p.frameRate(30);
     bgColor = newProps.isDarkMode ? 50 : 230;
   };

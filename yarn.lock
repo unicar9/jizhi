@@ -8013,10 +8013,10 @@ react-lifecycles-compat@^3.0.4:
   resolved "https://registry.yarnpkg.com/react-lifecycles-compat/-/react-lifecycles-compat-3.0.4.tgz#4f1a273afdfc8f3488a8c516bfda78f872352362"
   integrity sha512-fBASbA6LnOU9dOU2eW7aQ8xmYBSXUIWr+UmF9b1efZBazGNO+rcXT/icdKnYm2pTwcRylVUYwW7H1PHfLekVzA==
 
-react-p5-wrapper@^3.2.1:
-  version "3.2.1"
-  resolved "https://registry.yarnpkg.com/react-p5-wrapper/-/react-p5-wrapper-3.2.1.tgz#810802c70f3c16a2b99fe9c080e621d680d000fe"
-  integrity sha512-sowxxrCN9RGd8HwHDELyVp7AasnM+fVbren3n4tRNmen0oOXjy1lhymfSWMkYjrYrIv9IlmY9iQgVV5LaAw4WA==
+react-p5-wrapper@^3.3.0:
+  version "3.3.0"
+  resolved "https://registry.yarnpkg.com/react-p5-wrapper/-/react-p5-wrapper-3.3.0.tgz#8687a763d952f749f192cff612785766c011e9ca"
+  integrity sha512-7XqI8fGtE7utAOt6dtJivmQQftFA+H0pK9o99aM8evsazo7TCfkNWLBuv8HjHabvOx9sOqtVO7pWWHDMxK6h1w==
   dependencies:
     "@types/p5" "^1.4.0"
     microdiff "^1.3.0"

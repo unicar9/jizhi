@@ -2,6 +2,12 @@
 
 此文件包含几枝的所有版本更新内容。部分格式和想法参考了 [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)。
 
+## [2.5.1]
+
+### 修复
+
+- 更新 manifest.json
+
 ## [2.5.0]
 
 ### 新增

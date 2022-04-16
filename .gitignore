@@ -6,3 +6,6 @@ builds
 build
 *.zip
 .eslintcache
+firefox_src_review
+firefox_src_review.sh
+firefox_src_review_README.md

@@ -22,7 +22,6 @@ const VersesWrapper = styled.div`
   left: 50vw;
   text-align: center;
   opacity: 0.8;
-  word-break: keep-all;
   ${(props) =>
     props.isVerticalVerses
       ? css`

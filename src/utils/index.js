@@ -4,9 +4,15 @@ import { sample } from 'lodash';
 import wavesColors from '../constants/wavesColors.json';
 import storager from './storager';
 
-function filter(node) {
+export const filter = (node) => {
   return node.id !== 'menu-button' && node.id !== 'jizhi-search-icon';
-}
+};
+
+export const isDarkModeEnabled = () => {
+  const result = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+  return result;
+};
 
 export const saveBackground = () => {
   const node = document.getElementById('root');
@@ -39,7 +45,7 @@ export const pureWords = (sentense = '') => {
 
 export const insertFont = (data) => {
   const style = document.createElement('style');
-  style.innerHTML = data;
+  style.textContent = data;
   document.head.appendChild(style);
 };
 

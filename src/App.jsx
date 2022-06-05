@@ -8,7 +8,7 @@ import Verses from './components/Verses';
 import ConfigMenu from './components/ConfigMenu';
 import SearchInput from './components/SearchInput';
 import ColorName from './components/ColorName';
-import { saveBackground, insertFont, fetchAndSetFont, pickColor } from './utils';
+import { saveBackground, insertFont, fetchAndSetFont, pickColor, isDarkModeEnabled } from './utils';
 import Storager from './utils/storager';
 import { load } from './utils/jinrishici';
 import {
@@ -30,7 +30,8 @@ class App extends Component {
     this.state = {
       isPlaying: true,
       showSearchBarChecked: false,
-      darkModeChecked: false,
+      colorMode: 'os',
+      isDarkMode: false,
       defaultPlayChecked: true,
       colorStayChecked: false,
       verses: DEFAULT_SHICI,
@@ -71,7 +72,7 @@ class App extends Component {
         'showSearchBarChecked',
         'fontName',
         'fonts',
-        'darkModeChecked',
+        'colorMode',
       ],
       (res) => {
         if (res.fonts && res.fontName === res.fonts.fontName) {
@@ -80,7 +81,7 @@ class App extends Component {
 
         this.setState({
           showSearchBarChecked: !!res.showSearchBarChecked,
-          darkModeChecked: !!res.darkModeChecked,
+          colorMode: res.colorMode,
           colorStayChecked: !!res.colorStayChecked,
           defaultPlayChecked: res.defaultPlayChecked !== false,
           isVerticalVerses: res.versesLayout === VERTICAL,
@@ -89,15 +90,20 @@ class App extends Component {
           selected: res.selected || WAVES,
           engineOption: res.engineOption || GOOGLE_SEARCH,
           fontName: res.fontName || DEFAULT_FONT,
-          waveColor: pickColor(!!res.darkModeChecked),
+          isDarkMode: res.colorMode === 'os' ? isDarkModeEnabled() : res.colorMode === 'dark',
+          waveColor: pickColor(!!this.state.isDarkMode),
         });
       }
     );
   }
 
   componentDidUpdate(prevProps, prevState) {
-    if (prevState.darkModeChecked !== this.state.darkModeChecked) {
-      this.setState(() => ({ waveColor: pickColor(this.state.darkModeChecked) }));
+    if (prevState.colorMode !== this.state.colorMode) {
+      this.setState(() => ({
+        isDarkMode:
+          this.state.colorMode === 'os' ? isDarkModeEnabled() : this.state.colorMode === 'dark',
+        waveColor: pickColor(this.state.isDarkMode),
+      }));
     }
   }
 
@@ -114,16 +120,8 @@ class App extends Component {
     );
   };
 
-  handleDarkModeChange = () => {
-    this.setState(
-      (state) => ({
-        darkModeChecked: !state.darkModeChecked,
-      }),
-      () => {
-        Storager.set({ darkModeChecked: this.state.darkModeChecked });
-      }
-    );
-  };
+  handleColorModeOptionChange = (colorMode) =>
+    this.setState({ colorMode }, () => Storager.set({ colorMode }));
 
   handleVersesLayoutChange = () => {
     this.setState(
@@ -174,7 +172,7 @@ class App extends Component {
 
     // left or right arrow keys
     if (keyCode === 37 || keyCode === 39) {
-      this.setState(() => ({ waveColor: pickColor(this.state.darkModeChecked) }));
+      this.setState(() => ({ waveColor: pickColor(this.state.isDarkMode) }));
     }
   };
 
@@ -222,9 +220,10 @@ class App extends Component {
       value,
       focused,
       fontName,
-      darkModeChecked,
+      isDarkMode,
       waveColor,
       isFontLoading,
+      colorMode,
     } = this.state;
     const sketches = { blobs, waves };
 
@@ -237,7 +236,7 @@ class App extends Component {
             fontName={fontName}
             colorName={waveColor.name}
             colorStayChecked={colorStayChecked}
-            isDarkMode={darkModeChecked}
+            isDarkMode={isDarkMode}
           />
         )}
         <Verses
@@ -246,13 +245,13 @@ class App extends Component {
           verses={verses}
           isVerticalVerses={isVerticalVerses}
           engineOption={engineOption}
-          isDarkMode={darkModeChecked}
+          isDarkMode={isDarkMode}
           fontName={fontName}
         />
         <ReactP5Wrapper
           sketch={sketches[selected]}
           isPlaying={isPlaying}
-          isDarkMode={darkModeChecked}
+          isDarkMode={isDarkMode}
           waveColor={waveColor.hex}
         />
         <ConfigMenu
@@ -260,7 +259,7 @@ class App extends Component {
           isPlaying={isPlaying}
           verticalVersesChecked={isVerticalVerses}
           showSearchBarChecked={showSearchBarChecked}
-          darkModeChecked={darkModeChecked}
+          isDarkMode={isDarkMode}
           onDarkModeChange={this.handleDarkModeChange}
           onShowSearchBarChange={this.handleShowSearchBarChange}
           defaultPlayChecked={defaultPlayChecked}
@@ -272,6 +271,8 @@ class App extends Component {
           onBgOptionChange={this.handleBgOptionChange}
           engineOption={engineOption}
           onEngineOptionChange={this.handleEngineOptionChange}
+          onColorModeOptionChange={this.handleColorModeOptionChange}
+          colorMode={colorMode}
           fontName={fontName}
           onFontTypeChange={this.handleFontTypeChange}
           isFontLoading={isFontLoading}
@@ -293,7 +294,7 @@ class App extends Component {
             onBlur={this.handleBlur}
             onChange={this.handleChange}
             engineOption={engineOption}
-            isDarkMode={darkModeChecked}
+            isDarkMode={isDarkMode}
           />
         )}
       </div>

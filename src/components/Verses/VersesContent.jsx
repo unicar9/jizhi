@@ -7,6 +7,7 @@ import { pureWords } from '../../utils';
 const Content = styled.div`
   font-size: calc(30px + 1vw);
   width: 80vw;
+  word-break: keep-all;
   ${(props) =>
     props.isVertical &&
     css`
@@ -28,7 +29,6 @@ const Origin = styled.div`
       margin-right: 10px;
       justify-content: flex-start;
       flex-wrap: wrap;
-      word-break: keep-all;
     `};
 `;
 

@@ -23,7 +23,7 @@ const SwitchWrapper = styled.div`
 `;
 
 const SegmentedControlWrapper = styled.div`
-  margin: 16px;
+  margin-left: 16px;
 `;
 
 const MenuContent = (props) => {
@@ -44,10 +44,10 @@ const MenuContent = (props) => {
     onBgOptionChange,
     engineOption,
     onEngineOptionChange,
+    colorMode,
+    onColorModeOptionChange,
     fontName,
     onFontTypeChange,
-    darkModeChecked,
-    onDarkModeChange,
     isFontLoading,
     waveColor,
   } = props;
@@ -69,6 +69,21 @@ const MenuContent = (props) => {
     },
   ];
 
+  const colorModeOptions = [
+    {
+      label: '白天',
+      value: 'light',
+    },
+    {
+      label: '黑夜',
+      value: 'dark',
+    },
+    {
+      label: '跟随系统',
+      value: 'os',
+    },
+  ];
+
   const fontOptions = [
     { label: '江西拙楷', value: 'JXZhuoKai' },
     { label: '欣意吉祥宋', value: 'JiXiangSong' },
@@ -76,11 +91,11 @@ const MenuContent = (props) => {
   ];
 
   const switchOptions = [
-    {
-      name: '黑夜模式',
-      checkedState: darkModeChecked,
-      onChangeFunc: onDarkModeChange,
-    },
+    // {
+    //   name: '黑夜模式',
+    //   checkedState: darkModeChecked,
+    //   onChangeFunc: onDarkModeChange,
+    // },
     {
       name: '竖版诗词',
       checkedState: verticalVersesChecked,
@@ -139,7 +154,26 @@ const MenuContent = (props) => {
     {
       tabName: '背景',
       tabContent: (
-        <Menu.OptionsGroup options={bgOptions} selected={selected} onChange={onBgOptionChange} />
+        <>
+          <Menu.Group title="动画效果">
+            <Menu.OptionsGroup
+              options={bgOptions}
+              selected={selected}
+              onChange={onBgOptionChange}
+            />
+          </Menu.Group>
+          <Menu.Divider />
+          <Menu.Group title="颜色模式">
+            <SegmentedControlWrapper>
+              <SegmentedControl
+                width={280}
+                options={colorModeOptions}
+                value={colorMode}
+                onChange={onColorModeOptionChange}
+              />
+            </SegmentedControlWrapper>
+          </Menu.Group>
+        </>
       ),
     },
     {
@@ -225,8 +259,6 @@ MenuContent.propTypes = {
   children: PropTypes.any,
   showSearchBarChecked: PropTypes.bool,
   onShowSearchBarChange: PropTypes.func,
-  darkModeChecked: PropTypes.bool,
-  onDarkModeChange: PropTypes.func,
   onPlayPauseSelect: PropTypes.func.isRequired,
   onVerticalVersesChange: PropTypes.func.isRequired,
   verticalVersesChecked: PropTypes.bool.isRequired,
@@ -239,6 +271,8 @@ MenuContent.propTypes = {
   onBgOptionChange: PropTypes.func,
   engineOption: PropTypes.string,
   onEngineOptionChange: PropTypes.func,
+  colorMode: PropTypes.string,
+  onColorModeOptionChange: PropTypes.func,
   fontName: PropTypes.string,
   onFontTypeChange: PropTypes.func,
   isFontLoading: PropTypes.bool,

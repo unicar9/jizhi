@@ -228,7 +228,7 @@ class App extends Component {
     const sketches = { blobs, waves };
 
     return selected ? (
-      <div className="App" tabIndex="-1" onKeyDown={this.handleKeyDown}>
+      <div className="App" tabIndex="-1" onKeyDown={this.handleKeyDown} style={{ outline: 'none' }}>
         <GlobalStyle />
         {selected === WAVES && (
           <ColorName

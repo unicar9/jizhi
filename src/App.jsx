@@ -46,7 +46,7 @@ class App extends Component {
   }
 
   componentDidMount() {
-    const hasZh = navigator.languages.includes('zh');
+    const hasZh = navigator.languages.some((i) => i.includes('zh'));
     document.title = hasZh ? '新标签页' : 'New Tab';
 
     load(

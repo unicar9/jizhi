@@ -3,6 +3,7 @@ export default function waves(p) {
   let bgColor = '#e6e6e6';
   let isDarkMode = false;
   let waveColor = bgColor;
+  let isPlaying = true;
 
   p.setup = function () {
     p.createCanvas(p.windowWidth, p.windowHeight);
@@ -14,7 +15,7 @@ export default function waves(p) {
 
   p.draw = function () {
     p.background(bgColor);
-    mountains.forEach((m) => m.display(p));
+    mountains.forEach((m) => m.display(p, isPlaying));
   };
 
   p.windowResized = function () {
@@ -22,7 +23,7 @@ export default function waves(p) {
   };
 
   p.updateWithProps = function (newProps) {
-    !newProps.isPlaying ? p.frameRate(0) : p.frameRate(30);
+    isPlaying = newProps.isPlaying;
     bgColor = newProps.isDarkMode ? '#323232' : '#e6e6e6';
 
     if (isDarkMode !== newProps.isDarkMode || waveColor !== newProps.waveColor) {
@@ -51,7 +52,7 @@ class Mountain {
     this.t = 0;
   }
 
-  display(p) {
+  display(p, isPlaying) {
     let xoff = 0;
 
     p.noStroke();
@@ -71,7 +72,7 @@ class Mountain {
     p.vertex(0, p.height);
     p.endShape(p.CLOSE);
 
-    this.t += 0.005;
+    if (isPlaying) this.t += 0.005;
   }
 }
 

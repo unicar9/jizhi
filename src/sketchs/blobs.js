@@ -4,6 +4,7 @@ export default function blobs(p) {
   const blobsArray = [];
   const colors = p.random(blobsColors);
   let bgColor = 230;
+  let isPlaying = true;
 
   p.setup = function () {
     p.createCanvas(p.windowWidth, p.windowHeight);
@@ -15,7 +16,7 @@ export default function blobs(p) {
     p.background(bgColor);
     p.noStroke();
 
-    blobsArray.forEach((blob) => blob.display(p));
+    blobsArray.forEach((blob) => blob.display(p, isPlaying));
   };
 
   p.windowResized = function () {
@@ -27,9 +28,11 @@ export default function blobs(p) {
   };
 
   p.updateWithProps = function (newProps) {
-    !newProps.isPlaying ? p.frameRate(0) : p.frameRate(30);
+    isPlaying = newProps.isPlaying;
     bgColor = newProps.isDarkMode ? 50 : 230;
   };
+
+  // Note: isPlaying is passed to Blob.display so time only advances when active
 }
 
 class Blob {
@@ -45,7 +48,7 @@ class Blob {
     this.s = 0;
   }
 
-  display(p) {
+  display(p, isPlaying) {
     p.push();
     const color = p.color(this.c);
     color.setAlpha(230);
@@ -68,7 +71,7 @@ class Blob {
       p.vertex(x, y);
     }
     p.endShape();
-    this.t += this.tSpeed;
+    if (isPlaying) this.t += this.tSpeed;
     p.pop();
   }
 }
